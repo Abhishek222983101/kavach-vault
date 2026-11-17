@@ -13,3 +13,4 @@ git -c user.name="Abhishek Tiwari" -c user.email="141759667+Abhishek222983101@us
 Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>" || echo "baseline unchanged"
 git push -q origin HEAD:main
 gh secret list
+./scripts/deploy-vercel-keeper.sh

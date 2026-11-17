@@ -1,8 +1,8 @@
 {
-  "at": "2026-11-17T03:25:30.437Z",
+  "at": "2026-11-17T03:48:54.631Z",
   "chain": {
-    "height": 10232165,
-    "blockTime": "2026-11-17T03:25:28.000Z"
+    "height": 10233150,
+    "blockTime": "2026-11-17T03:48:52.000Z"
   },
   "drill": {
     "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
@@ -25,7 +25,7 @@
   "funder": {
     "address": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
     "evm": "0x7Eff75F315Ac227995fc07e1e9Cb1C85E0e14627",
-    "uqor": "73743486"
+    "uqor": "65908331"
   },
   "vaults": {
     "hot": {
@@ -48,9 +48,29 @@
     }
   },
   "repo": {
-    "head": "15efc41994b06ee9b742f9ec47ca43620e1a41a9",
-    "originMain": "15efc41994b06ee9b742f9ec47ca43620e1a41a9",
+    "head": "273f57d21547e6bf83af774ad5040bb47e987567",
+    "originMain": "273f57d21547e6bf83af774ad5040bb47e987567",
     "visibility": "PRIVATE"
+  },
+  "cloud": {
+    "baseline": {
+      "hotWei": "129000000000000000000",
+      "coldWei": "740000000000000000000",
+      "spent": "2000000000000000000",
+      "outerSeq": "18",
+      "freezerSeq": "2",
+      "ownerNonce": "19",
+      "guardianNonce": "0",
+      "pqKey": "3458:true"
+    },
+    "secrets": [
+      "FREEZE_TX",
+      "HB_0",
+      "HB_1",
+      "HB_2"
+    ],
+    "lastRun": "failure",
+    "vercel": "ok"
   },
   "timers": {
     "kavach-watchtower": {
@@ -75,7 +95,7 @@
     }
   },
   "machine": {
-    "diskFreeMB": 7884,
+    "diskFreeMB": 7609,
     "acOnline": "1",
     "nodeVersion": "v22.23.2"
   },
@@ -95,7 +115,7 @@
     "phase2.json": "8858eb4968ac57ed",
     "phase4.json": "c142948ba18e872e",
     "phase4b-cold-canary.json": "67bc6aa2a656e550",
-    "pre-drill.json": "16741029c9813ba6",
+    "pre-drill.json": "718d07955f8e6962",
     "rehearsal-heartbeat.json": "4b3783000d82827e",
     "semgrep.json": "7bf653be059b9740",
     "slither.json": "5b69382b26e27d40",
@@ -105,6 +125,7 @@
     "spike-s3.json": "0ff1504387568494",
     "spike-s4.json": "88b2786be79a1950",
     "spike-s4b.json": "72d5d74b599f0715",
+    "test-vault-t2.json": "591df0133a0b6769",
     "test-vault.json": "727cb5cfa7216062",
     "watchtower-test.json": "2c13ac6e2556a2d7"
   },
@@ -112,7 +133,7 @@
     {
       "level": "ok",
       "name": "chain is live and the machine clock agrees with block time",
-      "detail": "latest block 3s old"
+      "detail": "latest block 4s old"
     },
     {
       "level": "ok",
@@ -152,7 +173,7 @@
     {
       "level": "ok",
       "name": "funder keeps at least 10 QOR for fees",
-      "detail": "73743486 uqor"
+      "detail": "65908331 uqor"
     },
     {
       "level": "ok",
@@ -222,12 +243,57 @@
     {
       "level": "ok",
       "name": "local HEAD is pushed to origin/main",
-      "detail": "15efc41 vs 15efc41"
+      "detail": "273f57d vs 273f57d"
     },
     {
       "level": "ok",
       "name": "GitHub repository reachable",
       "detail": "PRIVATE"
+    },
+    {
+      "level": "ok",
+      "name": "cloud keeper targets the real hot vault",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "cloud blobs are fresh: drill account sequence unchanged since pre-signing",
+      "detail": "18"
+    },
+    {
+      "level": "ok",
+      "name": "cloud freeze blob is fresh: freezer sequence unchanged",
+      "detail": "2"
+    },
+    {
+      "level": "ok",
+      "name": "cloud blobs are fresh: vault owner nonce unchanged",
+      "detail": "19"
+    },
+    {
+      "level": "ok",
+      "name": "freezer account can pay for the freeze",
+      "detail": "2764000 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "GitHub secrets HB_0, HB_1, HB_2, FREEZE_TX are set",
+      "detail": "FREEZE_TX,HB_0,HB_1,HB_2"
+    },
+    {
+      "level": "ok",
+      "name": "keeper workflow is on origin/main",
+      "detail": ""
+    },
+    {
+      "level": "WARN",
+      "name": "latest keeper run succeeded",
+      "detail": "failure"
+    },
+    {
+      "level": "ok",
+      "name": "Vercel keeper answers a dry run with a clean state",
+      "detail": "ok"
     },
     {
       "level": "ok",
@@ -267,7 +333,7 @@
     {
       "level": "ok",
       "name": "at least 2 GB of disk free",
-      "detail": "7884 MB"
+      "detail": "7609 MB"
     },
     {
       "level": "ok",
@@ -277,7 +343,7 @@
   ],
   "summary": {
     "fails": 0,
-    "warns": 0,
-    "passed": 33
+    "warns": 1,
+    "passed": 41
   }
 }
