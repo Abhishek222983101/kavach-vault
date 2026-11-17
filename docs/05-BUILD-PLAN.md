@@ -106,7 +106,7 @@ Acceptance for the phase: a table of results in `02-RESEARCH.md` §7 with tx has
 | 7.2 Evidence snapshot | `pnpm evidence` before registration | `evidence/pre-drill.json` committed |
 | 7.3 README + AI_USAGE.md | From `07-AI-WORKFLOW.md` and the decision log | Reviewed by you |
 | 7.4 Project page | Update description, testnet addresses, repo link (after cut-off for the strategy details) | Page shows addresses and repo |
-| 7.5 Registration | You paste the drill classical key + vault address | Project page shows registered |
+| 7.5 Registration ✅ 17 Nov | You paste the drill classical key + vault address | Project page shows registered (`evidence/registration.json`) |
 | 7.6 Post-drill | Heartbeat hash submitted; attack log compared with the organisers' log; results published | Page updated by 19 Nov |
 
 ## Phase 3 evidence (17 Nov)

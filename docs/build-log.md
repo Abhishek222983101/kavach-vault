@@ -34,3 +34,6 @@ Lessons: unified (eth-native) accounts must sign with `EthNativeSigner`, not `di
 ## 17 Nov 2026, Phases 6 and 7.1 to 7.4 ✅
 - `node scripts/heartbeat.mjs --dry` / `node scripts/heartbeat.mjs` (rehearsal), `node scripts/test-watchtower.mjs`, `node scripts/watchtower.mjs`, `./scripts/arm.sh`, `node scripts/preflight.mjs --snapshot`, `node scripts/prepare-registration.mjs`.
 - Found by rehearsal: gas for the ML-DSA verification, native-lane calls emit no logs, a full disk truncating a file. All three are fixed and logged in `docs/ai-corrections.md`.
+
+## 17 Nov 2026, Phase 7.5 ✅
+- Registered for the drill on the project page (drill account and both vaults shown as registered). The key file was shredded afterwards. See `evidence/registration.json`.
