@@ -1,0 +1,87 @@
+{
+  "confirmed": true,
+  "primary": {
+    "hash": "8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9",
+    "code": 0,
+    "log": "",
+    "height": "10231085",
+    "sentAt": "2026-11-17T02:59:46.343Z",
+    "via": "rest",
+    "ok": true,
+    "ownerNonceBefore": "16",
+    "ownerNonceAfter": "17",
+    "heartbeatEventSeen": false
+  },
+  "runs": [
+    {
+      "mode": "rehearsal",
+      "startedAt": "2026-11-17T02:59:43.714Z",
+      "attempts": [
+        {
+          "n": 1,
+          "kind": "vault-heartbeat",
+          "hash": "8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9",
+          "code": 0,
+          "log": "",
+          "height": "10231085",
+          "sentAt": "2026-11-17T02:59:46.343Z",
+          "via": "rest",
+          "ok": true,
+          "ownerNonceBefore": "16",
+          "ownerNonceAfter": "17",
+          "heartbeatEventSeen": false
+        }
+      ],
+      "primary": {
+        "hash": "8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9",
+        "code": 0,
+        "log": "",
+        "height": "10231085",
+        "sentAt": "2026-11-17T02:59:46.343Z",
+        "via": "rest",
+        "ok": true,
+        "ownerNonceBefore": "16",
+        "ownerNonceAfter": "17",
+        "heartbeatEventSeen": false
+      },
+      "confirmed": true,
+      "finishedAt": "2026-11-17T02:59:53.387Z",
+      "secondsAfterDrillStart": null
+    },
+    {
+      "mode": "rehearsal",
+      "startedAt": "2026-11-17T03:05:46.459Z",
+      "attempts": [
+        {
+          "n": 1,
+          "kind": "vault-heartbeat",
+          "hash": "A86346676647A32577B40ABC6E422D3ED9977107A1EB0E88CECB20AC5694156B",
+          "code": 0,
+          "log": "",
+          "height": "10231337",
+          "sentAt": "2026-11-17T03:05:48.845Z",
+          "via": "rest",
+          "ok": true,
+          "ownerNonceBefore": "17",
+          "ownerNonceAfter": "18",
+          "heartbeatEventSeen": false
+        }
+      ],
+      "primary": {
+        "hash": "A86346676647A32577B40ABC6E422D3ED9977107A1EB0E88CECB20AC5694156B",
+        "code": 0,
+        "log": "",
+        "height": "10231337",
+        "sentAt": "2026-11-17T03:05:48.845Z",
+        "via": "rest",
+        "ok": true,
+        "ownerNonceBefore": "17",
+        "ownerNonceAfter": "18",
+        "heartbeatEventSeen": false
+      },
+      "confirmed": true,
+      "finishedAt": "2026-11-17T03:05:56.193Z",
+      "secondsAfterDrillStart": null
+    }
+  ]
+}

@@ -6,6 +6,7 @@ L, E, K, S2 = J("evidence/attack-log.json"), J("evidence/phase4.json"), J("evide
 n, ev, v = L["native"], L["evm"], L["vault"]
 HOT, COLD = E["hot"]["address"], E["cold"]["address"]
 DRILL_Q, DRILL_E = S2["drill"]["native"], S2["drill"]["evm"]
+RH, WT = J("evidence/rehearsal-heartbeat.json"), J("evidence/watchtower-test.json")
 live_rev = sum(1 for x in v["live"] if x["label"].startswith("live reverted"))
 BG, FG, GREEN, RED, DIM, BLUE = "#0b1117", "#e6edf3", "#34d399", "#f87171", "#8b98a5", "#60a5fa"
 
@@ -109,7 +110,8 @@ readme = f'''<div align="center">
 [**Security proofs**](SECURITY-PROOFS.md) &nbsp;·&nbsp;
 [**Attack log**](evidence/attack-log.json) &nbsp;·&nbsp;
 [**AI usage**](AI_USAGE.md) &nbsp;·&nbsp;
-[**Vault spec**](docs/10-VAULT-SPEC.md)
+[**Vault spec**](docs/10-VAULT-SPEC.md) &nbsp;·&nbsp;
+[![Built on QoreChain](https://build.qorechain.io/badge/kavach-vault.svg)](https://build.qorechain.io/p/kavach-vault)
 
 <sub>QoreChain "Build Before Q-Day" · Post-Quantum AI Agents · Q-Day Survivor drill · Team Paradigm: Abhishek Tiwari</sub>
 
@@ -128,7 +130,7 @@ The drill ranks entries by this rule: **proof of life, then fewest successful at
 
 | Criterion | Our claim | Check it here |
 |---|---|---|
-| **1. Proof of life** | A native, hybrid-signed transaction from the drill account in the first minutes of the drill, through a fee grant, so the account never needs a balance. Rehearsed live (spike S3) | [`evidence/spike-s3.json`](evidence/spike-s3.json), runbook [`docs/06-DRILL-RUNBOOK.md`](docs/06-DRILL-RUNBOOK.md) |
+| **1. Proof of life** | A native, hybrid-signed transaction from the drill account in the first minutes of the drill, through a fee grant, so the account never needs a balance. Rehearsed live from the drill account | [`evidence/rehearsal-heartbeat.json`](evidence/rehearsal-heartbeat.json), [`evidence/spike-s3.json`](evidence/spike-s3.json), runbook [`docs/06-DRILL-RUNBOOK.md`](docs/06-DRILL-RUNBOOK.md) |
 | **2. Fewest successful attacks** | **0 accepted** of {n['attempts']+ev['attempts']+v['callAttacks']} attacks in our own live simulation: {n['attempts']} native, {ev['attempts']} EVM, {v['callAttacks']} vault calls, plus {live_rev} live reverted transactions | [`evidence/attack-log.json`](evidence/attack-log.json), the three sweeps in [`scripts/`](scripts) |
 | **3. Most value kept** | Nothing in the account. About 85% of the value in a cold vault that cannot move before 20 Nov 00:00 UTC; the rest in a capped hot vault | [`evidence/phase4.json`](evidence/phase4.json), balances in the table below |
 | **4. Threat model (tie-break)** | 26 hand-written attacks plus a sweep generated from the chain's full message registry; one written proof per invariant, each linked to tests | [`docs/04-THREAT-MODEL.md`](docs/04-THREAT-MODEL.md), [`SECURITY-PROOFS.md`](SECURITY-PROOFS.md) |
@@ -203,9 +205,21 @@ Queued withdrawals wait 6 hours, can be cancelled by the guardian, and still pay
 | Coverage | 99.6% of lines, 100% of functions, 90.5% of branches (the one uncovered line is a defensive branch the queue cannot reach) | `forge coverage --ir-minimum` |
 | Blind AI red team | A separate agent that saw only the contract sources found no exploit; three conditional findings triaged | [`docs/05-BUILD-PLAN.md`](docs/05-BUILD-PLAN.md) |
 | Deployed bytecode | Equals a fresh build of the committed source (immutables masked) | [`scripts/phase5-report.mjs`](scripts/phase5-report.mjs) |
+| Watchtower | Benign event ignored; simulated unauthorised withdrawal detected and the vault frozen in seconds | [`evidence/watchtower-test.json`](evidence/watchtower-test.json) |
 | Cold vault, live | A twin with a 4-minute lock refused early release, refused an attacker's valid key after unlock, paid the owner-signed release, refused the replay | [`evidence/phase4b-cold-canary.json`](evidence/phase4b-cold-canary.json) |
 
 <br>
+
+## Drill day automation
+
+| When (IST, 18 Nov) | What runs | Why |
+|---|---|---|
+| 05:20 | **Watchtower** starts, records a baseline | Polls the chain every 15 seconds: both vault balances, the spend counter, the frozen flag, nonces, the drill account's window, balances and key record, the fee grant, disk space. On a critical event against the hot vault it freezes it with the guardian key through a native call (no window) |
+| 05:31 | **Proof of life**: a native call from the drill account into the hot vault's `heartbeat()`, signed by the owner's post-quantum key, fee paid by a scoped fee grant | Shows the project works while the account stays empty and window-less. Retried with a fresh signature every 20 seconds until it lands; a plain ping is the fallback |
+| 12:00, 18:00 | Extra heartbeats | Evidence of continued liveness |
+| 05:35 | The repository becomes public | After registration has closed |
+
+Rehearsed live: the heartbeat landed from the drill account (`{RH['primary']['hash']}`), and on a throwaway vault the watchtower ignored a benign heartbeat, detected an unauthorised withdrawal, froze the vault in {WT['result']['reactionSeconds']} seconds, and the next withdrawal was refused ([`evidence/watchtower-test.json`](evidence/watchtower-test.json)). The rehearsal also found that the call needs more than 600,000 gas, which the script now handles. Procedure: [`docs/06-DRILL-RUNBOOK.md`](docs/06-DRILL-RUNBOOK.md).
 
 ## Reproduce
 

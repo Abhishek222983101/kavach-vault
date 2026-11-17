@@ -1,0 +1,67 @@
+{
+  "at": "2026-11-17T03:01:15.848Z",
+  "steps": [
+    {
+      "n": "test vault",
+      "address": "0x3ed5c94f7e73ed74fd214fc9ad47d5ccd1816b8f"
+    },
+    {
+      "n": "baseline",
+      "frozen": false,
+      "balanceWei": "5000000000000000000",
+      "ownerNonce": "0",
+      "readinessLine": true
+    },
+    {
+      "n": "benign heartbeat",
+      "code": 0,
+      "frozenAfter": false,
+      "ownerNonce": "1"
+    },
+    {
+      "n": "anomaly: unexpected withdrawal",
+      "code": 0,
+      "tx": "43F3DA9D75ABB738281C8BCD40F33298F69C27BF4C03C9B1E045801437602970"
+    },
+    {
+      "n": "reaction",
+      "frozen": true,
+      "seconds": 6
+    },
+    {
+      "n": "withdrawal after freeze refused",
+      "refused": true
+    }
+  ],
+  "alerts": [
+    {
+      "at": "2026-11-17T03:01:33.893Z",
+      "level": "info",
+      "text": "Watchtower baseline recorded"
+    },
+    {
+      "at": "2026-11-17T03:02:08.025Z",
+      "level": "critical",
+      "text": "hot vault daily-spend counter rose from 0 to 1000000000000000000"
+    },
+    {
+      "at": "2026-11-17T03:02:08.029Z",
+      "level": "critical",
+      "text": "Freezing the hot vault: hot vault daily-spend counter rose from 0 to 1000000000000000000"
+    },
+    {
+      "at": "2026-11-17T03:02:13.058Z",
+      "level": "ok",
+      "text": "Freeze confirmed (code 0, tx 52FA8A67FEFA6322E1DD2937BA3B9A83F735F91E5F2DEC2F99E40F2C34585943)"
+    }
+  ],
+  "watchLog": 9,
+  "result": {
+    "benignNoFreeze": true,
+    "anomalyDetected": true,
+    "frozen": true,
+    "reactionSeconds": 6,
+    "freezeConfirmedAlert": true,
+    "withdrawalRefusedAfterFreeze": true
+  }
+}

@@ -12,16 +12,31 @@ export async function authInfo(addr) {
            sequence: BigInt(body.account.sequence ?? body.account.base_account?.sequence ?? 0) };
 }
 
+const TM_RPC = process.env.QORE_TM_RPC ?? "https://rpc-testnet.qore.host";
+async function broadcastViaTendermint(txRawBytes) {
+  const r = await fetch(TM_RPC, { method: "POST", headers: { "content-type": "application/json" },
+    body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "broadcast_tx_sync", params: { tx: Buffer.from(txRawBytes).toString("base64") } }), signal: AbortSignal.timeout(20000) });
+  const j = await r.json(); const x = j.result ?? {};
+  return { hash: x.hash, checkCode: x.code ?? (j.error ? -1 : 0), codespace: x.codespace, log: (x.log ?? j.error?.data ?? j.error?.message ?? "").toString().slice(0, 400) };
+}
+
 export async function broadcastRaw(txRawBytes, { wait = true } = {}) {
-  const r = await fetch(REST + "/cosmos/tx/v1beta1/txs", { method: "POST", headers: { "content-type": "application/json" },
-    body: JSON.stringify({ tx_bytes: Buffer.from(txRawBytes).toString("base64"), mode: "BROADCAST_MODE_SYNC" }) });
-  const j = await r.json();
-  const tr = j.tx_response ?? {};
-  const out = { hash: tr.txhash, checkCode: tr.code ?? 0, codespace: tr.codespace, log: (tr.raw_log ?? j.message ?? "").slice(0, 400) };
+  let out;
+  try {
+    const r = await fetch(REST + "/cosmos/tx/v1beta1/txs", { method: "POST", headers: { "content-type": "application/json" },
+      body: JSON.stringify({ tx_bytes: Buffer.from(txRawBytes).toString("base64"), mode: "BROADCAST_MODE_SYNC" }), signal: AbortSignal.timeout(20000) });
+    if (r.status >= 500) throw new Error("REST " + r.status);
+    const j = await r.json();
+    const tr = j.tx_response ?? {};
+    out = { hash: tr.txhash, checkCode: tr.code ?? 0, codespace: tr.codespace, log: (tr.raw_log ?? j.message ?? "").slice(0, 400) };
+  } catch (e) {
+    // the REST endpoint is down or erroring: fall back to the Tendermint RPC on the same chain
+    out = { ...(await broadcastViaTendermint(txRawBytes)), via: "tendermint-rpc" };
+  }
   if (!wait || out.checkCode !== 0) return out;
   for (let i = 0; i < 40; i++) {
     await sleep(1500);
-    const t = await getJson(`/cosmos/tx/v1beta1/txs/${out.hash}`);
+    const t = await getJson(`/cosmos/tx/v1beta1/txs/${out.hash}`).catch(() => ({ status: 0, body: {} }));
     if (t.status === 200 && t.body.tx_response) {
       const x = t.body.tx_response;
       return { ...out, deliverCode: x.code ?? 0, codespace: x.codespace, log: (x.raw_log ?? "").slice(0, 400), height: x.height, gasUsed: x.gas_used };

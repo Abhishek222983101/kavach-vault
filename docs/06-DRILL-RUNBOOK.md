@@ -4,54 +4,57 @@ Registration cut-off: **18 Nov 05:29 IST** (17 Nov 23:59 UTC). Drill: **18 Nov 0
 
 ## 1. Before registering (17 Nov, by 23:00)
 
-Every item must be ticked, with the evidence file named. If any item fails, do not register until it is fixed.
+Run `node scripts/preflight.mjs --snapshot`. It checks everything below, prints ok/WARN/FAIL for each item and writes `evidence/pre-drill.json`. Do not register while any item shows FAIL.
 
-| # | Check | How | Evidence |
-|---|---|---|---|
-| R1 | Rules unchanged since 17 Nov 03:00 | Re-read /rules and /start §7; diff against `01-REQUIREMENTS.md` | note in `08-DECISIONS.md` |
-| R2 | Drill key registered with proof of possession | `curl -s $REST/qorechain/pqc/v1/account/<drill>` → `found:true`, `key_type:hybrid`, `possession_proven:true` | `evidence/pre-drill.json` |
-| R3 | Drill account empty | `curl -s $REST/cosmos/bank/v1beta1/balances/<drill>` → `[]` | same |
-| R4 | No window on drill or funder | `curl -s $REST/qorechain/pqc/v1/evm_window/<addr>` → `found:false` | same |
-| R5 | Fee grant live and scoped | `curl -s $REST/cosmos/feegrant/v1beta1/allowance/<funder>/<drill>` shows the allowed messages | same |
-| R6 | No authz grants, no authenticators, no 7702 consent on the drill account | REST queries for each | same |
-| R7 | Vault funded | Explorer balances for QOR, fUSD, fETH, fBTC | same |
-| R8 | Live attack simulation green | `pnpm attack` exit 0 | `evidence/attack-log.json` |
-| R9 | Heartbeat dry run landed | `pnpm heartbeat --dry-chain` hash | `evidence/heartbeat-test.json` |
-| R10 | Timer installed | `systemctl --user list-timers` shows `kavach-heartbeat` at 05:31 | screenshot |
-| R11 | Watchtower running | `pnpm watch` log updating | `evidence/watch.jsonl` |
-| R12 | Clock synced | `timedatectl` NTP yes | – |
-
-## 2. Registration (you, 17 Nov 23:00 – 18 Nov 05:00)
-
-1. Open https://build.qorechain.io/p/kavach-vault.
-2. In "ECDSA private key of the drill account (hex)", paste the drill classical key. The agent will place it in a file for you; copy it from the file, do not ask for it in chat.
-3. In "Contract addresses to attack", paste the vault address (one per line).
-4. Click **Register for the drill**. Screenshot the confirmation.
-5. Do not register any other account or key.
-
-## 3. Drill day (18 Nov)
-
-| Time | Action | Who |
+| # | Check | Evidence |
 |---|---|---|
-| 05:15 | Laptop on, charger in, network up. Watchtower running. | You |
+| R1 | Rules unchanged since 17 Nov 03:00 (re-read /rules and /start §7; diff against `01-REQUIREMENTS.md`) | note in `08-DECISIONS.md` |
+| R2 | Drill key registered with proof of possession | preflight, `evidence/phase2.json` |
+| R3 | Drill account empty, no EVM window on drill or funder | preflight |
+| R4 | Fee grant limited to `MsgSend` and `MsgCrossVMCall`, at least 3 QOR left | preflight; top up with `node scripts/grant-topup.mjs 8000000` |
+| R5 | Both vaults funded, hot not frozen, cold release time 20 Nov, allowlists hold only the funder | preflight |
+| R6 | Deployed bytecode equals the committed source | preflight |
+| R7 | Live attack sweeps green | `evidence/attack-log.json` (`node scripts/phase5-report.mjs`) |
+| R8 | Heartbeat accepted by the vault (simulated) and rehearsal landed | preflight, `evidence/rehearsal-heartbeat.json` |
+| R9 | Guardian freeze accepted by the vault (simulated); watchtower test passed | preflight, `evidence/watchtower-test.json` |
+| R10 | Timers armed (`./scripts/arm.sh`), linger on, clock synced, 2 GB of disk free, mains power | preflight |
+
+## 2. Registration (a person, 17 Nov 23:00 to 18 Nov 05:00)
+
+1. Run `node scripts/prepare-registration.mjs`. It runs the preflight, writes the drill account's classical key to `.secrets/REGISTRATION-drill-ecdsa-key.txt` (mode 600; never printed) and prints the addresses to paste.
+2. Open https://build.qorechain.io/p/kavach-vault and find the Q-Day Drill registration.
+3. Paste the single line from the key file into "ECDSA private key of the drill account". Never paste a mnemonic.
+4. Paste the two contract addresses (hot and cold), one per line.
+5. Submit, screenshot the confirmation, then `shred -u .secrets/REGISTRATION-drill-ecdsa-key.txt`.
+6. Do not register any other account or key.
+
+## 3. Drill day (18 Nov, all times IST)
+
+| Time | What happens | Who |
+|---|---|---|
+| 05:20 | Watchtower starts and records its baseline (timer `kavach-watchtower`) | Script |
+| 05:29 | Registration closes | – |
 | 05:30 | Drill starts | – |
-| 05:31 | Timer sends the heartbeat. Script prints hash + explorer link. | Script |
-| 05:35 | Confirm on explorer; if not landed, run `pnpm heartbeat` by hand; if that fails, `pnpm heartbeat --fallback` | You |
-| 05:40 | Submit the hash on the project page (do not wait until the 19th) | You |
-| every 2 h | Glance at watchtower alerts | You / script |
-| 12:00 | Second heartbeat (extra evidence of continued liveness) | Script |
+| 05:31 | Proof-of-life heartbeat (timer `kavach-heartbeat`): a native call from the drill account into the hot vault, fee paid by the grant, retried with a fresh signature every 20 s until it lands; a plain ping is the fallback | Script |
+| 05:35 | Retry timer starts (every 5 min, exits at once if done); the GitHub repository goes public (`kavach-go-public`) | Script |
+| 05:40 | Read `evidence/proof-of-life.json`, submit `primary.hash` on the project page (deadline 19 Nov, do it now) | You |
+| 12:00 and 18:00 | Extra heartbeats (`kavach-heartbeat-extra`) as evidence of continued liveness | Script |
+| any time | Alerts: desktop notification, `evidence/alerts.jsonl`, and Telegram if `.secrets/telegram.json` exists | Script |
 | 19 Nov 05:29 | Drill ends | – |
-| 19 Nov morning | `pnpm evidence --post`; compare with organisers' attack log when published | Agent |
+| 19 Nov morning | `node scripts/preflight.mjs --post`, `./scripts/disarm.sh`, compare with the organisers' attack log | Agent |
+
+Manual commands: `node scripts/heartbeat.mjs --until-confirmed`, `node scripts/heartbeat.mjs --dry`, `systemctl --user list-timers 'kavach-*'`, `journalctl --user -u kavach-watchtower -f`.
 
 ## 4. If something goes wrong
 
 | Symptom | Action |
 |---|---|
-| Watchtower: a window appeared on the drill account | Should be impossible. Submit the pre-signed guardian freeze; capture evidence; tell the organisers. |
-| Watchtower: drill balance > 0 | Someone sent us funds (possibly the bot testing). Leave it; it is not ours to lose, but note it in evidence. |
-| Watchtower: vault balance dropped | Freeze immediately (pre-signed); investigate with the attack log. |
-| Heartbeat refused | Check grant (`allowance`), clock, RPC. Fallback: funder sends 1 QOR to the drill account, drill sends hybrid `MsgSend` immediately, then returns the rest. |
-| Public RPC down | Switch endpoint list; retry with backoff. |
+| Alert: the hot vault balance fell or its spend counter rose | The watchtower has already frozen the hot vault with the guardian key (a native call from the funder). Read `evidence/alerts.jsonl` and `evidence/watch.jsonl`; the cold vault cannot move. |
+| Alert: a window appeared on the drill account, or its key record changed | Should be impossible. Capture `evidence/watch.jsonl`, tell the organisers; the account holds nothing and the vault does not trust it. |
+| Alert: the drill account holds a balance | Someone sent it funds (possibly the bot testing). Leave it; note it in the evidence. |
+| Heartbeat keeps failing | `node scripts/heartbeat.mjs --dry` shows why (signature, nonce, key status). Check the grant (`preflight`), the clock and the RPC. The script raises gas automatically on "out of gas" and falls back to the Tendermint RPC to broadcast. The last resort (not recommended: it breaks the zero-balance rule) is for the funder to send 1 QOR to the drill account and send a hybrid `MsgSend`. |
+| Public RPC down | The scripts retry and fall back to `rpc-testnet.qore.host`; the watchtower warns after 4 failed polls and raises a critical alert after 20. |
+| Disk nearly full | The watchtower warns below 1 GB and raises a critical alert below 300 MB; free space at once (a full disk truncated a script file once during this build). |
 
 ## 5. After the drill
 

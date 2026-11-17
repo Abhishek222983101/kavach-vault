@@ -90,7 +90,7 @@ Acceptance for the phase: a table of results in `02-RESEARCH.md` §7 with tx has
 | 5.3 Vault attacks from a third account | Junk/forged/replayed/cross-format signatures, attacker key, reentrancy | All revert; vault balance unchanged |
 | 5.4 Report | `evidence/attack-log.json` with tx hash, error code and balance deltas per attack | Exit code 0; every row BLOCKED |
 
-## Phase 6: proof of life, watchtower, timer (1.5 h) ⬜
+## Phase 6: proof of life, watchtower, timer (1.5 h) ✅ 17 Nov (`scripts/heartbeat.mjs`, `scripts/watchtower.mjs`, systemd timers; evidence `rehearsal-heartbeat.json`, `watchtower-test.json`)
 
 | Sub-phase | Steps | Acceptance |
 |---|---|---|
@@ -98,7 +98,7 @@ Acceptance for the phase: a table of results in `02-RESEARCH.md` §7 with tx has
 | 6.2 Watchtower | Polls window, key record, balances, events every 15 s; pre-signed guardian freeze ready | Simulated anomaly triggers alert + freeze on a test vault |
 | 6.3 Timer | systemd user timer at 05:31 IST 18 Nov runs heartbeat, then retries every 5 min until confirmed | `systemctl --user list-timers` shows it; test run passes |
 
-## Phase 7: evidence, proofs, AI_USAGE, page (2 h, then again after the drill) ⬜
+## Phase 7: evidence, proofs, AI_USAGE, page (2 h, then again after the drill) 🟡 7.1 to 7.4 done 17 Nov; 7.5 is the person's step; 7.6 after the drill
 
 | Sub-phase | Steps | Acceptance |
 |---|---|---|
@@ -149,3 +149,15 @@ Ideas the agent tried and ruled out (cold lock bypass, cross-vault/role/action r
 | 5.2 EVM | 34 raw EVM txs (legacy, 2930, 1559, 7702, create, approve/transfer of every fest token, Permit2-shaped, vault calls): 0 accepted. The empty drill is refused for zero balance (17); a funded, PQ-registered stand-in with no window is refused for the missing window (17), which is what a bot that funds the drill account first would meet |
 | 5.3 vaults | 78 eth_call attacks from a random address and from the drill address (junk, zero, truncated, oversized, replayed, swapped-recipient, cross-vault, cross-role, expired signatures; attacker's own valid key; guardian key as owner): all reverted for the intended reason; 3 controls prove a fresh owner signature still works and cannot be redirected. Live: 4 reverted txs, 1 QOR force-sent by selfdestruct (accounting unaffected), then owner heartbeat and withdrawal still succeed |
 | 5.4 report | `evidence/attack-log.json`, verdict ALL BLOCKED |
+
+## Phase 6 and 7 evidence (17 Nov)
+
+| Item | Result |
+|---|---|
+| 6.1 heartbeat | Native `MsgCrossVMCall` from the drill account into the hot vault's `heartbeat()` with a fresh owner ML-DSA-87 signature, fee paid by the grant, no window, no balance. Rehearsal landed: `8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9` (owner nonce 16 to 17). The rehearsal found the call needs more than 600,000 gas (ML-DSA verification is expensive); the script now starts at 1.5 million and raises gas automatically on "out of gas". Success is judged by the vault's owner nonce moving, not by an event (events from native-lane calls do not appear in `eth_getLogs`) |
+| 6.2 watchtower | Polls every 15 s: chain liveness and block age, hot and cold balances, the spend counter, frozen flag, nonces, the drill account's window, balances and key record, the fee grant, the funder, disk space, proof-of-life status. On a critical hot-vault event it freezes with the guardian key through a native call (no window). Test on a throwaway vault: benign heartbeat ignored; an unexpected withdrawal detected and the vault frozen in 6 s; the next withdrawal refused (`evidence/watchtower-test.json`). The freeze request is also simulated against the real vault at every start |
+| 6.3 timers | `kavach-watchtower` (23:50 UTC 17 Nov), `kavach-heartbeat` (00:01 UTC 18 Nov), `kavach-heartbeat-retry` (every 5 min from 00:05 UTC), `kavach-heartbeat-extra` (06:30 and 12:30 UTC), `kavach-go-public` (00:05 UTC); sleep is inhibited while they run; linger is on |
+| 7.1 proofs | Every test named in `SECURITY-PROOFS.md` exists (checked by script); live confirmation section added |
+| 7.2 snapshot | `node scripts/preflight.mjs --snapshot` writes `evidence/pre-drill.json` (re-run right before registering) |
+| 7.3 README and AI_USAGE | Regenerated with Phase 6 results |
+| 7.4 project page | Draft text prepared (kept local until the repository is public) |

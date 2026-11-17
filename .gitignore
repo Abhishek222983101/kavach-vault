@@ -12,3 +12,7 @@ medusa-corpus/
 docs-private/
 docs/99-archive/
 slither_results.json
+evidence/alerts.jsonl
+evidence/watch.jsonl
+evidence/watch.alive
+evidence/watch-state.json

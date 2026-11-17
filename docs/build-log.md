@@ -30,3 +30,7 @@ Lessons: unified (eth-native) accounts must sign with `EthNativeSigner`, not `di
 - `node scripts/phase4.mjs` (deploy, heartbeat, fund, withdraw, close window), `node scripts/phase4b-cold-canary.mjs` (live cold release path).
 - `node scripts/phase5-native.mjs`, `node scripts/phase5-evm.mjs`, `node scripts/phase5-vault.mjs`, then `node scripts/phase5-report.mjs` → `evidence/attack-log.json` (verdict ALL BLOCKED, bytecode on chain equals the committed source).
 - Findings: EVM lane needs a PQ key and a window for every account; classical-only attacker accounts cannot even broadcast. Gaps: stateless-validation refusals in the native sweep, drill zero-balance masking the window check (D-22).
+
+## 17 Nov 2026, Phases 6 and 7.1 to 7.4 ✅
+- `node scripts/heartbeat.mjs --dry` / `node scripts/heartbeat.mjs` (rehearsal), `node scripts/test-watchtower.mjs`, `node scripts/watchtower.mjs`, `./scripts/arm.sh`, `node scripts/preflight.mjs --snapshot`, `node scripts/prepare-registration.mjs`.
+- Found by rehearsal: gas for the ML-DSA verification, native-lane calls emit no logs, a full disk truncating a file. All three are fixed and logged in `docs/ai-corrections.md`.

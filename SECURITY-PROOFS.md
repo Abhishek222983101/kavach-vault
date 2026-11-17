@@ -10,7 +10,7 @@ Notation: **hot** = `KavachVault`, **cold** = `KavachColdVault`, `PQ` = ML-DSA-8
 - Value leaves the contract in exactly two places: `_pay` (called from `withdraw` and `execute`).
 - `withdraw` runs `_auth` first; `_auth` needs a `pqcVerify`-valid signature by the pinned owner key over a message that contains the exact asset, recipient and amount, so no other request is accepted.
 - `execute` only pays an entry that was created by `queueAction`, which also runs `_auth` with the owner role.
-- **Checks:** `test_T_A5_drainWithoutSig`, `testFuzz_T_B12_randomSigNeverVerifies` (1,000 runs), Foundry invariant `balancesExact` (the vault balance equals initial + deposits − owner-authorised outflow, exactly, after every call of 512 runs × 300 calls), Medusa property `balancesExact`.
+- **Checks:** `test_T_A5_drainWithoutSig`, `testFuzz_T_B12_randomSigNeverVerifies` (1,000 runs), Foundry invariant `balancesExact` (the vault balance equals initial + deposits − owner-authorised outflow, exactly, after every call of 700 runs × 300 calls), Medusa property `balancesExact`.
 
 ## I2. No attacker-controlled address ever receives value
 - Recipients must be allowlisted; the allowlist changes only through `queueAction` → timelock → `execute`, each needing an owner PQ signature; the constructor allowlist contains only the funder.
@@ -45,3 +45,13 @@ Notation: **hot** = `KavachVault`, **cold** = `KavachColdVault`, `PQ` = ML-DSA-8
 ## What these do not cover
 - A flaw in QoreChain's own consensus or its closed-source post-quantum module. Mitigation: two independent layers (chain refusal + contract signature check), an empty drill account, and value split 85/15 with the larger share locked until after the drill.
 - The mock's signature oracle models "valid iff produced by the key owner"; the real algorithm is exercised on the testnet (spike S4, Phase 4 live signatures).
+
+## Live confirmation (qorechain-diana, 17 Nov)
+
+The mock-based checks above are repeated against the real precompiles and chain:
+- Owner-signed heartbeat and withdrawal accepted; replay of the same signature refused: `evidence/phase4.json`.
+- Cold vault: refused before 20 Nov; a short-lock twin released only for the owner's signature, refused an attacker's valid ML-DSA key and a replay: `evidence/phase4b-cold-canary.json`.
+- 298 native, 34 EVM and 78 vault-call attacks with the drill account's classical key, none accepted: `evidence/attack-log.json`.
+- The drill-account heartbeat through the native lane and the fee grant: `evidence/rehearsal-heartbeat.json`.
+- A simulated unauthorised withdrawal on a throwaway vault is detected and frozen by the watchtower in seconds: `evidence/watchtower-test.json`.
+Branch-driven tests added later (`test/Coverage.t.sol`) assert the exact error for every refusal path of both vaults.

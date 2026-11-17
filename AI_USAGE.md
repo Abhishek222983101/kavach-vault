@@ -7,7 +7,7 @@ This project was built with Claude Code (Anthropic) working in a terminal, direc
 - **What the AI did:** research (docs repo, node source, public project pages, web search through Exa), the design and threat model, all Solidity, all TypeScript and Python scripts, every test, the live testnet experiments, and the documentation.
 - **What the human did:** chose the target (the Q-Day Drill) and the constraints, supplied and funded the testnet accounts, made every go/no-go call, did the steps that need a person (faucet sign-ins, messages to organisers, the registration step), and approved anything outward-facing (GitHub, public posts). No Solidity in this repository was written by hand.
 - **How trust was earned:** nothing the AI wrote was accepted until a test, a live transaction or a source document confirmed it. A separate agent that saw only the contract sources tried to break the vault.
-- **Where the AI was wrong:** 14 logged cases in [`docs/ai-corrections.md`](docs/ai-corrections.md), including a misread deadline, a wrong signer, two tests that passed for the wrong reason, and evidence that would have overstated a result.
+- **Where the AI was wrong:** 19 logged cases in [`docs/ai-corrections.md`](docs/ai-corrections.md), including a misread deadline, a wrong signer, two tests that passed for the wrong reason, and evidence that would have overstated a result.
 
 ## 2. Workflow
 
