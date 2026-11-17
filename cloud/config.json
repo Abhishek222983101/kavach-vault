@@ -1,6 +1,6 @@
 {
   "tag": "real",
-  "createdAt": "2026-11-17T03:33:03.679Z",
+  "createdAt": "2026-11-17T17:05:31.849Z",
   "chainId": "qorechain-diana",
   "rest": "https://api-testnet.qore.host",
   "evmRpc": "https://evm-testnet.qore.host",
@@ -13,7 +13,7 @@
   },
   "funder": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
   "freezer": "qor1evcdaymqmterttc0tzg6lcm9arxplp0ckmkj9u",
-  "heartbeatCount": 3,
+  "heartbeatCount": 1,
   "deadline": 1795219140,
   "baseline": {
     "hotWei": "129000000000000000000",
@@ -23,6 +23,7 @@
     "freezerSeq": "2",
     "ownerNonce": "19",
     "guardianNonce": "0",
+    "drillUqor": "1000000",
     "pqKey": "3458:true"
   }
 }
