@@ -70,6 +70,22 @@ const local = sh("git rev-parse HEAD"), remote = sh("git rev-parse origin/main")
 check(sh("gh repo view Abhishek222983101/kavach-vault --json visibility --jq .visibility") !== "", "GitHub repository reachable", sh("gh repo view Abhishek222983101/kavach-vault --json visibility --jq .visibility"), "WARN");
 snap.repo = { head: local, originMain: remote, visibility: sh("gh repo view Abhishek222983101/kavach-vault --json visibility --jq .visibility") };
 
+// ---- the keyless cloud backup (GitHub Actions keeper with pre-signed transactions) ----
+try {
+  const cfg = JSON.parse(fs.readFileSync("cloud/config.json", "utf8")); const b = cfg.baseline;
+  const seqOf = async (a) => { const x = (await c.getJson(`/cosmos/auth/v1beta1/accounts/${a}`)).body.account; return String(x?.sequence ?? x?.base_account?.sequence ?? "0"); };
+  const ownerNonce = String(await pub.readContract({ address: hot, abi: H.abi, functionName: "nonces", args: [1] }));
+  check(cfg.hot === hot, "cloud keeper targets the real hot vault");
+  check((await seqOf(drill.address)) === b.outerSeq, "cloud blobs are fresh: drill account sequence unchanged since pre-signing", `${b.outerSeq}`);
+  check((await seqOf(cfg.freezer)) === b.freezerSeq, "cloud freeze blob is fresh: freezer sequence unchanged", `${b.freezerSeq}`);
+  check(ownerNonce === b.ownerNonce, "cloud blobs are fresh: vault owner nonce unchanged", `${b.ownerNonce}`);
+  const fz = await c.balance(cfg.freezer); check(fz >= 500000n, "freezer account can pay for the freeze", `${fz} uqor`);
+  const secrets = sh("gh secret list --json name --jq '.[].name'").split("\n"); check(["HB_0", "HB_1", "HB_2", "FREEZE_TX"].every((n) => secrets.includes(n)), "GitHub secrets HB_0, HB_1, HB_2, FREEZE_TX are set", secrets.join(","));
+  check(sh("git ls-tree origin/main .github/workflows/drill-keeper.yml") !== "", "keeper workflow is on origin/main");
+  const lr = sh("gh run list --workflow drill-keeper.yml --limit 1 --json conclusion --jq '.[0].conclusion'"); check(lr === "success", "latest keeper run succeeded", lr || "no run yet", "WARN");
+  snap.cloud = { baseline: b, secrets, lastRun: lr };
+} catch (e) { fail("cloud keeper checks", String(e.message ?? e).slice(0, 140)); }
+
 // ---- the machine ----
 const timers = ["kavach-watchtower", "kavach-heartbeat", "kavach-heartbeat-retry", "kavach-heartbeat-extra", "kavach-go-public"];
 snap.timers = {};

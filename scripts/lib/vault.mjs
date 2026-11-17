@@ -27,11 +27,11 @@ export function guardianKeypair() {
 export const chainNow = async () => Number((await pub.getBlock()).timestamp);
 
 /** Sign a request with a PQ keypair; also asserts that the contract's own view returns the exact bytes we build locally. */
-export async function signRequest({ vault, abi, kp, domain = HOT_DOMAIN, action, role, deadline, f = [], crossCheck = true }) {
-  const nonce = await pub.readContract({ address: vault, abi, functionName: "nonces", args: [Number(role)] })
+export async function signRequest({ vault, abi, kp, domain = HOT_DOMAIN, action, role, deadline, f = [], crossCheck = true, nonceOverride }) {
+  const nonce = nonceOverride !== undefined ? BigInt(nonceOverride) : await pub.readContract({ address: vault, abi, functionName: "nonces", args: [Number(role)] })
     .catch(() => pub.readContract({ address: vault, abi, functionName: "nonce" }).catch(() => null)); // hot: nonces(role); cold: nonce()
   const local = buildMessage({ domain, vault, action, role, nonce: BigInt(nonce ?? 0), deadline: BigInt(deadline), f });
-  if (crossCheck && nonce !== null && abi.some((x) => x.name === "messageFor")) {
+  if (crossCheck && nonceOverride === undefined && nonce !== null && abi.some((x) => x.name === "messageFor")) {
     const f5 = [...f]; while (f5.length < 5) f5.push("0x" + "00".repeat(32));
     const onchain = await pub.readContract({ address: vault, abi, functionName: "messageFor", args: [action, Number(role), BigInt(deadline), f5] });
     if (onchain.toLowerCase() !== toHex(local).toLowerCase()) throw new Error("local message differs from the contract's messageFor");

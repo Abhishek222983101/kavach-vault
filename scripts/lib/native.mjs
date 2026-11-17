@@ -45,15 +45,21 @@ export async function broadcastRaw(txRawBytes, { wait = true } = {}) {
   return { ...out, deliverCode: null, log: "not found after waiting" };
 }
 
-/** Build + sign (hybrid by default) + broadcast. Returns the broadcast outcome; never throws on chain refusal. */
-export async function sendMsgs(a, messages, { gas = 400000, feeUqor, mode = "hybrid", granter, memo = "", wait = true, sequence } = {}) {
+/** Build and sign (hybrid by default) WITHOUT broadcasting. Returns the raw tx bytes, so a different machine can broadcast them later. */
+export async function signMsgs(a, messages, { gas = 400000, feeUqor, mode = "hybrid", granter, memo = "", sequence } = {}) {
   const signer = new EthNativeSigner(a.acct, { signMode: mode, rest: REST });
   const info = await authInfo(a.address);
   const fee = stdFee(gas, feeUqor ?? Math.ceil(gas * 0.1) + 1000, granter);
   const signBytesVersion = mode === "hybrid" ? await signer.resolveSignBytesVersion(CHAIN_ID) : undefined;
   const signed = signer.sign({ chainId: CHAIN_ID, messages, fee, memo, accountNumber: info.accountNumber,
     sequence: sequence ?? info.sequence, signBytesVersion });
-  return broadcastRaw(signed.txRawBytes, { wait });
+  return { txRawBytes: signed.txRawBytes, sequence: sequence ?? info.sequence, signBytesVersion };
+}
+
+/** Build + sign (hybrid by default) + broadcast. Returns the broadcast outcome; never throws on chain refusal. */
+export async function sendMsgs(a, messages, { gas = 400000, feeUqor, mode = "hybrid", granter, memo = "", wait = true, sequence } = {}) {
+  const { txRawBytes } = await signMsgs(a, messages, { gas, feeUqor, mode, granter, memo, sequence });
+  return broadcastRaw(txRawBytes, { wait });
 }
 
 export async function bankSend(a, to, uqor, opts = {}) {

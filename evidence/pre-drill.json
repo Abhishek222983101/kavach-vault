@@ -1,8 +1,8 @@
 {
-  "at": "2026-11-17T03:10:09.003Z",
+  "at": "2026-11-17T03:25:30.437Z",
   "chain": {
-    "height": 10231518,
-    "blockTime": "2026-11-17T03:10:07.000Z"
+    "height": 10232165,
+    "blockTime": "2026-11-17T03:25:28.000Z"
   },
   "drill": {
     "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
@@ -48,8 +48,8 @@
     }
   },
   "repo": {
-    "head": "e84a1051a2e114ebec5262430e9184240f1fa19e",
-    "originMain": "e84a1051a2e114ebec5262430e9184240f1fa19e",
+    "head": "15efc41994b06ee9b742f9ec47ca43620e1a41a9",
+    "originMain": "15efc41994b06ee9b742f9ec47ca43620e1a41a9",
     "visibility": "PRIVATE"
   },
   "timers": {
@@ -75,7 +75,7 @@
     }
   },
   "machine": {
-    "diskFreeMB": 7903,
+    "diskFreeMB": 7884,
     "acOnline": "1",
     "nodeVersion": "v22.23.2"
   },
@@ -95,7 +95,7 @@
     "phase2.json": "8858eb4968ac57ed",
     "phase4.json": "c142948ba18e872e",
     "phase4b-cold-canary.json": "67bc6aa2a656e550",
-    "pre-drill.json": "20586126e70b20e5",
+    "pre-drill.json": "16741029c9813ba6",
     "rehearsal-heartbeat.json": "4b3783000d82827e",
     "semgrep.json": "7bf653be059b9740",
     "slither.json": "5b69382b26e27d40",
@@ -222,7 +222,7 @@
     {
       "level": "ok",
       "name": "local HEAD is pushed to origin/main",
-      "detail": "e84a105 vs e84a105"
+      "detail": "15efc41 vs 15efc41"
     },
     {
       "level": "ok",
@@ -267,7 +267,7 @@
     {
       "level": "ok",
       "name": "at least 2 GB of disk free",
-      "detail": "7903 MB"
+      "detail": "7884 MB"
     },
     {
       "level": "ok",
