@@ -9,7 +9,7 @@
 
 <br>
 
-![live attacks accepted](https://img.shields.io/badge/live%20attacks%20accepted-0%20of%20410-34d399?style=flat-square&labelColor=0b1117) ![mutants killed](https://img.shields.io/badge/mutants%20killed-27%20of%2027-34d399?style=flat-square&labelColor=0b1117) ![Slither high+medium](https://img.shields.io/badge/Slither%20high+medium-0-34d399?style=flat-square&labelColor=0b1117) ![coverage lines](https://img.shields.io/badge/coverage%20lines-99.6%-34d399?style=flat-square&labelColor=0b1117) ![Foundry tests](https://img.shields.io/badge/Foundry%20tests-94%20+%206%20invariants-34d399?style=flat-square&labelColor=0b1117) ![license](https://img.shields.io/badge/license-MIT-0a5fa?style=flat-square&labelColor=0b1117)
+![live attacks accepted](https://img.shields.io/badge/live%20attacks%20accepted-0%20of%20410-34d399?style=flat-square&labelColor=0b1117) ![mutants killed](https://img.shields.io/badge/mutants%20killed-27%20of%2027-34d399?style=flat-square&labelColor=0b1117) ![Slither high+medium](https://img.shields.io/badge/Slither%20high+medium-0-34d399?style=flat-square&labelColor=0b1117) ![coverage lines](https://img.shields.io/badge/coverage%20lines-99.6%25-34d399?style=flat-square&labelColor=0b1117) ![Foundry tests](https://img.shields.io/badge/Foundry%20tests-94%20%2B%206%20invariants-34d399?style=flat-square&labelColor=0b1117) ![license](https://img.shields.io/badge/license-MIT-0a5fa?style=flat-square&labelColor=0b1117)
 
 <br>
 

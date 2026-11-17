@@ -87,7 +87,7 @@ open("docs/assets/terminal.svg", "w").write(f'''<svg xmlns="http://www.w3.org/20
 ''')
 
 # --------------------------- README ---------------------------------------------------------------
-def b(label, val, col=GREEN): return f"![{label}](https://img.shields.io/badge/{label.replace(' ','%20').replace('-','--')}-{str(val).replace(' ','%20').replace('-','--')}-{col[1:]}?style=flat-square&labelColor=0b1117)"
+def b(label, val, col=GREEN): return f"![{label}](https://img.shields.io/badge/{label.replace(' ','%20').replace('-','--')}-{str(val).replace('%','%25').replace(' ','%20').replace('-','--').replace('+','%2B')}-{col[1:]}?style=flat-square&labelColor=0b1117)"
 badges = " ".join([b("live attacks accepted", f"0 of {n['attempts']+ev['attempts']+v['callAttacks']}"), b("mutants killed", "27 of 27"), b("Slither high+medium", 0),
                    b("coverage lines", "99.6%"), b("Foundry tests", "94 + 6 invariants"), b("license", "MIT", "60a5fa")])
 readme = f'''<div align="center">
