@@ -43,6 +43,8 @@ Run `node scripts/preflight.mjs --snapshot`. It checks everything below, prints 
 | 19 Nov 05:29 | Drill ends | – |
 | 19 Nov morning | `node scripts/preflight.mjs --post`, `./scripts/disarm.sh`, compare with the organisers' attack log | Agent |
 
+Remote alerts (optional, recommended if you will be away): create a bot with @BotFather, send it any message, then run `node scripts/telegram-setup.mjs <token>`; the watchtower and the heartbeat then message you on every alert.
+
 Manual commands: `node scripts/heartbeat.mjs --until-confirmed`, `node scripts/heartbeat.mjs --dry`, `systemctl --user list-timers 'kavach-*'`, `journalctl --user -u kavach-watchtower -f`.
 
 ## 4. If something goes wrong

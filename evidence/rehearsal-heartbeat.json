@@ -82,6 +82,41 @@
       "confirmed": true,
       "finishedAt": "2026-11-17T03:05:56.193Z",
       "secondsAfterDrillStart": null
+    },
+    {
+      "mode": "rehearsal",
+      "startedAt": "2026-11-17T03:08:15.746Z",
+      "attempts": [
+        {
+          "n": 1,
+          "kind": "vault-heartbeat",
+          "hash": "D6BD3973783478B0F61C0F9B86AA7C5289ECCCD837952E732D63F98392F02742",
+          "code": 0,
+          "log": "",
+          "height": "10231442",
+          "sentAt": "2026-11-17T03:08:18.917Z",
+          "via": "rest",
+          "ok": true,
+          "ownerNonceBefore": "18",
+          "ownerNonceAfter": "19",
+          "heartbeatEventSeen": false
+        }
+      ],
+      "primary": {
+        "hash": "D6BD3973783478B0F61C0F9B86AA7C5289ECCCD837952E732D63F98392F02742",
+        "code": 0,
+        "log": "",
+        "height": "10231442",
+        "sentAt": "2026-11-17T03:08:18.917Z",
+        "via": "rest",
+        "ok": true,
+        "ownerNonceBefore": "18",
+        "ownerNonceAfter": "19",
+        "heartbeatEventSeen": false
+      },
+      "confirmed": true,
+      "finishedAt": "2026-11-17T03:08:24.194Z",
+      "secondsAfterDrillStart": null
     }
   ]
 }

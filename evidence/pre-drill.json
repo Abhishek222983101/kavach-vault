@@ -1,0 +1,277 @@
+{
+  "at": "2026-11-17T03:07:50.909Z",
+  "chain": {
+    "height": 10231421,
+    "blockTime": "2026-11-17T03:07:49.000Z"
+  },
+  "drill": {
+    "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
+    "evm": "0xbd8EC9F476988126C7bd3dF10e6cC6d7e39d23C2",
+    "pq": {
+      "key_type": "hybrid",
+      "possession_proven": true
+    },
+    "balances": [],
+    "window": false
+  },
+  "feeGrant": {
+    "allowedMessages": [
+      "/cosmos.bank.v1beta1.MsgSend",
+      "/qorechain.crossvm.v1.MsgCrossVMCall"
+    ],
+    "spendLeftUqor": "5587000",
+    "expiration": "2026-11-20T23:59:00Z"
+  },
+  "funder": {
+    "address": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
+    "evm": "0x7Eff75F315Ac227995fc07e1e9Cb1C85E0e14627",
+    "uqor": "73909486"
+  },
+  "vaults": {
+    "hot": {
+      "address": "0x10256edd0877436ffcba8a62b0598f4bad01514b",
+      "balanceWei": "129000000000000000000",
+      "frozen": false,
+      "ownerNonce": "18",
+      "guardianNonce": "0",
+      "spent": "2000000000000000000",
+      "limitsQOR": [
+        "25000000000000000000",
+        "50000000000000000000"
+      ],
+      "timelockDelay": "21600"
+    },
+    "cold": {
+      "address": "0x3fc71af5badd701ff7d718df932e0ddf8612149f",
+      "balanceWei": "740000000000000000000",
+      "releaseTime": "1795132800"
+    }
+  },
+  "repo": {
+    "head": "ba6c37b900534e24f2cc8518f40350eb25510050",
+    "originMain": "ba6c37b900534e24f2cc8518f40350eb25510050",
+    "visibility": "PRIVATE"
+  },
+  "timers": {
+    "kavach-watchtower": {
+      "enabled": "enabled",
+      "next": "Wed 2026-11-18 05:20:00 IST"
+    },
+    "kavach-heartbeat": {
+      "enabled": "enabled",
+      "next": "Wed 2026-11-18 05:31:00 IST"
+    },
+    "kavach-heartbeat-retry": {
+      "enabled": "enabled",
+      "next": "Wed 2026-11-18 05:35:00 IST"
+    },
+    "kavach-heartbeat-extra": {
+      "enabled": "enabled",
+      "next": "Wed 2026-11-18 12:00:00 IST"
+    },
+    "kavach-go-public": {
+      "enabled": "enabled",
+      "next": "Wed 2026-11-18 05:35:00 IST"
+    }
+  },
+  "machine": {
+    "diskFreeMB": 7903,
+    "acOnline": "1",
+    "nodeVersion": "v22.23.2"
+  },
+  "evidenceManifest": {
+    "alerts.jsonl": "4c4232f856b0598d",
+    "attack-evm.json": "1effaef8eb71415c",
+    "attack-log.json": "5a1cc80226beb598",
+    "attack-native.json": "226432f800966b8f",
+    "attack-vault.json": "4814af150eb3d4ae",
+    "foundry-invariants.txt": "23f4bfcb23a217f6",
+    "grant-topup.json": "17ee8efb4ffce152",
+    "inv-fail.txt": "ee373db0017d61a4",
+    "inv-fail2.txt": "ab08db9db8887319",
+    "medusa-run.txt": "7167e2636f2d2aa8",
+    "mutation-report.md": "bb483fc28681bcf1",
+    "mutation-run.txt": "52b6fd8b7ce45e87",
+    "phase2.json": "8858eb4968ac57ed",
+    "phase4.json": "c142948ba18e872e",
+    "phase4b-cold-canary.json": "67bc6aa2a656e550",
+    "rehearsal-heartbeat.json": "c097953356669f10",
+    "semgrep.json": "7bf653be059b9740",
+    "slither.json": "5b69382b26e27d40",
+    "spike-s1s5.json": "45b16bfab571de00",
+    "spike-s2.json": "14571dcfdfdb822a",
+    "spike-s3-ping.json": "a101aa1150ada5e2",
+    "spike-s3.json": "0ff1504387568494",
+    "spike-s4.json": "88b2786be79a1950",
+    "spike-s4b.json": "72d5d74b599f0715",
+    "test-vault.json": "727cb5cfa7216062",
+    "watchtower-test.json": "2c13ac6e2556a2d7"
+  },
+  "checks": [
+    {
+      "level": "ok",
+      "name": "chain is live and the machine clock agrees with block time",
+      "detail": "latest block 3s old"
+    },
+    {
+      "level": "ok",
+      "name": "system clock is NTP-synchronised",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "drill account: ML-DSA-87 key registered with proof of possession",
+      "detail": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp"
+    },
+    {
+      "level": "ok",
+      "name": "drill account holds nothing",
+      "detail": "[]"
+    },
+    {
+      "level": "ok",
+      "name": "drill account has no EVM window",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "funder has no EVM window open",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "fee grant limited to MsgSend and MsgCrossVMCall",
+      "detail": "/cosmos.bank.v1beta1.MsgSend, /qorechain.crossvm.v1.MsgCrossVMCall"
+    },
+    {
+      "level": "ok",
+      "name": "fee grant has at least 3 QOR left",
+      "detail": "5587000 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "funder keeps at least 10 QOR for fees",
+      "detail": "73909486 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "hot vault is not frozen",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "hot vault holds value",
+      "detail": "129000000000000000000"
+    },
+    {
+      "level": "ok",
+      "name": "cold vault holds value",
+      "detail": "740000000000000000000"
+    },
+    {
+      "level": "ok",
+      "name": "cold vault release time is 20 Nov 2026 00:00 UTC",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "hot vault owner account is the drill account",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "recipient allowlists contain the funder only, never the drill account",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "deployed bytecode equals the build of the committed source",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "proof-of-life heartbeat is accepted by the vault (simulated)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "guardian freeze is accepted by the vault (simulated)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "latest live attack log verdict",
+      "detail": "ALL BLOCKED"
+    },
+    {
+      "level": "ok",
+      "name": "proof-of-life rehearsal landed on testnet",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "watchtower test (benign ignored, anomaly frozen) passed",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "no uncommitted changes to tracked files",
+      "detail": "0 modified"
+    },
+    {
+      "level": "ok",
+      "name": "local HEAD is pushed to origin/main",
+      "detail": "ba6c37b vs ba6c37b"
+    },
+    {
+      "level": "ok",
+      "name": "GitHub repository reachable",
+      "detail": "PRIVATE"
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-watchtower is armed",
+      "detail": "Wed 2026-11-18 05:20:00 IST"
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-heartbeat is armed",
+      "detail": "Wed 2026-11-18 05:31:00 IST"
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-heartbeat-retry is armed",
+      "detail": "Wed 2026-11-18 05:35:00 IST"
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-heartbeat-extra is armed",
+      "detail": "Wed 2026-11-18 12:00:00 IST"
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-go-public is armed",
+      "detail": "Wed 2026-11-18 05:35:00 IST"
+    },
+    {
+      "level": "ok",
+      "name": "user services keep running when logged out (linger)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "at least 2 GB of disk free",
+      "detail": "7903 MB"
+    },
+    {
+      "level": "ok",
+      "name": "laptop is on mains power",
+      "detail": "AC online=1"
+    }
+  ],
+  "summary": {
+    "fails": 0,
+    "warns": 0,
+    "passed": 32
+  }
+}
