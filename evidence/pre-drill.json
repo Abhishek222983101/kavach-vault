@@ -1,8 +1,8 @@
 {
-  "at": "2026-11-17T03:48:54.631Z",
+  "at": "2026-11-17T03:58:39.391Z",
   "chain": {
-    "height": 10233150,
-    "blockTime": "2026-11-17T03:48:52.000Z"
+    "height": 10233561,
+    "blockTime": "2026-11-17T03:58:37.000Z"
   },
   "drill": {
     "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
@@ -48,8 +48,8 @@
     }
   },
   "repo": {
-    "head": "273f57d21547e6bf83af774ad5040bb47e987567",
-    "originMain": "273f57d21547e6bf83af774ad5040bb47e987567",
+    "head": "ecae77b18f630e7cbb9ab023dfae33b5f1e34594",
+    "originMain": "ecae77b18f630e7cbb9ab023dfae33b5f1e34594",
     "visibility": "PRIVATE"
   },
   "cloud": {
@@ -67,7 +67,9 @@
       "FREEZE_TX",
       "HB_0",
       "HB_1",
-      "HB_2"
+      "HB_2",
+      "TELEGRAM_CHAT",
+      "TELEGRAM_TOKEN"
     ],
     "lastRun": "failure",
     "vercel": "ok"
@@ -95,7 +97,7 @@
     }
   },
   "machine": {
-    "diskFreeMB": 7609,
+    "diskFreeMB": 7602,
     "acOnline": "1",
     "nodeVersion": "v22.23.2"
   },
@@ -115,7 +117,7 @@
     "phase2.json": "8858eb4968ac57ed",
     "phase4.json": "c142948ba18e872e",
     "phase4b-cold-canary.json": "67bc6aa2a656e550",
-    "pre-drill.json": "718d07955f8e6962",
+    "pre-drill.json": "1e4d72924b9e8f33",
     "rehearsal-heartbeat.json": "4b3783000d82827e",
     "semgrep.json": "7bf653be059b9740",
     "slither.json": "5b69382b26e27d40",
@@ -133,7 +135,7 @@
     {
       "level": "ok",
       "name": "chain is live and the machine clock agrees with block time",
-      "detail": "latest block 4s old"
+      "detail": "latest block 3s old"
     },
     {
       "level": "ok",
@@ -243,7 +245,7 @@
     {
       "level": "ok",
       "name": "local HEAD is pushed to origin/main",
-      "detail": "273f57d vs 273f57d"
+      "detail": "ecae77b vs ecae77b"
     },
     {
       "level": "ok",
@@ -278,7 +280,7 @@
     {
       "level": "ok",
       "name": "GitHub secrets HB_0, HB_1, HB_2, FREEZE_TX are set",
-      "detail": "FREEZE_TX,HB_0,HB_1,HB_2"
+      "detail": "FREEZE_TX,HB_0,HB_1,HB_2,TELEGRAM_CHAT,TELEGRAM_TOKEN"
     },
     {
       "level": "ok",
@@ -333,7 +335,7 @@
     {
       "level": "ok",
       "name": "at least 2 GB of disk free",
-      "detail": "7609 MB"
+      "detail": "7602 MB"
     },
     {
       "level": "ok",
