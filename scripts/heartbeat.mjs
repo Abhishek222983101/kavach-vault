@@ -18,7 +18,7 @@ const opt = (n, d) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] :
 const DRY = flag("--dry"), UNTIL = flag("--until-confirmed"), FORCE = flag("--force");
 const MAX_MIN = Number(opt("--max-minutes", "45")), PAUSE_S = Number(opt("--pause", "20"));
 const DRILL_START = Date.parse("2026-11-18T00:00:00Z");
-const drillTime = Date.now() >= DRILL_START;
+const drillTime = Date.now() >= DRILL_START || flag("--assume-drill"); // --assume-drill only for testing the drill-mode code path with --dry
 const OUT = drillTime ? "evidence/proof-of-life.json" : "evidence/rehearsal-heartbeat.json";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const log = (...a) => console.log(new Date().toISOString(), ...a);
