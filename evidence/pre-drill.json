@@ -1,8 +1,8 @@
 {
-  "at": "2026-11-17T03:07:50.909Z",
+  "at": "2026-11-17T03:10:09.003Z",
   "chain": {
-    "height": 10231421,
-    "blockTime": "2026-11-17T03:07:49.000Z"
+    "height": 10231518,
+    "blockTime": "2026-11-17T03:10:07.000Z"
   },
   "drill": {
     "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
@@ -19,20 +19,20 @@
       "/cosmos.bank.v1beta1.MsgSend",
       "/qorechain.crossvm.v1.MsgCrossVMCall"
     ],
-    "spendLeftUqor": "5587000",
+    "spendLeftUqor": "5421000",
     "expiration": "2026-11-20T23:59:00Z"
   },
   "funder": {
     "address": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
     "evm": "0x7Eff75F315Ac227995fc07e1e9Cb1C85E0e14627",
-    "uqor": "73909486"
+    "uqor": "73743486"
   },
   "vaults": {
     "hot": {
       "address": "0x10256edd0877436ffcba8a62b0598f4bad01514b",
       "balanceWei": "129000000000000000000",
       "frozen": false,
-      "ownerNonce": "18",
+      "ownerNonce": "19",
       "guardianNonce": "0",
       "spent": "2000000000000000000",
       "limitsQOR": [
@@ -48,8 +48,8 @@
     }
   },
   "repo": {
-    "head": "ba6c37b900534e24f2cc8518f40350eb25510050",
-    "originMain": "ba6c37b900534e24f2cc8518f40350eb25510050",
+    "head": "e84a1051a2e114ebec5262430e9184240f1fa19e",
+    "originMain": "e84a1051a2e114ebec5262430e9184240f1fa19e",
     "visibility": "PRIVATE"
   },
   "timers": {
@@ -80,7 +80,7 @@
     "nodeVersion": "v22.23.2"
   },
   "evidenceManifest": {
-    "alerts.jsonl": "4c4232f856b0598d",
+    "alerts.jsonl": "1dd20755db19a165",
     "attack-evm.json": "1effaef8eb71415c",
     "attack-log.json": "5a1cc80226beb598",
     "attack-native.json": "226432f800966b8f",
@@ -95,7 +95,8 @@
     "phase2.json": "8858eb4968ac57ed",
     "phase4.json": "c142948ba18e872e",
     "phase4b-cold-canary.json": "67bc6aa2a656e550",
-    "rehearsal-heartbeat.json": "c097953356669f10",
+    "pre-drill.json": "20586126e70b20e5",
+    "rehearsal-heartbeat.json": "4b3783000d82827e",
     "semgrep.json": "7bf653be059b9740",
     "slither.json": "5b69382b26e27d40",
     "spike-s1s5.json": "45b16bfab571de00",
@@ -146,12 +147,12 @@
     {
       "level": "ok",
       "name": "fee grant has at least 3 QOR left",
-      "detail": "5587000 uqor"
+      "detail": "5421000 uqor"
     },
     {
       "level": "ok",
       "name": "funder keeps at least 10 QOR for fees",
-      "detail": "73909486 uqor"
+      "detail": "73743486 uqor"
     },
     {
       "level": "ok",
@@ -221,7 +222,7 @@
     {
       "level": "ok",
       "name": "local HEAD is pushed to origin/main",
-      "detail": "ba6c37b vs ba6c37b"
+      "detail": "e84a105 vs e84a105"
     },
     {
       "level": "ok",
@@ -260,6 +261,11 @@
     },
     {
       "level": "ok",
+      "name": "sleep is blocked until the drill is over (kavach-awake)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
       "name": "at least 2 GB of disk free",
       "detail": "7903 MB"
     },
@@ -272,6 +278,6 @@
   "summary": {
     "fails": 0,
     "warns": 0,
-    "passed": 32
+    "passed": 33
   }
 }
