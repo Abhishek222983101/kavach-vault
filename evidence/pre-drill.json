@@ -1,8 +1,8 @@
 {
-  "at": "2026-11-17T04:01:30.570Z",
+  "at": "2026-11-17T17:06:51.667Z",
   "chain": {
-    "height": 10233681,
-    "blockTime": "2026-11-17T04:01:28.000Z"
+    "height": 10266677,
+    "blockTime": "2026-11-17T17:06:49.000Z"
   },
   "drill": {
     "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
@@ -11,7 +11,12 @@
       "key_type": "hybrid",
       "possession_proven": true
     },
-    "balances": [],
+    "balances": [
+      {
+        "denom": "uqor",
+        "amount": "1000000"
+      }
+    ],
     "window": false
   },
   "feeGrant": {
@@ -25,7 +30,7 @@
   "funder": {
     "address": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
     "evm": "0x7Eff75F315Ac227995fc07e1e9Cb1C85E0e14627",
-    "uqor": "65908331"
+    "uqor": "64612331"
   },
   "vaults": {
     "hot": {
@@ -48,8 +53,8 @@
     }
   },
   "repo": {
-    "head": "2df852ee2716a5645e6e8e64eff7c873c9678c8b",
-    "originMain": "2df852ee2716a5645e6e8e64eff7c873c9678c8b",
+    "head": "66a0ac110a1b54669e413485dfb187d1675639d3",
+    "originMain": "66a0ac110a1b54669e413485dfb187d1675639d3",
     "visibility": "PRIVATE"
   },
   "cloud": {
@@ -61,6 +66,7 @@
       "freezerSeq": "2",
       "ownerNonce": "19",
       "guardianNonce": "0",
+      "drillUqor": "1000000",
       "pqKey": "3458:true"
     },
     "secrets": [
@@ -68,6 +74,8 @@
       "HB_0",
       "HB_1",
       "HB_2",
+      "PING_0",
+      "PING_1",
       "TELEGRAM_CHAT",
       "TELEGRAM_TOKEN"
     ],
@@ -97,7 +105,7 @@
     }
   },
   "machine": {
-    "diskFreeMB": 7602,
+    "diskFreeMB": 7889,
     "acOnline": "1",
     "nodeVersion": "v22.23.2"
   },
@@ -117,7 +125,8 @@
     "phase2.json": "8858eb4968ac57ed",
     "phase4.json": "c142948ba18e872e",
     "phase4b-cold-canary.json": "67bc6aa2a656e550",
-    "pre-drill.json": "d2b9ef8b2ca0e89a",
+    "pre-drill.json": "a441ec01c22fa3d9",
+    "registration.json": "bea875dd878c1508",
     "rehearsal-heartbeat.json": "4b3783000d82827e",
     "semgrep.json": "7bf653be059b9740",
     "slither.json": "5b69382b26e27d40",
@@ -149,8 +158,13 @@
     },
     {
       "level": "ok",
-      "name": "drill account holds nothing",
-      "detail": "[]"
+      "name": "drill account holds only QOR (value kept is the worst asset, so no other tokens)",
+      "detail": "[{\"denom\":\"uqor\",\"amount\":\"1000000\"}]"
+    },
+    {
+      "level": "ok",
+      "name": "drill account holds some QOR, so 'value kept' is a defined share (Kai: it is after/before on the drill account)",
+      "detail": "1000000 uqor"
     },
     {
       "level": "ok",
@@ -175,7 +189,7 @@
     {
       "level": "ok",
       "name": "funder keeps at least 10 QOR for fees",
-      "detail": "65908331 uqor"
+      "detail": "64612331 uqor"
     },
     {
       "level": "ok",
@@ -245,7 +259,7 @@
     {
       "level": "ok",
       "name": "local HEAD is pushed to origin/main",
-      "detail": "2df852e vs 2df852e"
+      "detail": "66a0ac1 vs 66a0ac1"
     },
     {
       "level": "ok",
@@ -280,7 +294,7 @@
     {
       "level": "ok",
       "name": "GitHub secrets HB_0, HB_1, HB_2, FREEZE_TX are set",
-      "detail": "FREEZE_TX,HB_0,HB_1,HB_2,TELEGRAM_CHAT,TELEGRAM_TOKEN"
+      "detail": "FREEZE_TX,HB_0,HB_1,HB_2,PING_0,PING_1,TELEGRAM_CHAT,TELEGRAM_TOKEN"
     },
     {
       "level": "ok",
@@ -335,7 +349,7 @@
     {
       "level": "ok",
       "name": "at least 2 GB of disk free",
-      "detail": "7602 MB"
+      "detail": "7889 MB"
     },
     {
       "level": "ok",
@@ -346,6 +360,6 @@
   "summary": {
     "fails": 0,
     "warns": 1,
-    "passed": 41
+    "passed": 42
   }
 }
