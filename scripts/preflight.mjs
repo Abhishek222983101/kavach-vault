@@ -31,7 +31,9 @@ snap.chain = { height: Number(head.number), blockTime: new Date(Number(head.time
 // ---- drill account ----
 const rec = await c.pqcRecord(drill.address);
 check(rec.found && rec.account?.possession_proven === true && rec.account?.key_type === "hybrid", "drill account: ML-DSA-87 key registered with proof of possession", drill.address);
-const dBal = await c.allBalances(drill.address); check(dBal.length === 0, "drill account holds nothing", JSON.stringify(dBal));
+const dBal = await c.allBalances(drill.address); const dUq = dBal.filter((x) => x.denom === "uqor").reduce((a, x) => a + BigInt(x.amount), 0n);
+check(dBal.every((x) => x.denom === "uqor"), "drill account holds only QOR (value kept is the worst asset, so no other tokens)", JSON.stringify(dBal));
+check(dUq > 0n, "drill account holds some QOR, so 'value kept' is a defined share (Kai: it is after/before on the drill account)", `${dUq} uqor`, "WARN");
 const dWin = await c.windowRecord(drill.address); check(dWin.found === false, "drill account has no EVM window");
 const fWin = await c.windowRecord(funder.address); check(fWin.found === false, "funder has no EVM window open");
 snap.drill = { address: drill.address, evm: drill.evm, pq: rec.account && { key_type: rec.account.key_type, possession_proven: rec.account.possession_proven }, balances: dBal, window: dWin.found };

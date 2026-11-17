@@ -34,5 +34,7 @@ vercel link --yes --project kavach-keeper >/dev/null 2>&1 || vercel link --yes -
 setenv() { vercel env rm "$1" production --yes >/dev/null 2>&1 || true; vercel env add "$1" production < "$2" >/dev/null; }
 setenv HB_0 "$HOME/kavach-vault/.secrets/cloud/real/hb-0.b64"
 setenv FREEZE_TX "$HOME/kavach-vault/.secrets/cloud/real/freeze.b64"
+setenv PING_0 "$HOME/kavach-vault/.secrets/cloud/real/ping-0.b64"
+setenv PING_1 "$HOME/kavach-vault/.secrets/cloud/real/ping-1.b64"
 setenv CRON_SECRET "$HOME/kavach-vault/.secrets/vercel-cron-secret.txt"
 vercel deploy --prod --yes 2>&1 | tail -4

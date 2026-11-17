@@ -74,7 +74,7 @@ async function tick() {
   }
   const issues = [];
   const push = (level, text) => { issues.push({ level, text }); };
-  if (!base) { base = { at: s.at, hotWei: s.hot.balanceWei, coldWei: s.coldWei ?? null, hotOwnerNonce: s.hot.ownerNonce, hotGuardianNonce: s.hot.guardianNonce, hotSpent: s.hot.spent, drillPqKey: s.drill?.pqKey ?? null }; fs.writeFileSync(STATE, JSON.stringify(base, null, 2)); await alert("info", "Watchtower baseline recorded"); }
+  if (!base) { base = { at: s.at, hotWei: s.hot.balanceWei, coldWei: s.coldWei ?? null, hotOwnerNonce: s.hot.ownerNonce, hotGuardianNonce: s.hot.guardianNonce, hotSpent: s.hot.spent, drillUqor: s.drill ? String(s.drill.balances.filter((x) => x.denom === "uqor").reduce((a, x) => a + BigInt(x.amount), 0n)) : null, drillPqKey: s.drill?.pqKey ?? null }; fs.writeFileSync(STATE, JSON.stringify(base, null, 2)); await alert("info", "Watchtower baseline recorded"); }
 
   // ---- critical conditions ----
   if (BigInt(s.hot.balanceWei) < BigInt(base.hotWei)) push("critical", `hot vault balance fell from ${base.hotWei} to ${s.hot.balanceWei} wei`);
@@ -86,7 +86,12 @@ async function tick() {
   if (s.hot.frozen && !frozenByUs) push("warn", "the hot vault is frozen (not by this watchtower)");
   if (BigInt(s.hot.guardianNonce) !== BigInt(base.hotGuardianNonce) && !frozenByUs) push("warn", `guardian nonce moved ${base.hotGuardianNonce} -> ${s.hot.guardianNonce}`);
   if (s.funder.window) push("warn", "the funder has an EVM window open");
-  if (CHECK_DRILL && s.drill.balances.length) push("warn", `the drill account holds a balance: ${JSON.stringify(s.drill.balances)}`);
+  if (CHECK_DRILL) {
+    const dq = s.drill.balances.filter((x) => x.denom === "uqor").reduce((a, x) => a + BigInt(x.amount), 0n);
+    if (base.drillUqor !== null && base.drillUqor !== undefined && dq < BigInt(base.drillUqor)) push("critical", `the drill account's QOR fell from ${base.drillUqor} to ${dq} uqor (value kept is scored on this)`);
+    if (base.drillUqor !== null && base.drillUqor !== undefined && dq > BigInt(base.drillUqor)) { push("info", `the drill account received QOR: ${base.drillUqor} -> ${dq}`); base.drillUqor = String(dq); fs.writeFileSync(STATE, JSON.stringify(base, null, 2)); }
+    if (s.drill.balances.some((x) => x.denom !== "uqor")) push("info", `the drill account holds another asset: ${JSON.stringify(s.drill.balances)}`);
+  }
   if (CHECK_DRILL && s.grantLeftUqor !== null && BigInt(s.grantLeftUqor) < 500000n) push("warn", `fee grant low: ${s.grantLeftUqor} uqor`);
   if (BigInt(s.funder.uqor) < 3000000n) push("warn", `funder balance low: ${s.funder.uqor} uqor`);
   if (s.blockAgeSec > 90) push("warn", `latest block is ${s.blockAgeSec}s old`);

@@ -57,17 +57,24 @@ async function state() {
   s.outerSeq = String(acct?.sequence ?? acct?.base_account?.sequence ?? "0");
   const fa = (await rest(`/cosmos/auth/v1beta1/accounts/${cfg.freezer}`)).body.account; s.freezerSeq = String(fa?.sequence ?? fa?.base_account?.sequence ?? "0");
   s.outerWindow = (await rest(`/qorechain/pqc/v1/evm_window/${cfg.outer.address}`)).body.found === true;
-  s.outerBalances = ((await rest(`/cosmos/bank/v1beta1/balances/${cfg.outer.address}`)).body.balances ?? []).length;
+  const ob = (await rest(`/cosmos/bank/v1beta1/balances/${cfg.outer.address}`)).body.balances ?? [];
+  s.outerBalances = ob.length; s.outerUqor = ob.filter((x) => x.denom === "uqor").reduce((a, x) => a + BigInt(x.amount), 0n).toString();
   const rec = (await rest(`/qorechain/pqc/v1/account/${cfg.outer.address}`)).body;
   s.pqKey = JSON.stringify(rec.account?.public_key ?? rec.account?.pubkey ?? "").length + ":" + (rec.account?.possession_proven ?? "");
   return s;
 }
-async function findProof() {
-  for (const q of [`query=${encodeURIComponent(`message.sender='${cfg.outer.address}'`)}&order_by=ORDER_BY_DESC&limit=1`, `events=${encodeURIComponent(`message.sender='${cfg.outer.address}'`)}&order_by=2&limit=1`]) {
+// Recent transactions sent by the drill account (newest first).
+async function recentTxs() {
+  for (const q of [`query=${encodeURIComponent(`message.sender='${cfg.outer.address}'`)}&order_by=ORDER_BY_DESC&limit=10`, `events=${encodeURIComponent(`message.sender='${cfg.outer.address}'`)}&order_by=2&limit=10`]) {
     const r = await rest(`/cosmos/tx/v1beta1/txs?${q}`).catch(() => null);
-    const t = r?.body?.tx_responses?.[0]; if (t) return { hash: t.txhash, height: t.height, time: t.timestamp, code: t.code };
+    const list = r?.body?.tx_responses;
+    if (Array.isArray(list)) return list.map((t) => ({ hash: t.txhash, height: t.height, time: t.timestamp, code: t.code ?? 0 }));
   }
-  return null;
+  return [];
+}
+// A proof of life is a SUCCESSFUL (code 0) transaction from the drill account inside the drill window. A failed one does not count.
+async function findProof() {
+  return (await recentTxs()).find((t) => t.code === 0 && Date.parse(t.time) >= START && Date.parse(t.time) < END) ?? null;
 }
 
 export async function run(opts = {}) {
@@ -84,6 +91,7 @@ export async function run(opts = {}) {
   if (cfg.cold && BigInt(s.coldWei) < BigInt(base.coldWei)) crit.push(`COLD vault balance fell ${base.coldWei} -> ${s.coldWei}`);
   if (s.outerWindow) crit.push("an EVM window exists on the drill account");
   if (s.pqKey !== base.pqKey) crit.push("the drill account's key record changed");
+  if (base.drillUqor && BigInt(s.outerUqor) < BigInt(base.drillUqor)) crit.push(`the drill account's QOR fell ${base.drillUqor} -> ${s.outerUqor} uqor`);
   out.issues.push(...crit.map((c) => "critical: " + c));
   const hotCrit = crit.some((c) => /^hot vault/.test(c));
   if (hotCrit && !s.frozen) {
@@ -100,37 +108,32 @@ export async function run(opts = {}) {
   if (s.frozen && !hotCrit) out.issues.push("warn: the hot vault is frozen");
 
   // ---------------- 2. proof of life ----------------
-  const now = Date.now(), K = cfg.heartbeatCount;
-  // "Landed" means a transaction from the drill account after the drill started. A transaction sent earlier (a rehearsal) moves the
-  // sequence too, but it is not a proof of life and it makes the pre-signed heartbeats stale.
-  let landed = false, stale = false;
-  if (BigInt(s.outerSeq) !== BigInt(base.outerSeq)) {
-    const p = await findProof();
-    if (p && Date.parse(p.time) >= START) landed = true; else stale = true;
-  }
-  out.proofLanded = landed;
-  if (stale) { out.issues.push("critical: the drill account sent a transaction after the heartbeats were pre-signed; they are stale (re-run scripts/refresh-cloud.sh)"); await notify("critical", "pre-signed heartbeats are stale (the drill account's sequence moved before the drill). Send the heartbeat from the laptop, or run scripts/refresh-cloud.sh"); }
-  if (!landed && !stale && now >= START + 120000 && now < END + 3600000) {
-    const idx = Number(BigInt(s.outerSeq) - BigInt(base.outerSeq));
-    if (BigInt(s.ownerNonce) !== BigInt(base.ownerNonce)) { out.issues.push("critical: the vault's owner nonce moved, the pre-signed heartbeats are stale"); await notify("critical", "pre-signed heartbeats are stale (vault owner nonce moved); send the heartbeat from the laptop: node scripts/heartbeat.mjs --until-confirmed"); }
-    else {
-      const hb = blob("HB_0", "hb-0.b64");
-      if (!hb) out.issues.push("critical: no heartbeat blob available");
-      else {
-        for (let attempt = 1; attempt <= 3 && !out.proofLanded; attempt++) {
-          const r = await broadcast(hb); out.actions.push({ heartbeat: r, attempt });
-          if (r.code === 0 && !DRY) {
-            await included(r.hash);
-            const s2 = await state(); const adv = BigInt(s2.outerSeq) > BigInt(base.outerSeq) && BigInt(s2.ownerNonce) > BigInt(base.ownerNonce);
-            if (adv) { out.proofLanded = true; await notify("ok", `PROOF OF LIFE landed from the cloud: ${r.hash}`); }
-            else out.issues.push("critical: heartbeat transaction landed but the vault's owner nonce did not move");
-          } else if (DRY) { out.proofLanded = false; break; }
-          else { out.issues.push(`warn: heartbeat broadcast refused: code ${r.code} ${r.log}`); await sleep(15000); }
-        }
-      }
+  // Pre-signed set (all from the drill account, fee paid by the grant):
+  //   HB_0   vault heartbeat, account sequence b, vault owner nonce n        (the preferred proof: shows the vault works)
+  //   PING_0 plain ping,      account sequence b                            (no vault nonce: cannot be blocked by someone copying HB_0's signature)
+  //   PING_1 plain ping,      account sequence b+1                          (used if HB_0 landed but failed, which still uses sequence b)
+  const now = Date.now(), seqDelta = Number(BigInt(s.outerSeq) - BigInt(base.outerSeq));
+  const proof = await findProof();
+  out.proofLanded = !!proof;
+  const preDrillMove = seqDelta > 0 && !proof && (await recentTxs()).some((t) => Date.parse(t.time) < START && Date.parse(t.time) > Date.parse(cfg.createdAt));
+  if (preDrillMove) { out.issues.push("critical: the drill account sent a transaction before the drill, after pre-signing; the blobs are stale (re-run scripts/refresh-cloud.sh)"); await notify("critical", "pre-signed proof transactions are stale (the drill account sent a transaction before the drill). Send the heartbeat from the laptop, or run scripts/refresh-cloud.sh"); }
+  if (!proof && !preDrillMove && now >= START + 120000 && now < END) {
+    const nonceMoved = BigInt(s.ownerNonce) !== BigInt(base.ownerNonce);
+    const plan = seqDelta === 0 ? (nonceMoved ? ["PING_0"] : ["HB_0", "PING_0"]) : seqDelta === 1 ? ["PING_1"] : [];
+    if (!plan.length) { out.issues.push(`critical: the drill account's sequence moved by ${seqDelta} with no successful proof; no pre-signed transaction fits`); await notify("critical", "no pre-signed proof fits the drill account's state; run on the laptop: node scripts/heartbeat.mjs --until-confirmed"); }
+    for (const name of plan) {
+      const b = blob(name, name.toLowerCase().replace("_", "-") + ".b64"); // HB_0 -> hb-0.b64, PING_1 -> ping-1.b64
+      if (!b) { out.issues.push(`warn: blob ${name} not available`); continue; }
+      const r = await broadcast(b); out.actions.push({ proofAttempt: name, ...r });
+      if (DRY) break;
+      if (r.code !== 0) { out.issues.push(`warn: ${name} refused at broadcast: code ${r.code} ${r.log}`); continue; }
+      const t = await included(r.hash);
+      if (t && (t.code ?? 0) === 0) { out.proofLanded = true; await notify("ok", `PROOF OF LIFE landed from the cloud (${name}): ${r.hash}`); break; }
+      out.issues.push(`warn: ${name} was included but failed (code ${t?.code ?? "not found"}); trying the next pre-signed transaction`);
+      if (name === "HB_0" && t) { const s2 = await state(); if (Number(BigInt(s2.outerSeq) - BigInt(base.outerSeq)) === 1) { plan.push("PING_1"); } }
     }
   }
-  if (landed || out.proofLanded) { out.proof = await findProof(); if (out.proof) out.actions.push({ proofOfLife: out.proof }); }
+  if (out.proofLanded) { out.proof = proof ?? (await findProof()); if (out.proof) out.actions.push({ proofOfLife: out.proof }); }
   if (!out.proofLanded && now > START + 20 * 60000 && now < END) { out.issues.push("critical: 20 minutes into the drill and no proof of life has landed"); await notify("critical", "no proof of life 20 minutes into the drill"); }
 
   console.log(JSON.stringify(out, null, 1));

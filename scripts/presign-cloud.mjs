@@ -42,6 +42,19 @@ for (let k = 0; k < K; k++) {
   blobs.heartbeats.push(txRawBytes.length);
   if (k === 0) blobs.simulate.push({ what: "heartbeat 0", ...(await simulate(txRawBytes)) });
 }
+// Plain pings from the same account: they carry no vault signature, so nobody can block them by copying a signature.
+{
+  const ping = JSON.parse(fs.readFileSync(opt("--ping-file", "evidence/spike-s3-ping.json"), "utf8")).address;
+  const pingAbi = JSON.parse(fs.readFileSync("out/SpikePing.sol/SpikePing.json", "utf8")).abi;
+  const pdata = encodeFunctionData({ abi: pingAbi, functionName: "ping" });
+  const pmsg = c.msg.crossvm.crossVmCall({ sender: outer.address, sourceVm: "cosmwasm", targetVm: "evm", targetContract: ping, payload: c.fromHex(pdata) });
+  for (let k = 0; k < 2; k++) {
+    const { txRawBytes } = await signMsgs(outer, [pmsg], { gas: 800000, feeUqor: Math.ceil(800000 * 0.11) + 1000, mode: "hybrid", granter: funder.address, sequence: outerSeq + BigInt(k) });
+    fs.writeFileSync(`${dir}/ping-${k}.b64`, Buffer.from(txRawBytes).toString("base64"), { mode: 0o600 });
+    if (k === 0) blobs.simulate.push({ what: "ping 0", ...(await simulate(txRawBytes)) });
+  }
+  blobs.pingTarget = ping;
+}
 {
   const s = await signRequest({ vault: HOT, abi, kp: guardianKeypair(), action: ACTION.FREEZE, role: ROLE.GUARDIAN, deadline: DEADLINE, nonceOverride: guardianNonce });
   const data = encodeFunctionData({ abi, functionName: "freeze", args: [Number(ROLE.GUARDIAN), BigInt(DEADLINE), s.pk, s.sig] });
@@ -57,6 +70,7 @@ const config = {
   baseline: { hotWei: (await pub.getBalance({ address: HOT })).toString(), coldWei: COLD ? (await pub.getBalance({ address: COLD })).toString() : null,
     spent: (await pub.readContract({ address: HOT, abi, functionName: "spentInWindow", args: ["0x0000000000000000000000000000000000000000"] })).toString(),
     outerSeq: outerSeq.toString(), freezerSeq: freezerSeq.toString(), ownerNonce: ownerNonce.toString(), guardianNonce: guardianNonce.toString(),
+    drillUqor: (await c.allBalances(outer.address)).filter((x) => x.denom === "uqor").reduce((a, x) => a + BigInt(x.amount), 0n).toString(),
     pqKey: JSON.stringify(rec.account?.public_key ?? rec.account?.pubkey ?? "").length + ":" + (rec.account?.possession_proven ?? "") },
 };
 fs.writeFileSync(`${dir}/config.json`, JSON.stringify(config, null, 2));

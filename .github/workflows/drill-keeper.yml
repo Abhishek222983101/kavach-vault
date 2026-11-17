@@ -34,6 +34,8 @@ jobs:
           HB_0: ${{ secrets.HB_0 }}
           HB_1: ${{ secrets.HB_1 }}
           HB_2: ${{ secrets.HB_2 }}
+          PING_0: ${{ secrets.PING_0 }}
+          PING_1: ${{ secrets.PING_1 }}
           FREEZE_TX: ${{ secrets.FREEZE_TX }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT: ${{ secrets.TELEGRAM_CHAT }}
