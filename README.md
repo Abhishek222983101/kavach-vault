@@ -126,6 +126,7 @@ Queued withdrawals wait 6 hours, can be cancelled by the guardian, and still pay
 | 05:31 | **Proof of life**: a native call from the drill account into the hot vault's `heartbeat()`, signed by the owner's post-quantum key, fee paid by a scoped fee grant | Shows the project works while the account stays empty and window-less. Retried with a fresh signature every 20 seconds until it lands; a plain ping is the fallback |
 | 12:00, 18:00 | Extra heartbeats | Evidence of continued liveness |
 | 05:35 | The repository becomes public | After registration has closed |
+| all day | **Keyless cloud backup**: GitHub Actions (every 5 minutes) and Vercel cron hold pre-signed transactions (no private keys). They send the proof-of-life heartbeat if none has landed, and the guardian freeze on a critical anomaly | The drill does not depend on one laptop staying awake. If the blobs ever leaked, the worst case is an early heartbeat or a precautionary freeze, never a loss of funds |
 
 Rehearsed live: the heartbeat landed from the drill account (`8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9`), and on a throwaway vault the watchtower ignored a benign heartbeat, detected an unauthorised withdrawal, froze the vault in 6 seconds, and the next withdrawal was refused ([`evidence/watchtower-test.json`](evidence/watchtower-test.json)). The rehearsal also found that the call needs more than 600,000 gas, which the script now handles. Procedure: [`docs/06-DRILL-RUNBOOK.md`](docs/06-DRILL-RUNBOOK.md).
 

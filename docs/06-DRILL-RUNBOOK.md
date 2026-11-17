@@ -47,6 +47,9 @@ Remote alerts (optional, recommended if you will be away): create a bot with @Bo
 
 Manual commands: `node scripts/heartbeat.mjs --until-confirmed`, `node scripts/heartbeat.mjs --dry`, `systemctl --user list-timers 'kavach-*'`, `journalctl --user -u kavach-watchtower -f`.
 
+### Cloud backup (works with the laptop off)
+Two keyless runners hold pre-signed transactions: **GitHub Actions** (every 5 minutes on 17 to 19 Nov; it runs once the repository is public or GitHub billing is fixed) and **Vercel cron** (00:30 and 12:30 UTC on 18 Nov). They send the proof-of-life heartbeat if none has landed, and the guardian freeze on a critical anomaly. **Do not send any transaction from the drill account or the freezer after pre-signing**; if you must, run `./scripts/refresh-cloud.sh` and `./scripts/deploy-vercel-keeper.sh` afterwards (the preflight tells you when they are stale). To read what the cloud did: `gh run list --workflow drill-keeper.yml`, or call `https://kavach-keeper.vercel.app/api/cron?dry=1` with the secret in `.secrets/vercel-cron-secret.txt`.
+
 ## 4. If something goes wrong
 
 | Symptom | Action |

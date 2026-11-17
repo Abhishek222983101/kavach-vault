@@ -161,3 +161,11 @@ Ideas the agent tried and ruled out (cold lock bypass, cross-vault/role/action r
 | 7.2 snapshot | `node scripts/preflight.mjs --snapshot` writes `evidence/pre-drill.json` (re-run right before registering) |
 | 7.3 README and AI_USAGE | Regenerated with Phase 6 results |
 | 7.4 project page | Draft text prepared (kept local until the repository is public) |
+
+## Keyless cloud backup (17 Nov, added after Phase 7.4)
+| Item | Result |
+|---|---|
+| Pre-signing | `scripts/presign-cloud.mjs`: 3 heartbeats signed by the drill account for consecutive account sequences and vault nonces, 1 freeze signed by a dedicated `freezer` account carrying a guardian-signed request; both simulate successfully on chain. No keys leave the machine |
+| Keeper | `cloud/keeper.mjs`: after the drill starts it broadcasts the pre-signed heartbeat if none has landed; on a critical anomaly it broadcasts the pre-signed freeze; it fails loudly on a critical condition. Tested locally against a throwaway vault (heartbeat landed from a stand-in account, a second run did nothing, a simulated unauthorised withdrawal was frozen) |
+| Runners | GitHub Actions (every 5 min on 17 to 19 Nov, effective once the repository is public or GitHub billing is fixed) and Vercel cron (00:30 and 12:30 UTC daily, public endpoint protected by a secret, dry run verified) |
+| Staleness | The blobs are valid only while the drill account, the freezer and the vault's owner nonce are unchanged; the keeper and `scripts/preflight.mjs` flag a stale set; `scripts/refresh-cloud.sh` and `scripts/deploy-vercel-keeper.sh` re-create them |

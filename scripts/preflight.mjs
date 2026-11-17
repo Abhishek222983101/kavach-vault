@@ -83,7 +83,10 @@ try {
   const secrets = sh("gh secret list --json name --jq '.[].name'").split("\n"); check(["HB_0", "HB_1", "HB_2", "FREEZE_TX"].every((n) => secrets.includes(n)), "GitHub secrets HB_0, HB_1, HB_2, FREEZE_TX are set", secrets.join(","));
   check(sh("git ls-tree origin/main .github/workflows/drill-keeper.yml") !== "", "keeper workflow is on origin/main");
   const lr = sh("gh run list --workflow drill-keeper.yml --limit 1 --json conclusion --jq '.[0].conclusion'"); check(lr === "success", "latest keeper run succeeded", lr || "no run yet", "WARN");
-  snap.cloud = { baseline: b, secrets, lastRun: lr };
+  let vc = "unreachable";
+  try { const sec = fs.readFileSync(".secrets/vercel-cron-secret.txt", "utf8").trim(); const r = await fetch("https://kavach-keeper.vercel.app/api/cron?dry=1", { headers: { authorization: `Bearer ${sec}` }, signal: AbortSignal.timeout(70000) }); const j = await r.json(); vc = r.ok && j.code === 0 ? "ok" : "refused: " + JSON.stringify(j).slice(0, 80); } catch (e) { vc = String(e.message).slice(0, 60); }
+  check(vc === "ok", "Vercel keeper answers a dry run with a clean state", vc);
+  snap.cloud = { baseline: b, secrets, lastRun: lr, vercel: vc };
 } catch (e) { fail("cloud keeper checks", String(e.message ?? e).slice(0, 140)); }
 
 // ---- the machine ----
