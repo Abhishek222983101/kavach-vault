@@ -26,7 +26,7 @@ banner = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" v
 </g>
 <text x="290" y="132" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="68" font-weight="800" fill="{FG}" letter-spacing="2">KAVACH VAULT</text>
 <text x="292" y="178" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="28" fill="{GREEN}">A stolen classical key moves nothing.</text>
-<text x="292" y="216" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" fill="{DIM}">Post-quantum signatures guard the vault. The drill account holds nothing and opens no window.</text>
+<text x="292" y="216" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" fill="{DIM}">Post-quantum signatures guard the vault. The drill account opens no window. Its classical key moves nothing.</text>
 <text x="292" y="252" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="17" fill="{BLUE}">QoreChain · Build Before Q-Day · Q-Day Drill</text>
 <g transform="translate(0 292)"><path d="M0,0 L180,0 L205,-14 L232,16 L262,-30 L292,10 L312,0 L1280,0" fill="none" stroke="url(#ln)" stroke-width="3" stroke-dasharray="1400" stroke-dashoffset="1400">
 <animate attributeName="stroke-dashoffset" values="1400;0;0;-1400" keyTimes="0;.5;.6;1" dur="6s" repeatCount="indefinite"/></path></g>
@@ -52,7 +52,7 @@ pipeline = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="620"
 {lane(50,"Native lane","needs the hybrid secp256k1 + ML-DSA-87 signature")}
 {lane(142,"EVM lane","needs an open window and a balance: the drill account has neither")}
 {lane(234,"Vault calls","need an ML-DSA-87 signature the bot cannot make")}
-{lane(326,"Off-chain signatures","permits and Permit2: the account holds nothing to permit")}
+{lane(326,"Off-chain signatures","permits and Permit2: the account holds no tokens to permit")}
 {arrow(290,160,430,87,RED,0,True)}{arrow(290,170,430,179,RED,.3,True)}{arrow(290,185,430,271,RED,.6,True)}{arrow(290,200,430,363,RED,.9,True)}
 <text x="960" y="200" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="22" font-weight="700" fill="{RED}">All refused</text>
 <text x="960" y="228" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" fill="{DIM}">{n['attempts']+ev['attempts']+v['callAttacks']} live attacks, 0 accepted</text>
@@ -97,7 +97,7 @@ readme = f'''<div align="center">
 <br>
 
 **A vault on QoreChain where the money moves only with a post-quantum signature.**
-**The account the attacker holds the key to is empty, has no EVM window, and never did.**
+**The account the attacker holds the key to has never opened an EVM window, and its classical key alone cannot move the 1 test QOR it holds.**
 
 <br>
 
@@ -120,7 +120,7 @@ readme = f'''<div align="center">
 <br>
 
 > **The question the drill asks:** if a bot holds the classical key of your account for 24 hours, what can it do?
-> **Our answer:** nothing, on purpose. A classical key can act in two places: the native lane, which the chain closes to it, and an EVM window, which we never open. It can spend only what the account holds, which is zero. The money sits in two vaults that ignore who calls them and move only for an ML-DSA-87 signature the bot does not have.
+> **Our answer:** nothing, on purpose. A classical key can act in two places: the native lane, which the chain closes to it, and an EVM window, which we never open. With both lanes closed it cannot touch the 1 test QOR the account holds. The money sits in two vaults that ignore who calls them and move only for an ML-DSA-87 signature the bot does not have.
 
 <br>
 

@@ -5,7 +5,7 @@
 <br>
 
 **A vault on QoreChain where the money moves only with a post-quantum signature.**
-**The account the attacker holds the key to is empty, has no EVM window, and never did.**
+**The account the attacker holds the key to has never opened an EVM window, and its classical key alone cannot move the 1 test QOR it holds.**
 
 <br>
 
@@ -28,7 +28,7 @@
 <br>
 
 > **The question the drill asks:** if a bot holds the classical key of your account for 24 hours, what can it do?
-> **Our answer:** nothing, on purpose. A classical key can act in two places: the native lane, which the chain closes to it, and an EVM window, which we never open. It can spend only what the account holds, which is zero. The money sits in two vaults that ignore who calls them and move only for an ML-DSA-87 signature the bot does not have.
+> **Our answer:** nothing, on purpose. A classical key can act in two places: the native lane, which the chain closes to it, and an EVM window, which we never open. With both lanes closed it cannot touch the 1 test QOR the account holds. The money sits in two vaults that ignore who calls them and move only for an ML-DSA-87 signature the bot does not have.
 
 <br>
 

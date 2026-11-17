@@ -14,7 +14,7 @@
 </g>
 <text x="290" y="132" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="68" font-weight="800" fill="#e6edf3" letter-spacing="2">KAVACH VAULT</text>
 <text x="292" y="178" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="28" fill="#34d399">A stolen classical key moves nothing.</text>
-<text x="292" y="216" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" fill="#8b98a5">Post-quantum signatures guard the vault. The drill account holds nothing and opens no window.</text>
+<text x="292" y="216" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" font-size="20" fill="#8b98a5">Post-quantum signatures guard the vault. The drill account opens no window. Its classical key moves nothing.</text>
 <text x="292" y="252" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="17" fill="#60a5fa">QoreChain · Build Before Q-Day · Q-Day Drill</text>
 <g transform="translate(0 292)"><path d="M0,0 L180,0 L205,-14 L232,16 L262,-30 L292,10 L312,0 L1280,0" fill="none" stroke="url(#ln)" stroke-width="3" stroke-dasharray="1400" stroke-dashoffset="1400">
 <animate attributeName="stroke-dashoffset" values="1400;0;0;-1400" keyTimes="0;.5;.6;1" dur="6s" repeatCount="indefinite"/></path></g>
