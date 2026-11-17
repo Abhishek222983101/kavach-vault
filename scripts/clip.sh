@@ -10,6 +10,10 @@ case "${1:-}" in
   key) tr -d '\n' < .secrets/REGISTRATION-drill-ecdsa-key.txt | copy; echo "Key copied. Paste it into the form with Ctrl+V.";;
   key0x) { printf 0x; tr -d '\n' < .secrets/REGISTRATION-drill-ecdsa-key.txt; } | copy; echo "Key copied WITH the 0x prefix. Paste it into the form with Ctrl+V.";;
   contracts) printf '%s\n%s' 0x10256EDD0877436FfCBA8A62b0598f4bAD01514B 0x3Fc71aF5bADd701FF7D718df932E0dDf8612149F | copy; echo "Both contract addresses copied. Paste them into the form with Ctrl+V.";;
+  repo) printf %s https://github.com/Abhishek222983101/kavach-vault | copy; echo "GitHub link copied. Paste it into Public GitHub repository.";;
+  desc) copy < docs-private/page/description.txt; echo "Description copied. Select all in the Description box (Ctrl+A), then paste (Ctrl+V).";;
+  how) copy < docs-private/page/how.txt; echo "How it's made copied. Select all in that box (Ctrl+A), then paste (Ctrl+V).";;
+  addrs) copy < docs-private/page/addresses.txt; echo "Testnet addresses copied. Paste them into Testnet addresses.";;
   clear) printf '' | copy; echo "Clipboard cleared.";;
-  *) echo "usage: $0 key|key0x|contracts|clear"; exit 1;;
+  *) echo "usage: $0 repo|desc|how|addrs|clear"; exit 1;;
 esac
