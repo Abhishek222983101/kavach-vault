@@ -19,6 +19,11 @@ export default async function handler(req, res) {
   if (!process.env.CRON_SECRET || auth !== `Bearer ${process.env.CRON_SECRET}`) return res.status(401).json({ error: "unauthorized" });
   const r = await run({ dry: req.query?.dry === "1" });
   const o = r.out;
+  // A scheduled run says so on Telegram, so you can see it worked without opening anything.
+  if ((req.headers["user-agent"] || "").includes("vercel-cron") && process.env.TELEGRAM_TOKEN && process.env.TELEGRAM_CHAT) {
+    const text = `${r.code === 0 ? "🟢" : "🔴"} Kavach Vercel keeper ran at ${o.at}: ${o.issues.length ? "issues: " + o.issues.join("; ").slice(0, 300) : "all clear"}; proof of life landed: ${o.proofLanded}`;
+    try { await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ chat_id: process.env.TELEGRAM_CHAT, text }) }); } catch {}
+  }
   res.status(r.code === 0 ? 200 : 500).json({ code: r.code, at: o.at, dry: o.dry, issues: o.issues, proofLanded: o.proofLanded,
     actions: o.actions.map((a) => Object.keys(a)[0] + (a.proofOfLife ? ":" + a.proofOfLife.hash : "")) });
 }
