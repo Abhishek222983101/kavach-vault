@@ -1,0 +1,29 @@
+# Decision log
+
+Format: id · decision · alternatives · evidence · status · approved by.
+
+| ID | Decision | Alternatives considered | Evidence | Status | Approved |
+|---|---|---|---|---|---|
+| D-01 | Build a dedicated vault for the drill, not reuse the Kavach WhatsApp agent | Reuse Kavach | The drill attacks contracts and an account; agent quality is not scored | Locked | Abhishek, 17 Nov |
+| D-02 | The drill account never opens an EVM window | Scoped windows (what most competitors do) | [DOC] window is the only lane a classical key acts in; admitted-then-reverted txs still use the window | Locked | pending your OK |
+| D-03 | Drill account holds zero balance; fees via a message-scoped fee grant | Keep dust; keep a fee float | [CODE] PQC checks run before fee deduction; [DOC] refused second registration still takes the fee | Depends on S1, S2 | pending |
+| D-04 | Vault owner key = drill account's registered ML-DSA-87 key, pinned by hash + live `pqcKeyStatus` with `possessionProven` | Separate owner key | Satisfies "an account its project uses"; trust anchor visible on chain | Locked | pending |
+| D-05 | Caller-agnostic vault: no `msg.sender`, `tx.origin` or `ecrecover` checks | Owner modifier | A stolen classical key can call from anywhere | Locked | pending |
+| D-06 | Message domain byte `0xFF` + fixed length + chain id + vault + role + key version + nonce + deadline | Plain hash of params | Prevents cross-protocol, cross-chain and replay attacks | Locked | pending |
+| D-07 | Guardian PQ key (separate recovery code): freeze and cancel only | No guardian | Defence in depth; matches the best competitor | Locked | pending |
+| D-08 | Proof of life via native lane (`MsgCrossVMCall` heartbeat; fallback `MsgSend`) | EVM tx through a window | Keeps the EVM lane closed during the drill | Depends on S3 | pending |
+| D-09 | Two fuzzers + symbolic checks + two static analysers + AI red team | Foundry only | Tie-break on threat model quality; different tools find different bugs | Locked | pending |
+| D-12 | Generate native attacks from the chain's full message registry, not a hand list | Hand-written list | A longer hand list can always be written; the registry is complete | Locked | pending |
+| D-13 | Split value: ~85% in a cold vault that cannot move before 20 Nov 00:00 UTC, ~15% in the hot vault | One vault | Worst-case loss is bounded even if an unknown bug exists; recognised custody practice | Locked | pending |
+| D-14 | Drill account never holds QOR, not even for registration: register through a temporary grant, then replace it with a grant limited to `MsgSend` + `MsgCrossVMCall` | Fund 0.07 QOR for registration, then empty it | S2 proved a never-funded account can register and transact through a grant, and that the bot cannot use the grant | Locked (evidence `spike-s2.json`) | pending |
+| D-03 (update 17 Nov) | Zero balance confirmed. The specific fee-burn path does not exist (S1: classical re-registration refused at CheckTx, no fee) | – | `spike-s1s5.json` | Locked | – |
+| D-08 (update 17 Nov) | Native heartbeat via `MsgCrossVMCall` confirmed working without a window, fee via grant | – | `spike-s3.json` | Locked | – |
+| D-15 | No key rotation in the drill deployment (owner or guardian). Owner/guardian key hashes are immutable. Recovery from a compromised key is: guardian freeze, funds stay locked, cold vault keeps most value | Rotation through the timelock | Rotation requires the chain-side key to move in lockstep (the live key-status check would lock the owner out if the account key rotated first); every extra path is attack surface; the drill is 24 hours | Locked | pending |
+| D-16 | Compile with `via_ir = true` (Solidity 0.8.28) | Refactor until the legacy pipeline fits the stack | Stack-too-deep on `withdraw`; IR is the standard fix and all analysis tools ran on the IR build | Locked | pending |
+| D-17 | 25 hourly buckets for the rolling daily cap | 24 buckets | Any 24-hour interval intersects up to 25 hourly buckets, so 25 guarantees the cap holds for every interval | Locked (proved by the boundary test, invariant I4 and Halmos) | pending |
+| D-18 | Slither false positives suppressed in-source with a one-line reason each; second analyser = Semgrep + forge lint because Aderyn was unavailable | Leave them unexplained | Auditable reasons for the jury | Locked | pending |
+| D-19 | Queued withdrawals bypass the daily cap (they are signed, delayed ≥1 h and cancellable by the guardian) | Count them against the cap | Red team F2; needing the owner PQ key is the only way to queue, the attacker lacks it | Locked | pending |
+| D-20 | Hot vault limits: QOR 25 per tx / 50 per day; fUSD 250/500; fETH 0.1/0.2; fBTC 0.005/0.01. Timelock delay 6 h. Only the funder is allowlisted | Higher caps | The hot vault is the exposed tier; caps bound loss even if the owner PQ key leaks | Locked | pending |
+| D-21 | Funding split 740 QOR cold / 130 QOR hot (about 85/15); funder keeps about 80 QOR for gas and fee grants | All hot | D-13; value kept is a ranking criterion, but the cold tier cannot move before 20 Nov | Locked | pending |
+| D-22 | Test the EVM gate with a funded, PQ-registered stand-in (spike-b), because the zero-balance drill is refused for lack of funds before the window check is reached | Fund the drill (forbidden) | Proves the second layer without breaking the zero-balance rule | Locked | pending |
+| D-23 | A short-lock canary twin of the cold vault is run live before relying on the real one | Trust mocks | A release bug would only be found on 20 Nov, when it is too late | Locked | pending |

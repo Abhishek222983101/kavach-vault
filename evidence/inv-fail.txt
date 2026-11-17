@@ -1,0 +1,46 @@
+No files changed, compilation skipped
+
+Ran 1 test for test/invariant/Invariants.t.sol:InvariantsTest
+[PASS] invariant_I1_I2_balancesExactNoUnauthorizedOutflow() (runs: 150, calls: 45000, reverts: 0)
+
+╭----------+-------------------------+-------+---------+----------╮
+| Contract | Selector                | Calls | Reverts | Discards |
++=================================================================+
+| Handler  | attackerForceSend       | 3235  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | attackerQueueAndExecute | 3289  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | attackerReplay          | 3265  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | attackerWithdraw        | 3143  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | deposit                 | 3185  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | executeQueued           | 3281  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | guardianFreeze          | 3209  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | guardianTryWithdraw     | 3222  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerFreeze             | 3201  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerHeartbeat          | 3194  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerQueueWithdraw      | 3147  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerWithdraw           | 3250  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | unfreezeBoth            | 3166  | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | warpTime                | 3213  | 0       | 0        |
+╰----------+-------------------------+-------+---------+----------╯
+
+Logs:
+  owner calls ok: 32
+  QOR out (wei): 1030575928571867917858
+  fUSD out: 7702753864
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 62.31s (62.31s CPU time)
+
+Ran 1 test suite in 62.32s (62.31s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+finished

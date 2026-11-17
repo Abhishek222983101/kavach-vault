@@ -1,0 +1,69 @@
+{
+  "at": "2026-11-16T22:30:41.200Z",
+  "grantee": "qor1v8nmc0md2tu9u5mvcj0e6wp9s02gmnvq9s90xc",
+  "granter": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
+  "rows": [
+    {
+      "step": "1 grant (incl. registration)",
+      "code": 0,
+      "log": "",
+      "hash": "9D1BCDB5B814342B72FF85BA97AD07E41C7156E5DA3E54025AB268BD39DA26ED",
+      "spendLeft": "2000000"
+    },
+    {
+      "step": "2 register via grant",
+      "code": 0,
+      "log": "",
+      "hash": "8D8A78679B6D4C30176A5BDBEC314A49D558549B3918BDF63C6CAD85AEE993CA",
+      "found": true,
+      "pop": true,
+      "balance": "0",
+      "spendLeft": "1930000"
+    },
+    {
+      "step": "3 revoke + scoped re-grant (send, cross-VM only)",
+      "code": 0,
+      "log": "",
+      "hash": "20373A7A5BC4EDE85CADE46BAA9B757A6F432F6CABAACAABCAA9F248BC5B4F9D",
+      "spendLeft": "2000000"
+    },
+    {
+      "step": "4 ATTACK classical-only send via grant",
+      "code": 20,
+      "log": "account qor1v8nmc0md2tu9u5mvcj0e6wp9s02gmnvq9s90xc has a registered PQC key and must include the hybrid signature extens",
+      "spendBefore": "2000000",
+      "spendAfter": "2000000"
+    },
+    {
+      "step": "5 ATTACK classical registration via grant",
+      "code": 234,
+      "log": "account qor1v8nmc0md2tu9u5mvcj0e6wp9s02gmnvq9s90xc has a registered PQC key; register and migrate need its hybrid signat",
+      "spendBefore": "2000000",
+      "spendAfter": "2000000"
+    },
+    {
+      "step": "6 ATTACK classical window open via grant",
+      "code": 20,
+      "log": "account qor1v8nmc0md2tu9u5mvcj0e6wp9s02gmnvq9s90xc has a registered PQC key and must include the hybrid signature extens",
+      "spendBefore": "2000000",
+      "spendAfter": "2000000"
+    },
+    {
+      "step": "7 hybrid window open via grant (type not allowed)",
+      "code": 7,
+      "log": "~�u�\u0015�\"y��\u0007���\u001c���F' does not allow to pay fees for a��?mR�^Slğ�8%�ԍ̀: message does not exist in allowed messages: message not allowed",
+      "spendBefore": "2000000",
+      "spendAfter": "2000000",
+      "window": false
+    },
+    {
+      "step": "8 genuine hybrid send via grant",
+      "code": 0,
+      "log": "",
+      "hash": "1D4C0A0BB88FD18B1A4F47FEEF09B232BB3559C12B5C342A1349994D7D08CD01",
+      "spendBefore": "2000000",
+      "spendAfter": "1959000",
+      "balanceAfter": "0"
+    }
+  ]
+}

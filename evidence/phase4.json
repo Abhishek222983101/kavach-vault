@@ -1,0 +1,119 @@
+{
+  "steps": [
+    {
+      "at": "2026-11-17T01:11:40.141Z",
+      "step": "window opened",
+      "hash": "E170377169E0504A86EE0C8034C1FF090AC6661A941A010FA8992A3D4DD55E0B"
+    },
+    {
+      "at": "2026-11-17T01:11:44.862Z",
+      "step": "4.1 deployed cold vault",
+      "address": "0x3fc71af5badd701ff7d718df932e0ddf8612149f",
+      "tx": "0x3d5a17e72b868d56e469f46609f4a0d971e61bcdda4e5cf6deb4c49355b6bd64",
+      "block": 10226528
+    },
+    {
+      "at": "2026-11-17T01:11:48.920Z",
+      "step": "4.1 deployed hot vault",
+      "address": "0x10256edd0877436ffcba8a62b0598f4bad01514b",
+      "tx": "0x7b58b47b63b3c12aed8f785196f785c5ba194a5bf690359c163f0aa5854d16a3",
+      "block": 10226531
+    },
+    {
+      "at": "2026-11-17T01:11:50.839Z",
+      "step": "4.1 constructor args verified",
+      "hot owner account": true,
+      "hot owner key hash": true,
+      "hot guardian hash": true,
+      "hot recipient allowlisted": true,
+      "hot drill NOT allowlisted": true,
+      "cold release time": true,
+      "cold drill NOT allowlisted": true
+    },
+    {
+      "at": "2026-11-17T01:11:53.810Z",
+      "step": "4.2 live signed heartbeat",
+      "tx": "0xcbe65c616a876c35a23e39fead5c829edf2ffff9510622c4d033650bacbd6e7a",
+      "status": "success",
+      "ownerNonceAfter": "1"
+    },
+    {
+      "at": "2026-11-17T01:11:57.719Z",
+      "step": "4.3 funded cold vault",
+      "qor": "740",
+      "tx": "0x887c2553cd7b6f744022bb5faaf9e9aecbfab26f6088b76e772c6eac6d15e2c7"
+    },
+    {
+      "at": "2026-11-17T01:11:59.249Z",
+      "step": "4.3 funded hot vault",
+      "qor": "130",
+      "tx": "0x2953627f7840d625ac8e55b81136801288504e6b7715baea453de71aa5e28352"
+    },
+    {
+      "at": "2026-11-17T01:12:04.080Z",
+      "step": "4.4 live owner-signed withdrawal",
+      "tx": "0xc510be24066508a9da1f39d1c96f5e1bb6ed0dc59c3a1a333c2cd37c2690b1a2",
+      "status": "success",
+      "hotBefore": "130000000000000000000",
+      "hotAfter": "129000000000000000000",
+      "spentInWindow": "1000000000000000000"
+    },
+    {
+      "at": "2026-11-17T01:12:04.419Z",
+      "step": "4.4 replay of the same signature reverts",
+      "replayBlocked": true
+    },
+    {
+      "at": "2026-11-17T01:12:05.346Z",
+      "step": "4.4 cold vault release is refused while locked",
+      "coldLocked": true
+    },
+    {
+      "at": "2026-11-17T01:12:08.907Z",
+      "step": "4.5 closed funder window",
+      "hash": "855065F1E4DD11E6B21202436257F5812ED338BF8F433370AD46077CB87D3821",
+      "code": 0,
+      "windowFoundAfter": false
+    }
+  ],
+  "cold": {
+    "address": "0x3fc71af5badd701ff7d718df932e0ddf8612149f",
+    "tx": "0x3d5a17e72b868d56e469f46609f4a0d971e61bcdda4e5cf6deb4c49355b6bd64",
+    "block": 10226528
+  },
+  "hot": {
+    "address": "0x10256edd0877436ffcba8a62b0598f4bad01514b",
+    "tx": "0x7b58b47b63b3c12aed8f785196f785c5ba194a5bf690359c163f0aa5854d16a3",
+    "block": 10226531
+  },
+  "heartbeat": {
+    "tx": "0xcbe65c616a876c35a23e39fead5c829edf2ffff9510622c4d033650bacbd6e7a",
+    "status": "success",
+    "ownerNonceAfter": "1"
+  },
+  "funded": {
+    "coldWei": "740000000000000000000",
+    "hotWei": "130000000000000000000"
+  },
+  "tokens": {},
+  "withdrawal": {
+    "tx": "0xc510be24066508a9da1f39d1c96f5e1bb6ed0dc59c3a1a333c2cd37c2690b1a2",
+    "status": "success",
+    "hotBefore": "130000000000000000000",
+    "hotAfter": "129000000000000000000",
+    "spentInWindow": "1000000000000000000"
+  },
+  "final": {
+    "at": "2026-11-17T01:12:10.799Z",
+    "checks": {
+      "funder window closed": true,
+      "drill window absent": true,
+      "drill balance empty": true,
+      "hot vault holds QOR": true,
+      "cold vault holds QOR": true
+    },
+    "hotWei": "129000000000000000000",
+    "coldWei": "740000000000000000000",
+    "funderUqor": "89753307"
+  }
+}

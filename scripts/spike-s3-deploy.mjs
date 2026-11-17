@@ -1,0 +1,14 @@
+import fs from "node:fs";
+import * as c from "./lib/chain.mjs";
+import { openWindow, closeWindow, wallet, pub } from "./lib/evm.mjs";
+const f = await c.loadAccount("funder");
+const art = JSON.parse(fs.readFileSync("out/SpikePing.sol/SpikePing.json", "utf8"));
+const o = await openWindow(f, { blocks: 300n, maxTxs: 3n, maxValueUqor: 20_000_000n });
+console.log("open window:", o.deliverCode ?? o.checkCode, o.log.slice(0, 100));
+const w = wallet(f);
+const hash = await w.deployContract({ abi: art.abi, bytecode: art.bytecode.object });
+const rcpt = await pub.waitForTransactionReceipt({ hash });
+console.log("deploy:", rcpt.status, "address", rcpt.contractAddress, "tx", hash);
+const cl = await closeWindow(f);
+console.log("close window:", cl.deliverCode ?? cl.checkCode, "window found after close:", cl.windowFoundAfter);
+fs.writeFileSync("evidence/spike-s3-ping.json", JSON.stringify({ address: rcpt.contractAddress, deployTx: hash, windowOpenTx: o.hash, windowCloseTx: cl.hash }, null, 2));

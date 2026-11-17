@@ -1,0 +1,20 @@
+{
+  "at": "2026-11-16T22:31:57.593Z",
+  "tx": "8834643A5A1A25CFD646872D39ACB524387BB382EBE547027D3E65A562303236",
+  "code": 0,
+  "log": "",
+  "before": {
+    "count": "0",
+    "spend": "1959000",
+    "bal": "0"
+  },
+  "after": {
+    "count": "1",
+    "lastCaller": "0x61E7bc3f6d52F85E536cc49F9d382583D48dcD80",
+    "spend": "1889000",
+    "bal": "0",
+    "window": false
+  },
+  "expectCaller": "0x61E7bc3f6d52F85E536cc49F9d382583D48dcD80",
+  "callerMatches": true
+}

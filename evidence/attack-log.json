@@ -1,0 +1,115 @@
+{
+  "at": "2026-11-17T01:37:43.628Z",
+  "network": "qorechain-diana",
+  "commit": "ce86aca674309e8f473be55bb5494c27bce73f57",
+  "srcDirty": false,
+  "deployed": {
+    "hot": "0x10256edd0877436ffcba8a62b0598f4bad01514b",
+    "cold": "0x3fc71af5badd701ff7d718df932e0ddf8612149f",
+    "hotBytecodeMatchesBuild": true,
+    "coldBytecodeMatchesBuild": true
+  },
+  "native": {
+    "messageTypesInRegistry": 135,
+    "attempts": 298,
+    "accepted": 0,
+    "refusedAtPqGate": 168,
+    "refusedByStatelessValidationFirst": 130,
+    "handBuiltValidAttacks": 14,
+    "handBuiltRefusedAtPqGate": 14,
+    "distinctTypesReachingPqGate": 84,
+    "unchanged": {
+      "drillBalances": true,
+      "drillSequence": true,
+      "funderBalance": true,
+      "feeGrant": true,
+      "drillWindow": true,
+      "drillPqKey": true
+    }
+  },
+  "evm": {
+    "attempts": 34,
+    "accepted": 0,
+    "refusedNoWindow_fundedStandIn": 17,
+    "refusedZeroBalance_drill": 17,
+    "accountsUnchanged": [
+      true,
+      true
+    ]
+  },
+  "vault": {
+    "callAttacks": 78,
+    "allReverted": true,
+    "controlsOk": true,
+    "live": [
+      {
+        "label": "live reverted tx: hot.withdraw junk",
+        "hash": "0xa224194ca6786462b88dc06bc7f67cf97dcb6cc6ad6e19c908e4f66a549e8dc4",
+        "status": "reverted"
+      },
+      {
+        "label": "live reverted tx: hot.freeze junk",
+        "hash": "0xd59c07931fff11b71ef1aa5e44711002ca343696512d950fbe0580a8d0f0470a",
+        "status": "reverted"
+      },
+      {
+        "label": "live reverted tx: hot.withdraw replay of real signature",
+        "hash": "0x694798e0cfcfe6243aca8053024b5b2c2c3b1462b899e3d335afddfd3a60ce7d",
+        "status": "reverted"
+      },
+      {
+        "label": "live reverted tx: cold.release junk",
+        "hash": "0x199da9dd61912e4ab907e155a6bd53e8b0623dd3e0b25b311bf93ee04629f558",
+        "status": "reverted"
+      },
+      {
+        "label": "live forced 1 QOR into hot vault via selfdestruct",
+        "hash": "0x5a9414abaeeb053cb6e4841c1a871df19b7efe1963455e9f123c7fdf25faaf9b",
+        "status": "success"
+      },
+      {
+        "label": "spentInWindow unaffected by forced QOR"
+      },
+      {
+        "label": "liveness: owner heartbeat after the attacks",
+        "hash": "0xd634d49e556cf038f3cd582e6a4874af8a65d2bc12502247028916e14b7df739",
+        "status": "success"
+      },
+      {
+        "label": "liveness: owner withdrawal after the attacks",
+        "hash": "0xa9a9af218a41bd5d25b29f97141012ca1f24951bcedf6bbfddfdaad6fc3b467c",
+        "status": "success"
+      },
+      {
+        "label": "funder window closed"
+      }
+    ],
+    "checks": {
+      "cold vault balance never moved": true,
+      "hot vault balance = before + 1 forced - 1 withdrawn": true,
+      "spentInWindow = 2 QOR (two legit withdrawals only)": true,
+      "all live attack txs reverted": true,
+      "liveness txs succeeded": true,
+      "funder window closed, drill window absent, drill empty": true,
+      "part A: every attack reverted": true,
+      "part A: controls behave": true
+    }
+  },
+  "coldCanary": {
+    "pass": true,
+    "release": {
+      "tx": "0x8a1cd9680a2c28de7dd254c5a46502d6c0932861ca78fc343aed680173a341e9",
+      "status": "success",
+      "vaultBefore": "2000000000000000000",
+      "vaultAfter": "1000000000000000000"
+    }
+  },
+  "state": {
+    "drillWindow": false,
+    "funderWindow": false,
+    "drillBalances": 0,
+    "hotWei": "129000000000000000000",
+    "coldWei": "740000000000000000000"
+  },
+  "verdict": "ALL BLOCKED"
+}

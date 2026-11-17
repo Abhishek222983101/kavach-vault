@@ -1,0 +1,14 @@
+.secrets/
+.env
+.env.*
+node_modules/
+out/
+cache/
+broadcast/
+crytic-export/
+medusa-corpus/
+*.log
+
+docs-private/
+docs/99-archive/
+slither_results.json

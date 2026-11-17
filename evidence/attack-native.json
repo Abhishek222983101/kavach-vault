@@ -1,0 +1,2704 @@
+{
+  "summary": {
+    "at": "2026-11-17T01:37:42.175Z",
+    "messageTypes": 135,
+    "handBuilt": 14,
+    "attempts": 298,
+    "accepted": 0,
+    "refusedByPqCheck": 182,
+    "refusedEarlier": 110,
+    "notSent": 6,
+    "unchanged": {
+      "drillBalances": true,
+      "drillSequence": true,
+      "funderBalance": true,
+      "feeGrant": true,
+      "drillWindow": true,
+      "drillPqKey": true
+    }
+  },
+  "before": {
+    "drillBal": [],
+    "drillSeq": "1",
+    "funderUqor": "81307640",
+    "grant": "{\"granter\":\"qor10mlhtuc44s38n90uqls7njcushswz338hzyv05\",\"grantee\":\"qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp\",\"allowance\":{\"@type\":\"/cosmos.feegrant.v1beta1.AllowedMsgAllowance\",\"allowance\":{\"@type\":\"/cosmos.feegrant.v1beta1.BasicAllowance\",\"spend_limit\":[{\"denom\":\"uqor\",\"amount\":\"2000000\"}],\"expiration\":\"2026-11-20T23:59:00Z\"},\"allowed_messages\":[\"/cosmos.bank.v1beta1.MsgSend\",\"/qorechain.crossvm.v1.MsgCrossVMCall\"]}}",
+    "drillWindow": false,
+    "drillPq": 3458,
+    "hotWei": "0x10256edd0877436ffcba8a62b0598f4bad01514b"
+  },
+  "after": {
+    "drillBal": [],
+    "drillSeq": "1",
+    "funderUqor": "81307640",
+    "grant": "{\"granter\":\"qor10mlhtuc44s38n90uqls7njcushswz338hzyv05\",\"grantee\":\"qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp\",\"allowance\":{\"@type\":\"/cosmos.feegrant.v1beta1.AllowedMsgAllowance\",\"allowance\":{\"@type\":\"/cosmos.feegrant.v1beta1.BasicAllowance\",\"spend_limit\":[{\"denom\":\"uqor\",\"amount\":\"2000000\"}],\"expiration\":\"2026-11-20T23:59:00Z\"},\"allowed_messages\":[\"/cosmos.bank.v1beta1.MsgSend\",\"/qorechain.crossvm.v1.MsgCrossVMCall\"]}}",
+    "drillWindow": false,
+    "drillPq": 3458,
+    "hotWei": "0x10256edd0877436ffcba8a62b0598f4bad01514b"
+  },
+  "rows": [
+    {
+      "sweep": "C1 plain",
+      "name": "H1 bank send 1 uqor to attacker address",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "9EAB8F2792C29EE0823E846D121B494BE6F1A73E44FB09233E64BAC32603B58D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H2 bank send, whole fee-grant-sized amount",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "94FCA3147A89F16EE8746193CF1FF38FD464F6E290167CD9499F6F2B573BAB1F"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H3 open EVM window (unscoped)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "92D5D060272622F01692405A903FD89F3DA7605E66CC9BE7E8AC9853B24E70CF"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H4 open EVM window targeting our vault",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "BB805D55249B9AAB054FC8BA2E24F2C106DC464D79BD2A9687144CC8A114C4F8"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H5 register attacker's PQ key (classical-only)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 234,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key; register and migrate need its hybrid signature: PQC key mainten",
+      "hash": "EF10970681D6011A492556A63207213F1571E77575527796592DEBBD5F930AB1"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H6 cross-VM call into hot vault heartbeat (junk)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D7BDFFCD7FD5C0DCB9F3330CEF57622C475DEB1E7C819666F59798C8A3BA6AB6"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H7 cross-VM call into hot vault withdraw (junk)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "5790B2FCB7046BA66FD2069B7EECFA1D4BFF8AA536C2A79762BA8AAB439A04CA"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H8 cross-VM call into cold vault withdraw-shaped payload",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0F50A24FD3E62E2B67D64D69632DF18CFA1F2DD1D8EFDCB89398001D5CFBAAE1"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H9 authz grant everything to attacker",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E98844FAA4E69F1B19CC0BF79AD10DB8EC885FFE2834BC3E66A8F181F967D2B1"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H10 feegrant from drill to attacker",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "8E01A94184B0565D6F1F9492A2F140AEAFF940D8AD3A52333117580D77E088C6"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H11 delegate to a validator",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "1C3C3061A782DDF11082CE4663A1F0325232221D9365E10EAE861A98372F0B69"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H12 IBC transfer",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "A548BA8E986455BBBC27DE2623A50AFB456B7E7B29A60B06DA27CA2BCF18D459"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H13 authorize EVM delegation (EIP-7702 style)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "60AC98F1AF6C766F83203F8DCB35FAAA8F616593210D9094B7D7C1499AC08F2E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "H14 close EVM window",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "6FDA203BCA419CF070009325BB15CCA0D6D20ED8BC108BC215AD6926E17845C5"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.authz.v1beta1.MsgExec",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "74053ED69D88BB1DA7A8E2D67848D1E80F0D7C40FB8B88A2E57ADE109D03C3FA"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.authz.v1beta1.MsgGrant",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "sdk",
+      "log": "authorization is nil: invalid type: unauthorized",
+      "hash": "28026A72C2124FECECD89A710C0218B771DA3A37B37D99210434984167496942"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.authz.v1beta1.MsgRevoke",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "A5BD5BED38611DA4F9A0D6AD58AFBF55140BEEA275DAE99582AF3A988B11487B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.bank.v1beta1.MsgMultiSend",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "sdk",
+      "log": "wrong number of signers; expected 0, got 1: unauthorized",
+      "hash": "96E85AF12406B32F596B609E3855A5889289723C15455BF436DB05B1CC1EC44A"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.bank.v1beta1.MsgSend",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "CC8FFED1051EA68D5CD4E9211A95FF0F0D5D7510D4F6DB33057552ADB3EDFAA2"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.distribution.v1beta1.MsgFundCommunityPool",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "20F68D35508AF1C077DBD2944509A791B64041E934D6AFF15F9FCF96A15AD89E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "212899BABAA17A974959F534794DB3326D177568CC16017F22A3681165C7C2B8"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "17684B38AC500A678C6056DBD2CE63CAB63F6ACAC6128129A528FE0F6FA5407B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "92C202D421BCA83A9FAEFB0FDEA24047BD8FD5B1DD080FE3582B2C7F9168D03B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.feegrant.v1beta1.MsgGrantAllowance",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "26D87C6C21C98029B538ECC0DB0B9FEEC6EC8C568827D52DACD4503F788151CA"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FE14DA0F52A10535CCAC4054429079DE8B2E32389A47A180E2F3472B805BABDB"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1.MsgDeposit",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "2E76098159A7A34F9E025DD5C578632D3E8909C1A43E667662022F36B3F35018"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1.MsgSubmitProposal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "8B66C109A7E77982DA61E11DB8955DF7FED04BA5536FE63632C4F238C7F31FF6"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1.MsgUpdateParams",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "74AC71E6B90B1777E898CAD76086C4FA430634B1A80CCA8CC64952EEA76D1B2D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1.MsgVote",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D6C723EF792FF8030C6B9DB865DF1886ECA59D37642B50E7901E7889999134A1"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1.MsgVoteWeighted",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B38418D14911E4C0A7D994E9831CB31A6B828448D9A201BA25729C7AEA8B0441"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1beta1.MsgDeposit",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "DABC707F94EF78BE30CCD0E063BE0371F379C349DF5C52BA512700DCC3FAD36F"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1beta1.MsgSubmitProposal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "4B55813E3AA69E3C82069A3979E35EB9C60E6D5E280FD01952A8E36ABDC7F23D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1beta1.MsgVote",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "BCB920929D61EEED76BAFB7081C278B4540BC0895B32770D99ED4FFD603E389A"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.gov.v1beta1.MsgVoteWeighted",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "663E1A25E124C8B6397A9C9E64FFC1A5AAA9CA1BFB5FA4CB6C944FC1471E4C8F"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgCreateGroup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "93DBA547B34A68E4110CF0354ADD6E4EC68E434319DF301C5435D93C4E6ECF96"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgCreateGroupPolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "16F04C4850A086AD7A077756C74269BF26A8832FD9542EC47893D97E849E6817"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgCreateGroupWithPolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "C2A3F0B49FA2D727E266FE2B0733282D8AD690D3121D4AD7B98CF7CB04BACAAA"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgExec",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "98BD199C4B47ABB9FDFC87B18EC1989884B317775DE7B897E2E718860296DAE5"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgLeaveGroup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E21A9392D7093DFD5ECC78210103E9AE55BAAF51738827BA13705C77F8AEF573"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgSubmitProposal",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "sdk",
+      "log": "wrong number of signers; expected 0, got 1: unauthorized",
+      "hash": "067C06058A83DE54A7B496505249C542472FBEF38AB886FE5BD0C1B29A21F458"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupAdmin",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "81F0027D8E0D2A7D35475F7AEEFBB8E76F2DA5EA5E516100BC912CB230AE28FF"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupMembers",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "9DD79F1EBA47334F6980C9E7F078E4B01CF667CEFE7F0E79CBB7C7EB84EDDFF5"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupMetadata",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "049DC1B4D547BEE6D45C182F8A523009C95BB0A807D8A87337C11DE11875F2EF"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupPolicyAdmin",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0801CE19A11DAEAC782B1CD1356AB6C8DB2A157DBA281DBBC99E87A3E3CC6978"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "874C583FA21187839AF8B7B5FCEBA3216024FD1A69FA7C12DDEBEEE3C2FC6EB9"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupPolicyMetadata",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D8FA94F18F9C17FE9AA23CB9A93ACB9E7B90C396A6A0BFB2CF837301915E2035"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgVote",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "766124A81561F831B59EC03427F9E9DEB19B55645D64D8D0D3B9C30E7E7F0B9A"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.group.v1.MsgWithdrawProposal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "608700B28A7A51A9828F3EDC6B44C4692DCE7EC9527868988410E502F24058EA"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.staking.v1beta1.MsgBeginRedelegate",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "DBBA8DF1DD6DDFBB5FD667DD7A08E028DF71F2183CF3F78FF14CA70456F7A66F"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.staking.v1beta1.MsgCancelUnbondingDelegation",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "81459072945BAB267DD624DF2ED71507DAC8983F162720AFD91FD7C455A4D1E9"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.staking.v1beta1.MsgCreateValidator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "A88A82043CCE5EF5FE28512222DBDF1F2F6BB3CDC306C72B050CC918D34E5C79"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.staking.v1beta1.MsgDelegate",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "BF56325F7318EDDDA77BFF124452D898428D955DA2151F5A2DB1C901F4EF7434"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.staking.v1beta1.MsgEditValidator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "2DB30C846111E066B6CBDFD553F057FE5C3D6CB1FF0FEC23CE2D9B78FF32A646"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.staking.v1beta1.MsgUndelegate",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "5178022069F5457599F5E12E0F058DCCD079834EEBC6168468335C3E506427AD"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /cosmos.vesting.v1beta1.MsgCreateVestingAccount",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D56575DDC021C9BD81853D1932DEB451FA9AE902BC6E59B2A2CB164C380FB0AD"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.applications.transfer.v1.MsgTransfer",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid source port ID x: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "7D136932E489390374232E8ED5AD4D0C284C498DAD8D77B4BCE2A331927E6616"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgAcknowledgement",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty acknowledgement proof: invalid proof",
+      "hash": "1DEAA8DA288D8DEE4ACE83BDA373DAC8CD52F1918B407A9701E48899550985B5"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgChannelCloseConfirm",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "1D112399D38E1E6B185993CC134BC8E2EE38654F70B1D16BBEBE6193BD1F7EAD"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgChannelCloseInit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "1D037A6A3BD42A499E5D5CC9613BC590E875BF85B0FDC20634187D30C426E6DC"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenAck",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "C1495202F65CF0EBE69F58E5C1EEED1D9C5B2D44CBBF7063EA7E124EE81BDCEF"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenConfirm",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "15DD836FD5B18624A27BA8F90F88C31FFB289BE36B7E67563693A5E31116A84C"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenInit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "0EB7F00825B863FAB535A11ED97BB1DEE8E46EB70381008318E64A471895D70B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenTry",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "6B6E598BBDF63A0C0C76DFD2CF38840331D001026CE9FAE0CC482154E506678E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgRecvPacket",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty commitment proof: invalid proof",
+      "hash": "A8A6AF6AF5C8B03AA4F191A4C2194A438F765D51A668B05C11AA4FF03DD4122F"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgTimeout",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty unreceived proof: invalid proof",
+      "hash": "8968186962B76125D3A2D197E3FD37233631C0784D01F323AE6A86ADDE74DC6C"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.channel.v1.MsgTimeoutOnClose",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty unreceived proof: invalid proof",
+      "hash": "813062BEB93EC1D3A1B153458D28C511A2CAD29E48FA71526EC925E94F4BAB5D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.client.v1.MsgCreateClient",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "D619F963824291F4EA429040860DE447CDDD518896F756C7D16FAFE40FFD4896"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.client.v1.MsgSubmitMisbehaviour",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "0A891CA0004FA78EB91C98D1691B91662CD1BF3AABE671AF96804BE04D141EF1"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.client.v1.MsgUpdateClient",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "9DE5F6DDAE495CB90A7887F58337D41C7E7A8EB0BDF5909C4053F741F123BCDB"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.client.v1.MsgUpgradeClient",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "FA22E1C5532EBCE8F33A0A940899AB27677A8C3F4188BC3D5072592D521EE3BE"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenAck",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 11,
+      "codespace": "connection",
+      "log": "invalid connection identifier",
+      "hash": "CE4E424059AEEBAF7D1DE4AA9E63288A6DCA8757C48C89E4D158D930DCC76028"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenConfirm",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 11,
+      "codespace": "connection",
+      "log": "invalid connection identifier",
+      "hash": "878B58579CF3AA226C33104F6435ED27FE466EE36A1979B61FC51E50DC08BA29"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenInit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid client ID: identifier x has invalid length: 1, must be between 4-64 characters: invalid identifier",
+      "hash": "D7654173920D6A0A298BA68C2FB79129553786FF85BD2604D8739E2C3FF88CEC"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenTry",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid client ID: identifier x has invalid length: 1, must be between 4-64 characters: invalid identifier",
+      "hash": "58ADDD080C3B5980B6B9AC6071AACE5A94B8856CB90071B2CE26868407265382"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgCreateAbstractAccount",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "invalid account type: x",
+      "hash": "F57A902595421C306632BB9F27FA293D14D14209ACC9765758B7BA4D22ABA2B2"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgExecuteCosmos",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "128243F081BBE318A5110FCB9E648A895683BFB71D6C45AD6E983B90000947B2"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgExecuteEVM",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "BCB8D959D7A2766DE535F587A3A0915BC04988199F26B769393A2045A37294A6"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgRegisterAuthenticator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "unsupported authenticator scheme \"\"",
+      "hash": "11C80A46D06B091BBBDAC0D8761FF966C8E16399C6B4F5321111E32BF5D26E4F"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgRevokeAuthenticator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "scheme and pubkey are required",
+      "hash": "77E27A89005DB493CC2D6B4770FD456C3A2E95F230F2F80DD4B876E76960B915"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgUpdateConfig",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "max session keys must be positive",
+      "hash": "4B55C9F42361308A0E65490E4A10910BFD8D51F8DAFB0961E0C95C7C77581C67"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.abstractaccount.v1.MsgUpdateSpendingRules",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "19695629D231D132CAC3A25C73E182B13F83E4DB67237F63A639FFC4704A171E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgAddLiquidity",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 16,
+      "codespace": "amm",
+      "log": "tokenA and tokenB must differ",
+      "hash": "FBBCF70451BC830C7467431F28E9C5180BE865CB3AD0882B86875F2CAC45CC20"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgCreatePool",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 8,
+      "codespace": "amm",
+      "log": "unknown pool_type \"x\": invalid pool type",
+      "hash": "F5E50B07A3574931D18B982D744C7DFA5273EE2B3D0BE4981742846A220E153E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgPausePool",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "C27D5E3BBC75DE6750DDE1C71E7E04CCF855ADC1B7A909A4E4D9E939CA88578D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgRemoveLiquidity",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E4FA5BE78038ABAF13346881E26F83AC9B00125A42F70CA59B4F7F898C47D60D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgResumePool",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "7871E15B3BB964BF1B7A847EF22CBD521BD3305B9BC1BFF54966D2E257E18944"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgSwapExactIn",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 15,
+      "codespace": "amm",
+      "log": "token_in: invalid amount",
+      "hash": "019296BB768B69BB7B592DCA21149DDFBD9B2A376E650067D250D64CA0A3622D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.amm.v1.MsgSwapExactOut",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 15,
+      "codespace": "amm",
+      "log": "token_out: invalid amount",
+      "hash": "B0BEC50F8ACFAEB9AB1BF00993ACE5784ABC995A6635BBC16507BFC3B3C5EA02"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgBridgeAttestation",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "D7AFCE8D63BB082CE1AB3E84794C70906494140C0739F9DFCB94545771BFC951"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgBridgeDeposit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 16,
+      "codespace": "bridge",
+      "log": "asset cannot be empty: asset not supported on this chain",
+      "hash": "81F62BE2599D04C1C9CDBD54B79C4EE4577624C4DB188ACBFA65DAEAE1C63456"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgBridgeWithdraw",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 16,
+      "codespace": "bridge",
+      "log": "asset cannot be empty: asset not supported on this chain",
+      "hash": "5FA627500301D71109BA4DD2017DF436C6D032ADFD4809243EA1FD987C113BB9"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgRegisterBridgeValidator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "D04C546030951C34726145EC57B07BE84DC5393471D406B80A52018B4F373144"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgSetVerifierBootstrap",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "F3C6A55C0CD81B30AB74441D7F3C71078DAE40CED9E1749301B734BD1E21EB1A"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgUpdateChainConfig",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B3E2B05F9A1A7E354068176584D7FC18046CB120390B79C09815FBC333E727F8"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgUpdateCircuitBreakerLimits",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "max_single_transfer: cannot parse stored amount: \"\": invalid bridge amount [cosmossdk.io/errors@v1.0.2/errors.go:155]",
+      "hash": "607C79AF6262384CA3CA43859F1B24835AE0E42A96B062CECEC3FC3CD4DE74BE"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.bridge.v1.MsgUpdateEthLightClient",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "5E4464A8566798E5A63BAFEAEEB1A32CE44CB2D3E496C46F236CCFBD8409CA07"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.crossvm.v1.MsgCrossVMCall",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 7,
+      "codespace": "crossvm",
+      "log": "invalid source VM: : unsupported VM type",
+      "hash": "7AAE8CCDE5F737A7E2D3B34E3B117938AFFFAAFDE6DBFC2B65657881A74FF847"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.crossvm.v1.MsgProcessQueue",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "06299AB9B09B94C044909D8814D2A250B84B049C85ABBA83DB912C4FA2BA8B55"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.crossvm.v1.MsgUpdateParams",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "max message size must be positive",
+      "hash": "9F28B054A5827794DF6C4CE8C5D5B5AABC1DF6B9B34CCDA3FEE690A2CDB193BB"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.license.v1.MsgGrantLicense",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "invalid feature ID: x",
+      "hash": "49BCE33F79A90A16E0B0521CB383B438D0ECD95EBBDFA7DA124FC1768275FB8E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.license.v1.MsgResumeLicense",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D3F93171BDE9646D6066B0D25708E816752D444D77C924F167069F8C0E70AF29"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.license.v1.MsgRevokeLicense",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "4ED31811D2559766818599FC640D536855C2BE24AC0363F29E78EC6672CBF193"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.license.v1.MsgSuspendLicense",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "73FA6F012B9E051006025609E9A1E3EE546C1F430E7F96E603C8A6F8762F2CA0"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.license.v1.MsgUpdateAuthority",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "8226F67D1E83E7271842C2FDE44C37CAC802AB3EF951A378053BAA3EC05BEF28"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.lightnode.v1.MsgClaimLightNodeRewards",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "80542812B2AA93A34CA1AFD929ADFDACCA7A0B0EB8FCD91785B0359E77888B25"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.lightnode.v1.MsgDeregisterLightNode",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "6F16B87AEA571AA5DF5380CD9708E77CEF815C89E629ED906914FD05FC3B0A56"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.lightnode.v1.MsgHeartbeat",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "12992D5AE31A329919C9DDABEF8BA56607979E943A4904ADBCB4BF9817A663B8"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.lightnode.v1.MsgRegisterLightNode",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "lightnode",
+      "log": "got \"x\": invalid light node type",
+      "hash": "EE945C24D790269311F22C99A561A40CDDA14ADF9068B83EE261A1AC38F1775E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgAnchorState",
+      "cls": "NOT_SENT",
+      "log": "invalid uint32: undefined"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgChallengeAnchor",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "fraud_proof cannot be empty",
+      "hash": "5B54466BAECCB937ED03CB0B15BEC561258EEBC50FFB98410591644D62327316"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgRegisterPaychain",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "settlement_interval_blocks must be > 0",
+      "hash": "6503B8FBD2C681CDC176F6155BAF0EBF4AD744487F4B5F53EFD4D330986B0161"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgRegisterSidechain",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "min_validators must be > 0",
+      "hash": "B9570CF56F899B9937761C0412579F582A0CB4639052624D282F72415A696C02"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgRouteTransaction",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "transaction_payload cannot be empty",
+      "hash": "17C0BDC7EF982B1B3C57FBBE0D85A49796F209C3ED84778745B595E55CF1DFCF"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgUpdateLayerStatus",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "new_status cannot be empty",
+      "hash": "8AA4FA7376B8CB044C3A423836B8CAAE946D8854FBAC40D0DE381C367BAF87F8"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.multilayer.v1.MsgUpdateParams",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 8,
+      "codespace": "multilayer",
+      "log": "min_anchor_interval must be > 0: invalid state anchor",
+      "hash": "14FDE21F878CF66C237FF2A71E994FDBA9DC2A4B09A95983ECECDE73EE4A6A4B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgAuthorizeEVMDelegation",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "192F45A211920FDCDA61242FF8EF7F02383A349C60730434B3A9EACC9D984E2A"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgClearEVMDelegation",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FE41F76880D0639C7A3E18A8B4400A182CE3804F0360F6C196265D341101A852"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgCloseEVMWindow",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "6FDA203BCA419CF070009325BB15CCA0D6D20ED8BC108BC215AD6926E17845C5"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgDeprecateAlgorithm",
+      "cls": "REFUSED_PQ",
+      "checkCode": 10,
+      "codespace": "pqc",
+      "log": "cannot migrate an algorithm to itself: invalid or unsupported PQC algorithm",
+      "hash": "45F212B5FE05C5B4A7DEA74EB9EF0701FBFFA1CECAA34C993AAF0ED1C03F72BF"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgDisableAlgorithm",
+      "cls": "REFUSED_PQ",
+      "checkCode": 10,
+      "codespace": "pqc",
+      "log": "reason is required for emergency disable: invalid or unsupported PQC algorithm",
+      "hash": "AF3D7AB17F5942476628144C00A2391A03BD037CE0B5F7A3AAC7B8F8C358265D"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgMigratePQCKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "old_public_key is required: invalid PQC key length",
+      "hash": "10D6D66E5D701610FA86A2310BDDDBD7327A8E02901A68BEF4BAC53FDF77B282"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgOpenEVMWindow",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0A3F6D9DE2B68524765F332F9D69B52619BCE37AA608471362ECB10E0BF57463"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgRegisterKEMKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 10,
+      "codespace": "pqc",
+      "log": "dilithium5 is a signature algorithm, not a key-encapsulation mechanism; signature keys are registered with register-key-v2: invalid or unsup",
+      "hash": "851AB2AADDD3D0C5A8E201A5644C778E7D8BD8C5A402F96784280FDEF3ADC24B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgRegisterPQCKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "dilithium pubkey required for hybrid or pqc_only key type: invalid PQC key length",
+      "hash": "CD38F1F802F9650A78FEB6C0CF892E16A4F773249DD52931FEB198683C56F8D2"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgRegisterPQCKeyV2",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "public_key required for hybrid or pqc_only key type: invalid PQC key length",
+      "hash": "AD0352DC706229C48674C7BCC0CFEF7F37BE9F2648C3E73E38047EE3181B0F5B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgRemoveKEMKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 234,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key; KEM key messages need its hybrid signature: PQC key maintenance",
+      "hash": "361DAAECC22AC9F73707EF4AC3D669FF6F36A3EB17A4BE37DD60F5DFD4467F2B"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.pqc.v1.MsgRotatePQCKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "old_public_key is required: invalid PQC key length",
+      "hash": "AD00597A3D8E98DCEFB9F4A480035FBD33740BF18D961CE935E1ED7064D98771"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgChallengeBatch",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "7C5AF30393C0C0A3253B760666939B28D45D2511BA13A5FDD0321DBED5CCAFCB"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgCreateRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "BFBEA553BA2BDBF55B27E9948DD1A235BA8AD04C983D999D1F3854AEEA007077"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgExecuteWithdrawal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "6FB9A97964F828B597209FECC3AF89BEE1DD97ADD098E4A853DA6789D443CCB5"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgPauseRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "24FF1691E7EFE739F3BB44D8B55BAE59F5C148E4663A079DF3275BCE6399E5A6"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgResolveChallenge",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "8D43C989977C8D5483C363F0D17F612E1EE38C0E8FED5B11D5CFA338504ED630"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgResumeRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "79216B3ED048B0D41D066014B47A7216F3EB8163FCB5EB79374787F783E481F8"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgStopRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "EE628A782C180FF3D6F754E96F472F73CC6B4CCA5AEA0F8803B1FEC032BC56B0"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgSubmitBatch",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "state_root cannot be empty",
+      "hash": "4668F86827A60A2E1D3EBA9DB721EA94D01C11F57D9CD5A723F4A66B2941C6CC"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rdk.v1.MsgUpdateParams",
+      "cls": "NOT_SENT",
+      "log": "Cannot convert qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp to a BigInt"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rlconsensus.v1.MsgResumeAgent",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "EF39E7F13F4FE1391FBC4A5C870192AABAA03940CC9FF8FA553D9AA5E9A4F187"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rlconsensus.v1.MsgSetAgentMode",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "7F22B74E7B9AF825C08E98D7EDBE9FDAC8C7D5DD8A172CE36179DE49C3281B89"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rlconsensus.v1.MsgUpdatePolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "7385E5AC21926A6751CC598B85D9D575A13CC148A4E1DD98771BD61EDB8E9CB3"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.rlconsensus.v1.MsgUpdateRewardWeights",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 9,
+      "codespace": "rlconsensus",
+      "log": "invalid weights: invalid throughput weight: decimal string cannot be empty: reward weights must sum to 1.0",
+      "hash": "9FA0C81CEC1ABED6D86CF598B127489A90D67FF10BFF6E5A120A91565C115BF9"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.stakingtier.v1.MsgClaimBonus",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "EFF83112D66C69A3C0FA99ED0058802AD0A987BC109AA1DEE71FFB18ABD0E6D0"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.stakingtier.v1.MsgLockDelegation",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "invalid validator address: empty address string is not allowed",
+      "hash": "A85BCA0E7D269E4AD12193541132FFD64CAA267126A745A64CFB06544F97FD71"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.stakingtier.v1.MsgUnlockEarly",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "A90C24DBA9D2A693F608EB14E0190E94A55AEF2F4916508DA3DEC645B9E6904E"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.stakingtier.v1.MsgUpdateParams",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "lock_tiers must offer at least one term",
+      "hash": "C5FFA4BF8BB3C8EFB2EB1958880995F30A69B1AD8476BADC2261D13FAF6D6A73"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.svm.v1.MsgCreateAccount",
+      "cls": "NOT_SENT",
+      "log": "invalid uint32: undefined"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.svm.v1.MsgDeployProgram",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "svm",
+      "log": "bytecode cannot be empty: invalid BPF bytecode",
+      "hash": "F252ADAD028C66A888E2A6622FB79DDEBD8DD2D3A11AEA0E2B1777DE45DC5CEB"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.svm.v1.MsgExecuteProgram",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "9217246E12804AA599C29BE4CD42CDFD25E4BB6000825C2212F371DE1866ACDC"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.svm.v1.MsgRegisterSVMPQCKey",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 12,
+      "codespace": "svm",
+      "log": "SVM address cannot be zero: invalid SVM address",
+      "hash": "F25901ACE76553DFE5436D0D26AAD6A21AB6A9494E13790F730C8620FEE37BB6"
+    },
+    {
+      "sweep": "C1 plain",
+      "name": "G /qorechain.svm.v1.MsgUpdateParams",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "DE3497531B70B4F23A0D43338D7974F67986546B2B1285F85C64A62DF8436CB2"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H1 bank send 1 uqor to attacker address",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B9533040829E2B8EE0062BC0CFAA54CAD415CC8C6EB9E767AAE46DE227A53220"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H2 bank send, whole fee-grant-sized amount",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FC87A022EB0CC58A2082827273E0D2471CDA3A0616A914DE8C8F726E8497DDB9"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H3 open EVM window (unscoped)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0077245AB07484A864D7BF7A7B810219C9DC0A64D77E4A5D8350ADCD38CC79ED"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H4 open EVM window targeting our vault",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "34BC4179C937934AE3465BBD0D1453D2E606FE46074239CBF0BA1DD9C0209FC1"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H5 register attacker's PQ key (classical-only)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 234,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key; register and migrate need its hybrid signature: PQC key mainten",
+      "hash": "99DDDF566A369916DA95AE5D151A5FD87EAF0090E8CE3A1C29B5D453F4AFE02E"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H6 cross-VM call into hot vault heartbeat (junk)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FA2DBA730F2C5AF8504347E79F5CA83108179436ACAB8488C34A67A48B1B3E32"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H7 cross-VM call into hot vault withdraw (junk)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "316C64A37AEC7431B07B2F74F9BA3AA3FE29EADCCF3023CBCF840AD7E034CE63"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H8 cross-VM call into cold vault withdraw-shaped payload",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "3BE8641413A9E0ED458886A4ED2E97FEE6C76DC1A0CF73C5DDF5401636F3BB5D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H9 authz grant everything to attacker",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "C065CDFA3B7548C47B785A7326812F500177B0031A75F62BD80DA0F466EE2299"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H10 feegrant from drill to attacker",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "62BD937AD19CCFCBA7B8BF3F656F8634D0E8595065DC47183AEDB710D0804642"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H11 delegate to a validator",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "33D80C7B1A0D5458003AC2FEC1EF9E7B78B2D97C21ABA633BEDF45D193602BAE"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H12 IBC transfer",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "F06D1BE6655917965F39E16A443EFAF266147399ADD7A0894BE927112971F93D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H13 authorize EVM delegation (EIP-7702 style)",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "9AF3B169E90F33361D3C68F9E73EAC55DD390A7997A9D2494F714636B4A9506D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "H14 close EVM window",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0ADE4862D3B87695F004724D099AB8CDF268E57BA0C626CA08BEF96FAB691911"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.authz.v1beta1.MsgExec",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "12B4F388FDA5157C296EBCE4DC290392B836C7D8BE42A6BF1024EAA9FA3DA437"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.authz.v1beta1.MsgGrant",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "sdk",
+      "log": "authorization is nil: invalid type: unauthorized",
+      "hash": "CF003A0294E19133087D530D1DDDA3B6CE68787015C1F5398C0CEF666CC1E11A"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.authz.v1beta1.MsgRevoke",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B0FBADCB2A0ECD5B6744CE74DC1EE308E029DAEFF9869D0A78B5C516AD9AD739"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.bank.v1beta1.MsgMultiSend",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "sdk",
+      "log": "wrong number of signers; expected 0, got 1: unauthorized",
+      "hash": "F803647AE9179094A6090A618B97F24AE5BF4781A0081438DBAE6D9A1CC07523"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.bank.v1beta1.MsgSend",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B702A14483B89B4DB210F0E90F971C6E69821B2B142890A1E78C3FFFC4D51094"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.distribution.v1beta1.MsgFundCommunityPool",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E056AF00F67D1E507A2805783D526AEE24BE6DF2066505CBBC9BCE7B4D02EA17"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.distribution.v1beta1.MsgSetWithdrawAddress",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "4C28466CCD4D81F494E5C7BE3660DAB9EC72BE5EB08A57D8A7FD587C299D5CA5"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.distribution.v1beta1.MsgWithdrawDelegatorReward",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0866AB392FEDC9FC5EB9C58366DD8852D952B6CD48A98229FAFF79CE7CB97F39"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.distribution.v1beta1.MsgWithdrawValidatorCommission",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "B7A7D1F2E8C533A2A51E8F3BF1325BA69A6C9AA37A668DEBA36F742B4149033D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.feegrant.v1beta1.MsgGrantAllowance",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "8DEC05A17DF6609773CAFEC0FDC01E963ACE707E940BAB4BC718395E001BBC65"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.feegrant.v1beta1.MsgRevokeAllowance",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "98DA626CF610B9A7C57A15A0C91458FB4613F6BD321B8DB74E53DDF26618EAB3"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1.MsgDeposit",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FB3A7A16FAAB645904CECC7A30D568087B4559759C3902E723150566AD97F176"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1.MsgSubmitProposal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B871958674FF6D1FCD57A17EB7912A64067CEF7F83BECD6AF0BA186682133DA8"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1.MsgUpdateParams",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "A5F087C65EA99E3F276C60FAF71B74E00AE6A7022E97B1A5A0CEF0FB0B58D6DF"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1.MsgVote",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "7219EC741FEE61ADD8A76FA95DC2F582D46F43916EDF6D61F72E6FA9976AC1BA"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1.MsgVoteWeighted",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "6E93D87A6031B4477F8E3F62DB48543C5E46D610A8FB51BDC00E0A1DBB4055AB"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1beta1.MsgDeposit",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "CFDAE9573606D94718B09D26BFB5A3E4CD5B1B6DDFA3BC0E0DF5EBAD57768F46"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1beta1.MsgSubmitProposal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "BB204F2E0B2CD4BBE006E77DEE54E85410ADF472AB16560D00F31872ED5DA768"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1beta1.MsgVote",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "88C16272512B4549EA700EC813938726BCCC05860DEBDF1998588B1E3B76708D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.gov.v1beta1.MsgVoteWeighted",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "22769646514C76A69C4694FB6127D0AC726CF9A0A861F044781D808FA60DA3DF"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgCreateGroup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "9D53EFB426F9D7F656CD268A804231B22A89FBC1E8ADE5E50264E9D172668973"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgCreateGroupPolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FA65A9E456B0C4DBDAEEAD30347107ED67D5314A6AE8D1407307779DFD49338F"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgCreateGroupWithPolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "1CB373A05D59D76CF84D8C9AE3BF29DCC0BE2D3C54C56D7CFC2AA502A99D7A91"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgExec",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "D4CFB58F91B6A11D2BCED9ECFBDBAA7B7C3190B992BDBD141A642DE5C24C9958"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgLeaveGroup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "F39057D5F18E6FE9DA79D0EDB2A9D9D534D01E46635AFBB3B048BB8E7DE0073F"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgSubmitProposal",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "sdk",
+      "log": "wrong number of signers; expected 0, got 1: unauthorized",
+      "hash": "D9E55550FB8F18B791883F3CE0761A377DB9AF3F9AC9E09DCAFFB5830FE03FBC"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupAdmin",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "3DE85EC53D2A22165D8A58035FC3FFFF449780981EB119F5689E8024B188B0DB"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupMembers",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "5E5895B4794C34F45B10F5DE368097E0620425FF9B9E8CBD36B690517E0E49EF"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupMetadata",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "711728C4A000C90171E97D2347D7479A8842ACB1D65BAB2D922148CE9FCCEBBF"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupPolicyAdmin",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "18C05FFB361D5E3BA838E6A95CADCC44CFF5929E3111AB01F2D811C73FF69D57"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupPolicyDecisionPolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "90BE7C96F2BA5E4D3974D5612A01F92755D87D3D76FBD3FACFAF58668B473FC1"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgUpdateGroupPolicyMetadata",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "2CE500EDB6564FAA868217F31A6374A948532F5215DC932FFCDF57D51C846A0A"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgVote",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E2860EF5F1FC85676CD5ED69C360651871C96ADD90824143855C924A75246BB1"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.group.v1.MsgWithdrawProposal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "1CD39217EE51151703CB50E429B51E6C18F154203A0065461E2DD4939537CC95"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.staking.v1beta1.MsgBeginRedelegate",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "4FE62010FF19A0927A22FA1D7E53C461D1D8B052DB04AC01F6D85D4A3994C398"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.staking.v1beta1.MsgCancelUnbondingDelegation",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "F59547592DAD879D7A0ECD987C21C83ED89D98720E065594D743884A48F147A4"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.staking.v1beta1.MsgCreateValidator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "6CF564AA32CC6A8B960D48048E9AD9901681C18AF17CBFD98F86D2A6A1C08596"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.staking.v1beta1.MsgDelegate",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "81E8DA31EB441485F2BA527EC12CBE9E213E4E7594F23EE2229B54B34C1BDEFC"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.staking.v1beta1.MsgEditValidator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "68D99B9316DD794E9BEBCDFD4A3A89D41D8EDB74232F2EF767C1534935904B6B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.staking.v1beta1.MsgUndelegate",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "A5C07E3E6B46EFABFD96EB3126B2469A3005D5E8AE22B6D4F6EB3EDDE43AE9FE"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /cosmos.vesting.v1beta1.MsgCreateVestingAccount",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "B68A7B7DCDE940B39B10DDA54382FCB10A9ECDE4F8469D4FA5C1D5FF0C4B5C22"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.applications.transfer.v1.MsgTransfer",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid source port ID x: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "D931E5B6AABBA1F0DBE8B38A24DDC85EADE7DE63F6C6F56C77FC88739DF1E7BE"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgAcknowledgement",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty acknowledgement proof: invalid proof",
+      "hash": "0F26DE5CB7764B033E2AD6F7254C4680DDFD58662080A53AB580AD8A36A5ECF7"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgChannelCloseConfirm",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "997991060B8D7A3CD75E0A1578C4A0654150BCCDDC9B9927F6F2DEC9293D1D5D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgChannelCloseInit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "C349D5FF7C79AAB34F90DE7615F175349FE311EB5BB1FE31CAC6A488A9450DE5"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenAck",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "545A9EB3AA5342AB9314179B10EEA5D4AE9297D8A30AE055C17C4856058A4F57"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenConfirm",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "F3061314208606817A65ECB0987EB4D5E0B93FE489C960003B6C13C156B61502"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenInit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "0F8BBC27E3E49EA9BC160CECDE4070BFF4EBE12E4980CBD0D161FE396EAEA77C"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgChannelOpenTry",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid port ID: identifier x has invalid length: 1, must be between 2-128 characters: invalid identifier",
+      "hash": "B3D3E63B40B13057775A8B187D9CFA007923006A76BF0BD5CE96F91C530A1427"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgRecvPacket",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty commitment proof: invalid proof",
+      "hash": "0C4B7711CF099D4D56ACE18B0FB190A3C9125E4664EBF972130815457A257ACE"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgTimeout",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty unreceived proof: invalid proof",
+      "hash": "ED378D3E6460CC8AF35CEAC0ABB015C8244FAC76A21CF5AD9A0C802E35FC0A84"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.channel.v1.MsgTimeoutOnClose",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "commitment",
+      "log": "cannot submit an empty unreceived proof: invalid proof",
+      "hash": "E1E248FF3653348A03ABEC9DC93264E47AF9364A1867B9D5AF05278D5820B026"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.client.v1.MsgCreateClient",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "E9C73A730254884E9EAB7CA86F3007A6459424528AD79FB5623C6FD6FCFCEC0E"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.client.v1.MsgSubmitMisbehaviour",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "99884B9AF683558DA0E69AD68D9463C5D54F773286313CB9B5AD7FBC7B7DCBA7"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.client.v1.MsgUpdateClient",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "07570E6F7C83DCE17DC469FDF4860E0CBF02A0B54132740213BF80E9F6CE5DC1"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.client.v1.MsgUpgradeClient",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 14,
+      "codespace": "ibc",
+      "log": "protobuf Any message cannot be nil: failed unpacking protobuf message from Any",
+      "hash": "0D6B6DF7DA5ED67AEC0E78F09DBADD59BBFB9DA0E5DDCA76E6365E5AC0B7B171"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenAck",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 11,
+      "codespace": "connection",
+      "log": "invalid connection identifier",
+      "hash": "4D9496574E03D928832B57DA876ED98DEDA0EA4511D2A75B1A57C879F2DF9459"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenConfirm",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 11,
+      "codespace": "connection",
+      "log": "invalid connection identifier",
+      "hash": "DE3BD3A1D304BAFE1B875377BC9DCBD9115AA3EE4E9E9DC4808BA3A4908E9BE5"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenInit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid client ID: identifier x has invalid length: 1, must be between 4-64 characters: invalid identifier",
+      "hash": "71DBCE1FA6603D0BE8C68782819298265F80570C0D96E5C9DC42BFEEA3BB945E"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /ibc.core.connection.v1.MsgConnectionOpenTry",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 2,
+      "codespace": "host",
+      "log": "invalid client ID: identifier x has invalid length: 1, must be between 4-64 characters: invalid identifier",
+      "hash": "C517D9DD1740ECED404039432293DE4435D004A01EB80591AB9CCEE62B61DBF5"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgCreateAbstractAccount",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "invalid account type: x",
+      "hash": "642930929C24A84C809710DF34ED0320DC6CB1DB2596B309317840B77D19A5E4"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgExecuteCosmos",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FE17DF14BC4DCBDEE7BB3D6665C46636DA5137DD2AC9E562A17483A3D33C7541"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgExecuteEVM",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "55E09A014214F06393596E668F355EBEBFAA492C21F9842814A0463F999D4A75"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgRegisterAuthenticator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "unsupported authenticator scheme \"\"",
+      "hash": "897D7EAAE044D493460C64AB6E2776CE5F6828E03A0C2602C1581F9E3B6A8EB4"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgRevokeAuthenticator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "scheme and pubkey are required",
+      "hash": "BAB9D136CD30D11474C282D696A67EE4144EF80AD638543939039BC9A211E978"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgUpdateConfig",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "max session keys must be positive",
+      "hash": "504C2A02FB6EF2ED147507ECBA3F1DCCFF6FD9C11F297CF6ED385EECD3654ED7"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.abstractaccount.v1.MsgUpdateSpendingRules",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E9723D6DCEAA24B93C591EA58122CF9229D946ADEF6AFFBD7719DDF27C5BE602"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgAddLiquidity",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 16,
+      "codespace": "amm",
+      "log": "tokenA and tokenB must differ",
+      "hash": "A32D30E53912C04DE81C6EDC260E522C3A5E761C978EB756A6A951B971DB8B6F"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgCreatePool",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 8,
+      "codespace": "amm",
+      "log": "unknown pool_type \"x\": invalid pool type",
+      "hash": "11E83D89A9DDAB929CC931309C37E34FB3A20204707012B7EFAE34FC407CAE45"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgPausePool",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "178F19C4849B786A02FA9D95B3A238A9A5E7D931C83A25417760B4362A887A44"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgRemoveLiquidity",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "34A457D6A43A8E4568C6724109B9F1A8E67B1D0033F370AADCB16794AF97C9F0"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgResumePool",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "5C5B6DC217DBE2112A558A95AFCA33C259D16246266071046905B37684155DA1"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgSwapExactIn",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 15,
+      "codespace": "amm",
+      "log": "token_in: invalid amount",
+      "hash": "E9769AC12749C391B26580A691A91B7776C8B6DA28F69AA43EA5E0CB28C0D602"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.amm.v1.MsgSwapExactOut",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 15,
+      "codespace": "amm",
+      "log": "token_out: invalid amount",
+      "hash": "EDB2F349A73898EBE9E118636170B0F263E72B39795C6CC241C286D6AD30D5C1"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgBridgeAttestation",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "A9AA341700D7938F9FE97508A33E7DB646EDB9D9C5F4E2CE93BA6F2BB1C5B26D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgBridgeDeposit",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 16,
+      "codespace": "bridge",
+      "log": "asset cannot be empty: asset not supported on this chain",
+      "hash": "CB2B8AC5E237CA4A06DA462184D81656336B2D4CAF2D7F9D90970A0E9E4A0019"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgBridgeWithdraw",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 16,
+      "codespace": "bridge",
+      "log": "asset cannot be empty: asset not supported on this chain",
+      "hash": "1947E4925B2D852D2D96181AE1863A20AC060C5E61A50DC2977428DB84EE2EC8"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgRegisterBridgeValidator",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "empty address string is not allowed",
+      "hash": "CCAD6AC3B1BD8A0DD6ED30A52558E24D595472F9E1C7931A5D06C5470E6B285B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgSetVerifierBootstrap",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "EAACFF76959DE884D2DBE092BC6D37E182648DCC58784D2210185597FEF40822"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgUpdateChainConfig",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "1D535815D675F985DB29318498020AFB932FE3E55E8F578DF0FCD80FF60E8E14"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgUpdateCircuitBreakerLimits",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "max_single_transfer: cannot parse stored amount: \"\": invalid bridge amount [cosmossdk.io/errors@v1.0.2/errors.go:155]",
+      "hash": "5078EEE24C3580B7A3B2248E216091F74FF1520286B0D87CC0D3DBC4F5A30707"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.bridge.v1.MsgUpdateEthLightClient",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "92AEFC835030293E3F98EACEDA8F18B78D75FF05C2348DCBD95D2785DA9ABE9B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.crossvm.v1.MsgCrossVMCall",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 7,
+      "codespace": "crossvm",
+      "log": "invalid source VM: : unsupported VM type",
+      "hash": "0667B100069A8E33E1D7A2080F3F919DB7A728B14AAB9991C5BC239210A0F9C3"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.crossvm.v1.MsgProcessQueue",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "EB80BF0DB98A52C3320142EB805C30BEB0A0F32911282FF4625160CF47B6314C"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.crossvm.v1.MsgUpdateParams",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "max message size must be positive",
+      "hash": "5D394F4E18CB83AFA8086C2B26CA73BF7942FBD1901EB51F292831D9E8E76C88"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.license.v1.MsgGrantLicense",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "invalid feature ID: x",
+      "hash": "F02483A66C3DA8AEF7991325E962F0E3FDF13C00F070ED1B15B7DE9FC9C1277F"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.license.v1.MsgResumeLicense",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "55751C6EEF32423F468A718AE711E2608A573A0CFCB3455D8F34CC1E023E671A"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.license.v1.MsgRevokeLicense",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "750CA421F08FAF5F4C38932EE5201E63AA03AA252E234F045578C57D3F772715"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.license.v1.MsgSuspendLicense",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "F0259C08FCC459487B0EE7FA9D1EEB442C1FD92B7209524D282315233E96B7B0"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.license.v1.MsgUpdateAuthority",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "37CD4AEE7084DD4EF4F2ECCE3C1BFEFEB40CE2559D0571A24CFB6A3D470E2437"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.lightnode.v1.MsgClaimLightNodeRewards",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "AFC4B2207FB1BF1F29E7B0B3383CC90F9D9AC028AEA0D9CDBD89B74419BB8BAF"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.lightnode.v1.MsgDeregisterLightNode",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "F138502F137D4D36444548B7F9CAFEEAF1460390F41EF44D65A736FB0D9646BE"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.lightnode.v1.MsgHeartbeat",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "64DEC2AB25046A4AEEE529840B13A2AC33CFAB35B204242E4FE53F5DD04D6828"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.lightnode.v1.MsgRegisterLightNode",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "lightnode",
+      "log": "got \"x\": invalid light node type",
+      "hash": "E575348F45E3D9A8822030DA18FB88DD949F11876997F758D53C33617261F65C"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgAnchorState",
+      "cls": "NOT_SENT",
+      "log": "invalid uint32: undefined"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgChallengeAnchor",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "fraud_proof cannot be empty",
+      "hash": "4221DD1C65F909B440B7215388BBFF5D6937481708CAC2A79DD951219EFDC1FF"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgRegisterPaychain",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "settlement_interval_blocks must be > 0",
+      "hash": "4881616235D13E65FDB72B3996864DBB865A9D79DCB50AF6DCDE1721E1B8164E"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgRegisterSidechain",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "min_validators must be > 0",
+      "hash": "2D8B7120EA1BA422FAF46687AFD860815AA9CE031B0859D4095015561E62F06A"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgRouteTransaction",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "transaction_payload cannot be empty",
+      "hash": "5672514463EB6A6E401E7E89AB797D6169012152B8E80C17B1724DE249822C72"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgUpdateLayerStatus",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "new_status cannot be empty",
+      "hash": "2505B5C9577D59B042326E1834C6144B0641255F02C56A5684FD65E4E314536B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.multilayer.v1.MsgUpdateParams",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 8,
+      "codespace": "multilayer",
+      "log": "min_anchor_interval must be > 0: invalid state anchor",
+      "hash": "C645A2C96D6F8AB4BABEDB3CDB074B83337D3A2F0E22B1B4FEBD2C220724442B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgAuthorizeEVMDelegation",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "E716017E6F2B33B6D44A66CE823FFEDA0E64B14598A94F11FA74D14483957096"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgClearEVMDelegation",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D53BB2BA74DD5FD8641646427D66154D048A42851DCBD3C75FF6B988102DC213"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgCloseEVMWindow",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "0ADE4862D3B87695F004724D099AB8CDF268E57BA0C626CA08BEF96FAB691911"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgDeprecateAlgorithm",
+      "cls": "REFUSED_PQ",
+      "checkCode": 10,
+      "codespace": "pqc",
+      "log": "cannot migrate an algorithm to itself: invalid or unsupported PQC algorithm",
+      "hash": "F54F7051BCDD3C80014DAC264260CD62D52085D8F3239D06E7C733FF99B0BEE3"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgDisableAlgorithm",
+      "cls": "REFUSED_PQ",
+      "checkCode": 10,
+      "codespace": "pqc",
+      "log": "reason is required for emergency disable: invalid or unsupported PQC algorithm",
+      "hash": "D5CF6BDD8F8F2F8B25E0B5FD582FF3A1151B1FE36B443E287FFA912FC5AB2173"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgMigratePQCKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "old_public_key is required: invalid PQC key length",
+      "hash": "5C1AAFAD0AB1305F595391B30F6B962ADEF4090AFA355054A8957D05E585BD2D"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgOpenEVMWindow",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "C86C1E7DA2B8C466B930F57CE6E6173C57A57FAE8C631A50A4994FBBB7F7DB3C"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgRegisterKEMKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 10,
+      "codespace": "pqc",
+      "log": "dilithium5 is a signature algorithm, not a key-encapsulation mechanism; signature keys are registered with register-key-v2: invalid or unsup",
+      "hash": "D342E431538DBC8C88694C3FE538669CC009BEBCEAD68401FF6CA2E0D60C6019"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgRegisterPQCKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "dilithium pubkey required for hybrid or pqc_only key type: invalid PQC key length",
+      "hash": "958063C729DA8EED566AB93F4CCCE3645A86F0EE43C9F87B98EEE7E0CC32FFF7"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgRegisterPQCKeyV2",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "public_key required for hybrid or pqc_only key type: invalid PQC key length",
+      "hash": "BCB344EDF0BFE19383EE5429D3C25C3F285B02EEA1CD84114361707BEB47F771"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgRemoveKEMKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 234,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key; KEM key messages need its hybrid signature: PQC key maintenance",
+      "hash": "6DD66FA2BA5DF60B6486DB3EB968BA00144446D22E22E8F4E0343C52094761CC"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.pqc.v1.MsgRotatePQCKey",
+      "cls": "REFUSED_PQ",
+      "checkCode": 3,
+      "codespace": "pqc",
+      "log": "old_public_key is required: invalid PQC key length",
+      "hash": "2BDE1A6655006DFC09C62D073AF215F0AB7E116155A3A761B3D1D739A54E0BD3"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgChallengeBatch",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "76CE6DCF88C799CF0729DFE6E2B220888815349575292C096B18CC6D9868873B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgCreateRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "D535FCA21E1BDBBEF069721DFD002DCC6B147B506E5AE4AF20EB133729214D23"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgExecuteWithdrawal",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "58E4CE9161DC19FA634C9567F774CEBB3F490A3A865D63BB10CCF310ECD7390E"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgPauseRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "30080E011B4139659A5D81D5C89AA9EE959FD76BABCAA763BEDAEE10BBE5FA37"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgResolveChallenge",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "EC0DE9FC81638414223669FC18F4FB73D72B28CF619675E3B9636654B08B6D17"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgResumeRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "734D3AA35D2584FE083EC5F964FFB669AE254D1EAEEDCE2660FC7E9E9B1A92C6"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgStopRollup",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "3F75230170DA8F7CCB15443CF3DC5B3AB368CF84AEB74FB00CC709464C8CC017"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgSubmitBatch",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "state_root cannot be empty",
+      "hash": "B8B45D61281236C07A43EE0F608D565C268AAC71CCBBE134F28210363694A13B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rdk.v1.MsgUpdateParams",
+      "cls": "NOT_SENT",
+      "log": "Cannot convert qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp to a BigInt"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rlconsensus.v1.MsgResumeAgent",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "AAB2BE9759FE7E68F5F3575EDF90251C8866AF58DDAA4E7FAE3853C2F1FF5BAB"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rlconsensus.v1.MsgSetAgentMode",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "92A972152CAF9780F891B0C368424BC7A889DEEED1FC18D230C07BED8B4A1910"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rlconsensus.v1.MsgUpdatePolicy",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "FBB5307CB2BE5409A82131CB7A87A2163558F1139F5BE746B0F19E37B207B915"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.rlconsensus.v1.MsgUpdateRewardWeights",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 9,
+      "codespace": "rlconsensus",
+      "log": "invalid weights: invalid throughput weight: decimal string cannot be empty: reward weights must sum to 1.0",
+      "hash": "E8D00809BCA834C47CCBA76C465B2081DEE5AC24358001DC5D33A7C1C7EE2C87"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.stakingtier.v1.MsgClaimBonus",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "521A45DB4B52CAC2F30107FECE26217F2E258EB52CF61F131A92E89118FBE86A"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.stakingtier.v1.MsgLockDelegation",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "invalid validator address: empty address string is not allowed",
+      "hash": "2685ECA9DCC9ED8C813DD365C74BE30CCDB5B1C872CEA63B702101A5C7D2657B"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.stakingtier.v1.MsgUnlockEarly",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "89A6DB7A6966866B9EE36F31907732089AFEEDCC57A8605492AC320A352E5FB8"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.stakingtier.v1.MsgUpdateParams",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 1,
+      "codespace": "undefined",
+      "log": "lock_tiers must offer at least one term",
+      "hash": "C0813BA070228FF96747B2B690FC8761BBCD97B279C9393D0D0F2ED4C7C29D88"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.svm.v1.MsgCreateAccount",
+      "cls": "NOT_SENT",
+      "log": "invalid uint32: undefined"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.svm.v1.MsgDeployProgram",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 4,
+      "codespace": "svm",
+      "log": "bytecode cannot be empty: invalid BPF bytecode",
+      "hash": "D93859ADE88ECE52B4ABADBB87D31DF5D6AA3445AA85F598C0FC6F01BFEAEB6C"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.svm.v1.MsgExecuteProgram",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "23DAF9B3C72CFB92A180ADA01E089F1577C543E5F12ECFD2A730D99FE000C0A8"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.svm.v1.MsgRegisterSVMPQCKey",
+      "cls": "REFUSED_OTHER",
+      "checkCode": 12,
+      "codespace": "svm",
+      "log": "SVM address cannot be zero: invalid SVM address",
+      "hash": "D45771743CF3FA1A98D7BB520951DACAA1C617213504AB5EB4C76F82B2CBD8C0"
+    },
+    {
+      "sweep": "C2 fee-granted",
+      "name": "G /qorechain.svm.v1.MsgUpdateParams",
+      "cls": "REFUSED_PQ",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp has a registered PQC key and must include the hybrid signature extension (hybrid mode: re",
+      "hash": "6A90D0BE5FC7DC90EE6041D6CA03BE288E27F1E62256808F5D114FD990A62AFE"
+    }
+  ]
+}

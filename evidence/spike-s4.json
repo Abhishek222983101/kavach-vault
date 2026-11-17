@@ -1,0 +1,108 @@
+{
+  "at": "2026-11-16T22:27:02.257Z",
+  "rpc": "https://evm-testnet.qore.host",
+  "rows": [
+    {
+      "name": "valid 416-byte 0xFF-prefixed message",
+      "got": true,
+      "want": true,
+      "ok": true
+    },
+    {
+      "name": "hedged signature accepted",
+      "got": true,
+      "want": true,
+      "ok": true
+    },
+    {
+      "name": "one message bit flipped",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "message truncated by 1 byte",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "message extended by 1 byte",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "signature by another key",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "signature byte flipped",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "last signature byte flipped",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "signature truncated",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "signature with trailing byte",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "all-zero signature",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "all-zero public key",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "empty public key",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "empty signature",
+      "got": false,
+      "want": false,
+      "ok": true
+    },
+    {
+      "name": "empty message with a signature of it",
+      "got": false,
+      "want": true,
+      "ok": false
+    },
+    {
+      "name": "signature made with a non-empty context",
+      "got": true,
+      "want": false,
+      "ok": false
+    },
+    {
+      "name": "pqcKeyStatus(unregistered) = (false,0,0x,false)",
+      "got": "[false,0,\"0x\",false]",
+      "want": "[false,0,\"0x\",false]",
+      "ok": true
+    }
+  ]
+}

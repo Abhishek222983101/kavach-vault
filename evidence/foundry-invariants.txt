@@ -1,0 +1,54 @@
+No files changed, compilation skipped
+
+Ran 1 test for test/invariant/Invariants.t.sol:InvariantsTest
+[PASS]
+InvariantsTest invariants:
+[PASS] invariant_I1_I2_balancesExactNoUnauthorizedOutflow
+[PASS] invariant_I2_attackersReceiveNothing
+[PASS] invariant_I3_rulesNeverChangeWithoutTimelock
+[PASS] invariant_I4_dailyCapInAny24HourInterval
+[PASS] invariant_I4b_windowAccountingBounded
+[PASS] invariant_I5_guardianNeverMovesFunds
+ InvariantsTest invariants (runs: 700, calls: 210000, reverts: 0)
+
+╭----------+-------------------------+-------+---------+----------╮
+| Contract | Selector                | Calls | Reverts | Discards |
++=================================================================+
+| Handler  | attackerForceSend       | 15070 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | attackerQueueAndExecute | 14916 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | attackerReplay          | 15102 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | attackerWithdraw        | 14754 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | deposit                 | 15013 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | executeQueued           | 15001 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | guardianFreeze          | 15025 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | guardianTryWithdraw     | 15007 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerFreeze             | 14960 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerHeartbeat          | 14923 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerQueueWithdraw      | 14966 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | ownerWithdraw           | 15086 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | unfreezeBoth            | 15103 | 0       | 0        |
+|----------+-------------------------+-------+---------+----------|
+| Handler  | warpTime                | 15074 | 0       | 0        |
+╰----------+-------------------------+-------+---------+----------╯
+
+Logs:
+  owner calls ok: 35
+  QOR out (wei): 132930340962130622449
+  fUSD out: 5335800412
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 401.37s (401.37s CPU time)
+
+Ran 1 test suite in 401.38s (401.37s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
+FOUNDRY_DONE

@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-16T22:28:36.273Z",
+  "account": "qor1k33d4ch7et6fes03ewvs3quuhcru7tr20tag3d",
+  "rows": [
+    {
+      "name": "A1 bank send, classical-only",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1k33d4ch7et6fes03ewvs3quuhcru7tr20tag3d has a registered PQC key and must include the hybrid signature extension (hybrid mode: required): hybrid PQC ",
+      "balanceDeltaUqor": "0",
+      "sequenceDelta": "0",
+      "hash": "8CF65E2A7F0DC111519C653FB64C25F3ED4D47D8D6200D318B92F07046E6042A"
+    },
+    {
+      "name": "A2 open EVM window, classical-only",
+      "checkCode": 20,
+      "codespace": "pqc",
+      "log": "account qor1k33d4ch7et6fes03ewvs3quuhcru7tr20tag3d has a registered PQC key and must include the hybrid signature extension (hybrid mode: required): hybrid PQC ",
+      "balanceDeltaUqor": "0",
+      "sequenceDelta": "0",
+      "hash": "B678FBD0D0EBC7214E99D9D863FAAC9655C410639D13F90B477193DE020A5F8F"
+    },
+    {
+      "name": "B1/S1 re-register attacker PQ key, classical-only (account already has a key)",
+      "checkCode": 234,
+      "codespace": "pqc",
+      "log": "account qor1k33d4ch7et6fes03ewvs3quuhcru7tr20tag3d has a registered PQC key; register and migrate need its hybrid signature: PQC key maintenance from a keyed ac",
+      "balanceDeltaUqor": "0",
+      "sequenceDelta": "0",
+      "hash": "46852C7298585655BB8E33101EC8A8FE10CDC95081635B684D8C3F669E6CD639"
+    },
+    {
+      "name": "B3 bank send, hybrid with attacker's made-up PQ key",
+      "checkCode": 21,
+      "codespace": "pqc",
+      "log": "PQC signature verification failed for qor1k33d4ch7et6fes03ewvs3quuhcru7tr20tag3d: hybrid PQC signature verification failed",
+      "balanceDeltaUqor": "0",
+      "sequenceDelta": "0",
+      "hash": "4B7877BB64748651E77EAC4C6D4036061C7FC13077046D41E7500F79E2281F0C"
+    },
+    {
+      "name": "B3b open EVM window, hybrid with attacker's made-up PQ key",
+      "checkCode": 21,
+      "codespace": "pqc",
+      "log": "PQC signature verification failed for qor1k33d4ch7et6fes03ewvs3quuhcru7tr20tag3d: hybrid PQC signature verification failed",
+      "balanceDeltaUqor": "0",
+      "sequenceDelta": "0",
+      "hash": "3DA59DEF84F103D9743D43184B312DB249A992078E7C132D228FD3EDFCF2791A"
+    },
+    {
+      "name": "CONTROL bank send, genuine hybrid",
+      "checkCode": 0,
+      "deliverCode": 0,
+      "codespace": "",
+      "log": "",
+      "balanceDeltaUqor": "-1041000",
+      "sequenceDelta": "1",
+      "hash": "175D192389732FC497BC875666E423E0EE47832B4ECEA2D89419F8EE366CC725"
+    }
+  ]
+}

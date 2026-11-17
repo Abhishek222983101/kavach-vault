@@ -1,0 +1,220 @@
+⇾ Reading the configuration file at: medusa.json
+⇾ Compiling targets with crytic-compile
+⇾ Running command:
+/home/arch-nitro/.local/bin/crytic-compile test/medusa/Props.sol --export-format solc --foundry-compile-all
+⇾ Finished compiling targets in 18s
+⇾ artifacts: Medusa is running against a new set of build artifacts
+⇾ Using cached Slither results found at slither_results.json
+⇾ Running with a timeout of 240 seconds
+⇾ Setting up test chain
+⇾ Finished setting up test chain
+⇾ Creating corpus...
+⇾ Fuzzing with 4 workers
+⇾ [NOT STARTED] Property Test: Props.property_rulesUnchanged()
+⇾ [NOT STARTED] Property Test: Props.property_windowAccountingBounded()
+⇾ fuzz: elapsed:       0s, calls:          0 (     0/sec), seq/s:      0, branches:    507, corpus:     0, failures: 0/0, gas/s:            0
+⇾ [NOT STARTED] Property Test: Props.property_dailyCapRespected()
+⇾ [NOT STARTED] Property Test: Props.property_guardianNeverMovesFunds()
+⇾ [NOT STARTED] Property Test: Props.property_attackersGotNothing()
+⇾ [NOT STARTED] Property Test: Props.property_balancesExact()
+⇾ [NOT STARTED] Assertion Test: Props.guardianPk()
+⇾ [NOT STARTED] Assertion Test: Props.inv_attackersGotNothing()
+⇾ [NOT STARTED] Assertion Test: Props.ownerWithdraw(uint256,uint256)
+⇾ [NOT STARTED] Assertion Test: Props.excludeContracts()
+⇾ [NOT STARTED] Assertion Test: Props.tokOut()
+⇾ [NOT STARTED] Assertion Test: Props.excludeSenders()
+⇾ [NOT STARTED] Assertion Test: Props.initialQor()
+⇾ [NOT STARTED] Assertion Test: Props.inv_limitsAndRecipientsUnchanged()
+⇾ [NOT STARTED] Assertion Test: Props.targetSenders()
+⇾ [NOT STARTED] Assertion Test: Props.excludeArtifacts()
+⇾ [NOT STARTED] Assertion Test: Props.successfulOwnerCalls()
+⇾ [NOT STARTED] Assertion Test: Props.attackerWithdraw(uint256,bytes32,uint256,uint256,bool)
+⇾ [NOT STARTED] Assertion Test: Props.initialTok()
+⇾ [NOT STARTED] Assertion Test: Props.lastSig()
+⇾ [NOT STARTED] Assertion Test: Props.ownerFreeze(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.ownerAcct()
+⇾ [NOT STARTED] Assertion Test: Props.ownerPk()
+⇾ [NOT STARTED] Assertion Test: Props.ownerQueueWithdraw(uint256,uint256)
+⇾ [NOT STARTED] Assertion Test: Props.qs(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.vault()
+⇾ [NOT STARTED] Assertion Test: Props.lastAmt()
+⇾ [NOT STARTED] Assertion Test: Props.targetSelectors()
+⇾ [NOT STARTED] Assertion Test: Props.inv_balancesExact()
+⇾ [NOT STARTED] Assertion Test: Props.IS_TEST()
+⇾ [NOT STARTED] Assertion Test: Props.attackerReplay(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.inv_nonceMonotonicAndBounded()
+⇾ [NOT STARTED] Assertion Test: Props.qorOut()
+⇾ [NOT STARTED] Assertion Test: Props.tokIn()
+⇾ [NOT STARTED] Assertion Test: Props.warpTime(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.attackers(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.inv_guardianNeverMovesFunds()
+⇾ [NOT STARTED] Assertion Test: Props.outs(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.targetContracts()
+⇾ [NOT STARTED] Assertion Test: Props.targetInterfaces()
+⇾ [NOT STARTED] Assertion Test: Props.deposit(uint256,uint256)
+⇾ [NOT STARTED] Assertion Test: Props.excludeSelectors()
+⇾ [NOT STARTED] Assertion Test: Props.funder()
+⇾ [NOT STARTED] Assertion Test: Props.ownerHeartbeat()
+⇾ [NOT STARTED] Assertion Test: Props.targetArtifactSelectors()
+⇾ [NOT STARTED] Assertion Test: Props.targetArtifacts()
+⇾ [NOT STARTED] Assertion Test: Props.attackerQueueAndExecute(uint256,bytes32,bytes32)
+⇾ [NOT STARTED] Assertion Test: Props.executeQueued(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.fusd()
+⇾ [NOT STARTED] Assertion Test: Props.attackerForceSend(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.attackerSucceeded()
+⇾ [NOT STARTED] Assertion Test: Props.clock()
+⇾ [NOT STARTED] Assertion Test: Props.failed()
+⇾ [NOT STARTED] Assertion Test: Props.guardianTryWithdraw(uint256,uint256)
+⇾ [NOT STARTED] Assertion Test: Props.qorIn()
+⇾ [NOT STARTED] Assertion Test: Props.inv_windowAccountingBounded()
+⇾ [NOT STARTED] Assertion Test: Props.inv_dailyCapRespected()
+⇾ [NOT STARTED] Assertion Test: Props.guardianFreeze(uint256)
+⇾ [NOT STARTED] Assertion Test: Props.guardianMovedFunds()
+⇾ [NOT STARTED] Assertion Test: Props.lastAsset()
+⇾ [NOT STARTED] Assertion Test: Props.lastDeadline()
+⇾ [NOT STARTED] Assertion Test: Props.unfreezeBoth()
+⇾ fuzz: elapsed:       3s, calls:       1805 (   601/sec), seq/s:      5, branches:   2067, corpus:    72, failures: 0/17, gas/s:    372086928
+⇾ fuzz: elapsed:       6s, calls:       4045 (   746/sec), seq/s:      7, branches:   2092, corpus:    76, failures: 0/39, gas/s:    460215936
+⇾ fuzz: elapsed:       9s, calls:       6223 (   725/sec), seq/s:      6, branches:   2097, corpus:    77, failures: 0/60, gas/s:    466455589
+⇾ fuzz: elapsed:      12s, calls:       8519 (   765/sec), seq/s:      7, branches:   2099, corpus:    78, failures: 0/83, gas/s:    443871649
+⇾ fuzz: elapsed:      15s, calls:      10662 (   713/sec), seq/s:      6, branches:   2099, corpus:    78, failures: 0/104, gas/s:    437932746
+⇾ fuzz: elapsed:      18s, calls:      12897 (   743/sec), seq/s:      7, branches:   2126, corpus:    80, failures: 0/127, gas/s:    455142631
+⇾ fuzz: elapsed:      21s, calls:      15053 (   718/sec), seq/s:      6, branches:   2126, corpus:    80, failures: 0/148, gas/s:    458195075
+⇾ fuzz: elapsed:      24s, calls:      17385 (   776/sec), seq/s:      7, branches:   2126, corpus:    80, failures: 0/171, gas/s:    467859691
+⇾ fuzz: elapsed:      27s, calls:      19585 (   732/sec), seq/s:      7, branches:   2126, corpus:    80, failures: 0/194, gas/s:    449700938
+⇾ fuzz: elapsed:      30s, calls:      21640 (   684/sec), seq/s:      6, branches:   2130, corpus:    81, failures: 0/215, gas/s:    420986438
+⇾ fuzz: elapsed:      33s, calls:      23421 (   593/sec), seq/s:      5, branches:   2144, corpus:    83, failures: 0/232, gas/s:    373173476
+⇾ fuzz: elapsed:      36s, calls:      25007 (   528/sec), seq/s:      5, branches:   2144, corpus:    83, failures: 0/248, gas/s:    340955711
+⇾ fuzz: elapsed:      39s, calls:      26657 (   549/sec), seq/s:      5, branches:   2154, corpus:    85, failures: 0/264, gas/s:    338272063
+⇾ fuzz: elapsed:      42s, calls:      28493 (   611/sec), seq/s:      6, branches:   2158, corpus:    86, failures: 0/284, gas/s:    371713964
+⇾ fuzz: elapsed:      45s, calls:      30284 (   596/sec), seq/s:      5, branches:   2166, corpus:    87, failures: 0/300, gas/s:    363405661
+⇾ fuzz: elapsed:      48s, calls:      31931 (   548/sec), seq/s:      5, branches:   2168, corpus:    88, failures: 0/317, gas/s:    343090858
+⇾ fuzz: elapsed:      51s, calls:      33689 (   585/sec), seq/s:      5, branches:   2168, corpus:    88, failures: 0/334, gas/s:    340828810
+⇾ fuzz: elapsed:      54s, calls:      35778 (   696/sec), seq/s:      6, branches:   2168, corpus:    88, failures: 0/355, gas/s:    388807091
+⇾ fuzz: elapsed:      57s, calls:      37861 (   694/sec), seq/s:      6, branches:   2168, corpus:    88, failures: 0/376, gas/s:    399784725
+⇾ fuzz: elapsed:    1m00s, calls:      39734 (   624/sec), seq/s:      6, branches:   2210, corpus:    94, failures: 0/395, gas/s:    394906659
+⇾ fuzz: elapsed:    1m03s, calls:      41591 (   618/sec), seq/s:      6, branches:   2214, corpus:    95, failures: 0/414, gas/s:    403813331
+⇾ fuzz: elapsed:    1m06s, calls:      43505 (   637/sec), seq/s:      6, branches:   2214, corpus:    95, failures: 0/433, gas/s:    412548255
+⇾ fuzz: elapsed:    1m09s, calls:      45483 (   659/sec), seq/s:      6, branches:   2214, corpus:    95, failures: 0/453, gas/s:    403948708
+⇾ fuzz: elapsed:    1m12s, calls:      47450 (   655/sec), seq/s:      5, branches:   2214, corpus:    95, failures: 0/471, gas/s:    405506922
+⇾ fuzz: elapsed:    1m15s, calls:      49360 (   636/sec), seq/s:      6, branches:   2214, corpus:    95, failures: 0/492, gas/s:    399181712
+⇾ fuzz: elapsed:    1m18s, calls:      50981 (   540/sec), seq/s:      5, branches:   2218, corpus:    96, failures: 0/508, gas/s:    342568014
+⇾ fuzz: elapsed:    1m21s, calls:      52675 (   564/sec), seq/s:      5, branches:   2218, corpus:    96, failures: 0/524, gas/s:    353896834
+⇾ fuzz: elapsed:    1m24s, calls:      54337 (   553/sec), seq/s:      5, branches:   2218, corpus:    96, failures: 0/542, gas/s:    347999121
+⇾ fuzz: elapsed:    1m27s, calls:      56249 (   637/sec), seq/s:      6, branches:   2218, corpus:    96, failures: 0/561, gas/s:    381376413
+⇾ fuzz: elapsed:    1m30s, calls:      57901 (   550/sec), seq/s:      5, branches:   2218, corpus:    96, failures: 0/577, gas/s:    362594027
+⇾ fuzz: elapsed:    1m33s, calls:      59589 (   562/sec), seq/s:      5, branches:   2218, corpus:    96, failures: 0/593, gas/s:    337195010
+⇾ fuzz: elapsed:    1m36s, calls:      61047 (   485/sec), seq/s:      5, branches:   2218, corpus:    96, failures: 0/609, gas/s:    332185648
+⇾ fuzz: elapsed:    1m39s, calls:      62614 (   522/sec), seq/s:      4, branches:   2218, corpus:    96, failures: 0/624, gas/s:    341537722
+⇾ fuzz: elapsed:    1m42s, calls:      64431 (   605/sec), seq/s:      5, branches:   2227, corpus:    97, failures: 0/642, gas/s:    381095054
+⇾ fuzz: elapsed:    1m45s, calls:      66329 (   632/sec), seq/s:      6, branches:   2227, corpus:    97, failures: 0/661, gas/s:    405797922
+⇾ fuzz: elapsed:    1m48s, calls:      68220 (   630/sec), seq/s:      6, branches:   2235, corpus:    99, failures: 0/680, gas/s:    400425866
+⇾ fuzz: elapsed:    1m51s, calls:      70140 (   639/sec), seq/s:      6, branches:   2235, corpus:    99, failures: 0/700, gas/s:    397058755
+⇾ fuzz: elapsed:    1m54s, calls:      72089 (   649/sec), seq/s:      6, branches:   2235, corpus:    99, failures: 0/719, gas/s:    398052285
+⇾ fuzz: elapsed:    1m57s, calls:      73915 (   608/sec), seq/s:      5, branches:   2239, corpus:   100, failures: 0/737, gas/s:    393041619
+⇾ fuzz: elapsed:    2m00s, calls:      75875 (   653/sec), seq/s:      6, branches:   2239, corpus:   100, failures: 0/757, gas/s:    404919246
+⇾ fuzz: elapsed:    2m03s, calls:      77795 (   639/sec), seq/s:      6, branches:   2239, corpus:   100, failures: 0/776, gas/s:    398578485
+⇾ fuzz: elapsed:    2m06s, calls:      79314 (   506/sec), seq/s:      4, branches:   2239, corpus:   100, failures: 0/791, gas/s:    339345630
+⇾ fuzz: elapsed:    2m09s, calls:      80891 (   525/sec), seq/s:      5, branches:   2294, corpus:   101, failures: 0/808, gas/s:    334660948
+⇾ fuzz: elapsed:    2m12s, calls:      82764 (   624/sec), seq/s:      5, branches:   2302, corpus:   102, failures: 0/826, gas/s:    375509439
+⇾ fuzz: elapsed:    2m15s, calls:      84511 (   581/sec), seq/s:      5, branches:   2320, corpus:   105, failures: 0/843, gas/s:    364562838
+⇾ fuzz: elapsed:    2m18s, calls:      86014 (   500/sec), seq/s:      4, branches:   2320, corpus:   105, failures: 0/857, gas/s:    324848081
+⇾ fuzz: elapsed:    2m21s, calls:      87738 (   574/sec), seq/s:      6, branches:   2320, corpus:   105, failures: 0/876, gas/s:    354901106
+⇾ fuzz: elapsed:    2m24s, calls:      89446 (   568/sec), seq/s:      5, branches:   2328, corpus:   107, failures: 0/893, gas/s:    346727390
+⇾ fuzz: elapsed:    2m27s, calls:      91254 (   602/sec), seq/s:      5, branches:   2349, corpus:   109, failures: 0/911, gas/s:    375304254
+⇾ fuzz: elapsed:    2m30s, calls:      92791 (   512/sec), seq/s:      4, branches:   2349, corpus:   109, failures: 0/925, gas/s:    343941732
+⇾ fuzz: elapsed:    2m33s, calls:      94325 (   511/sec), seq/s:      4, branches:   2353, corpus:   110, failures: 0/940, gas/s:    327307767
+⇾ fuzz: elapsed:    2m36s, calls:      95973 (   548/sec), seq/s:      6, branches:   2363, corpus:   111, failures: 0/959, gas/s:    348827817
+⇾ fuzz: elapsed:    2m39s, calls:      97822 (   616/sec), seq/s:      5, branches:   2363, corpus:   111, failures: 0/976, gas/s:    374830233
+⇾ fuzz: elapsed:    2m42s, calls:      99671 (   616/sec), seq/s:      5, branches:   2363, corpus:   111, failures: 0/994, gas/s:    395519196
+⇾ fuzz: elapsed:    2m45s, calls:     101548 (   625/sec), seq/s:      6, branches:   2372, corpus:   112, failures: 0/1014, gas/s:    394746509
+⇾ fuzz: elapsed:    2m48s, calls:     103375 (   608/sec), seq/s:      5, branches:   2372, corpus:   112, failures: 0/1031, gas/s:    385694772
+⇾ fuzz: elapsed:    2m51s, calls:     105308 (   644/sec), seq/s:      6, branches:   2372, corpus:   112, failures: 0/1051, gas/s:    396057357
+⇾ fuzz: elapsed:    2m54s, calls:     107133 (   608/sec), seq/s:      5, branches:   2372, corpus:   112, failures: 0/1069, gas/s:    391689291
+⇾ fuzz: elapsed:    2m57s, calls:     109074 (   646/sec), seq/s:      6, branches:   2372, corpus:   112, failures: 0/1089, gas/s:    393975687
+⇾ fuzz: elapsed:    3m00s, calls:     111013 (   646/sec), seq/s:      6, branches:   2372, corpus:   112, failures: 0/1108, gas/s:    413485149
+⇾ fuzz: elapsed:    3m03s, calls:     112624 (   536/sec), seq/s:      5, branches:   2372, corpus:   112, failures: 0/1124, gas/s:    333511859
+⇾ fuzz: elapsed:    3m06s, calls:     114391 (   588/sec), seq/s:      5, branches:   2432, corpus:   114, failures: 0/1141, gas/s:    353601167
+⇾ fuzz: elapsed:    3m09s, calls:     116059 (   555/sec), seq/s:      5, branches:   2432, corpus:   114, failures: 0/1159, gas/s:    345037133
+⇾ fuzz: elapsed:    3m12s, calls:     117863 (   601/sec), seq/s:      5, branches:   2432, corpus:   114, failures: 0/1176, gas/s:    375962483
+⇾ fuzz: elapsed:    3m15s, calls:     119495 (   543/sec), seq/s:      5, branches:   2435, corpus:   115, failures: 0/1194, gas/s:    337654231
+⇾ fuzz: elapsed:    3m18s, calls:     121144 (   549/sec), seq/s:      5, branches:   2510, corpus:   116, failures: 0/1210, gas/s:    342526332
+⇾ fuzz: elapsed:    3m21s, calls:     122889 (   581/sec), seq/s:      5, branches:   2510, corpus:   116, failures: 0/1227, gas/s:    347056909
+⇾ fuzz: elapsed:    3m24s, calls:     124643 (   584/sec), seq/s:      5, branches:   2510, corpus:   116, failures: 0/1245, gas/s:    335971695
+⇾ fuzz: elapsed:    3m27s, calls:     126515 (   623/sec), seq/s:      5, branches:   2510, corpus:   116, failures: 0/1263, gas/s:    388159090
+⇾ fuzz: elapsed:    3m30s, calls:     128514 (   666/sec), seq/s:      6, branches:   2514, corpus:   117, failures: 0/1283, gas/s:    406373021
+⇾ fuzz: elapsed:    3m33s, calls:     130423 (   636/sec), seq/s:      6, branches:   2514, corpus:   117, failures: 0/1303, gas/s:    403471871
+⇾ fuzz: elapsed:    3m36s, calls:     132335 (   637/sec), seq/s:      5, branches:   2514, corpus:   117, failures: 0/1321, gas/s:    401141456
+⇾ fuzz: elapsed:    3m39s, calls:     134327 (   663/sec), seq/s:      6, branches:   2521, corpus:   119, failures: 0/1340, gas/s:    403157013
+⇾ fuzz: elapsed:    3m42s, calls:     136207 (   626/sec), seq/s:      6, branches:   2525, corpus:   120, failures: 0/1361, gas/s:    403770889
+⇾ fuzz: elapsed:    3m45s, calls:     138062 (   618/sec), seq/s:      5, branches:   2525, corpus:   120, failures: 0/1378, gas/s:    403465940
+⇾ fuzz: elapsed:    3m48s, calls:     140002 (   646/sec), seq/s:      6, branches:   2525, corpus:   120, failures: 0/1399, gas/s:    404223880
+⇾ fuzz: elapsed:    3m51s, calls:     141662 (   553/sec), seq/s:      5, branches:   2529, corpus:   121, failures: 0/1415, gas/s:    349461575
+⇾ fuzz: elapsed:    3m54s, calls:     143381 (   572/sec), seq/s:      5, branches:   2529, corpus:   121, failures: 0/1432, gas/s:    361470512
+⇾ fuzz: elapsed:    3m57s, calls:     145143 (   587/sec), seq/s:      5, branches:   2529, corpus:   121, failures: 0/1450, gas/s:    355072534
+⇾ Fuzzer stopped, test results follow below ...
+⇾ [PASSED] Assertion Test: Props.IS_TEST()
+⇾ [PASSED] Assertion Test: Props.attackerForceSend(uint256)
+⇾ [PASSED] Assertion Test: Props.attackerQueueAndExecute(uint256,bytes32,bytes32)
+⇾ [PASSED] Assertion Test: Props.attackerReplay(uint256)
+⇾ [PASSED] Assertion Test: Props.attackerSucceeded()
+⇾ [PASSED] Assertion Test: Props.attackerWithdraw(uint256,bytes32,uint256,uint256,bool)
+⇾ [PASSED] Assertion Test: Props.attackers(uint256)
+⇾ [PASSED] Assertion Test: Props.clock()
+⇾ [PASSED] Assertion Test: Props.deposit(uint256,uint256)
+⇾ [PASSED] Assertion Test: Props.excludeArtifacts()
+⇾ [PASSED] Assertion Test: Props.excludeContracts()
+⇾ [PASSED] Assertion Test: Props.excludeSelectors()
+⇾ [PASSED] Assertion Test: Props.excludeSenders()
+⇾ [PASSED] Assertion Test: Props.executeQueued(uint256)
+⇾ [PASSED] Assertion Test: Props.failed()
+⇾ [PASSED] Assertion Test: Props.funder()
+⇾ [PASSED] Assertion Test: Props.fusd()
+⇾ [PASSED] Assertion Test: Props.guardianFreeze(uint256)
+⇾ [PASSED] Assertion Test: Props.guardianMovedFunds()
+⇾ [PASSED] Assertion Test: Props.guardianPk()
+⇾ [PASSED] Assertion Test: Props.guardianTryWithdraw(uint256,uint256)
+⇾ [PASSED] Assertion Test: Props.initialQor()
+⇾ [PASSED] Assertion Test: Props.initialTok()
+⇾ [PASSED] Assertion Test: Props.inv_attackersGotNothing()
+⇾ [PASSED] Assertion Test: Props.inv_balancesExact()
+⇾ [PASSED] Assertion Test: Props.inv_dailyCapRespected()
+⇾ [PASSED] Assertion Test: Props.inv_guardianNeverMovesFunds()
+⇾ [PASSED] Assertion Test: Props.inv_limitsAndRecipientsUnchanged()
+⇾ [PASSED] Assertion Test: Props.inv_nonceMonotonicAndBounded()
+⇾ [PASSED] Assertion Test: Props.inv_windowAccountingBounded()
+⇾ [PASSED] Assertion Test: Props.lastAmt()
+⇾ [PASSED] Assertion Test: Props.lastAsset()
+⇾ [PASSED] Assertion Test: Props.lastDeadline()
+⇾ [PASSED] Assertion Test: Props.lastSig()
+⇾ [PASSED] Assertion Test: Props.outs(uint256)
+⇾ [PASSED] Assertion Test: Props.ownerAcct()
+⇾ [PASSED] Assertion Test: Props.ownerFreeze(uint256)
+⇾ [PASSED] Assertion Test: Props.ownerHeartbeat()
+⇾ [PASSED] Assertion Test: Props.ownerPk()
+⇾ [PASSED] Assertion Test: Props.ownerQueueWithdraw(uint256,uint256)
+⇾ [PASSED] Assertion Test: Props.ownerWithdraw(uint256,uint256)
+⇾ [PASSED] Assertion Test: Props.qorIn()
+⇾ [PASSED] Assertion Test: Props.qorOut()
+⇾ [PASSED] Assertion Test: Props.qs(uint256)
+⇾ [PASSED] Assertion Test: Props.successfulOwnerCalls()
+⇾ [PASSED] Assertion Test: Props.targetArtifactSelectors()
+⇾ [PASSED] Assertion Test: Props.targetArtifacts()
+⇾ [PASSED] Assertion Test: Props.targetContracts()
+⇾ [PASSED] Assertion Test: Props.targetInterfaces()
+⇾ [PASSED] Assertion Test: Props.targetSelectors()
+⇾ [PASSED] Assertion Test: Props.targetSenders()
+⇾ [PASSED] Assertion Test: Props.tokIn()
+⇾ [PASSED] Assertion Test: Props.tokOut()
+⇾ [PASSED] Assertion Test: Props.unfreezeBoth()
+⇾ [PASSED] Assertion Test: Props.vault()
+⇾ [PASSED] Assertion Test: Props.warpTime(uint256)
+⇾ [PASSED] Property Test: Props.property_attackersGotNothing()
+⇾ [PASSED] Property Test: Props.property_balancesExact()
+⇾ [PASSED] Property Test: Props.property_dailyCapRespected()
+⇾ [PASSED] Property Test: Props.property_guardianNeverMovesFunds()
+⇾ [PASSED] Property Test: Props.property_rulesUnchanged()
+⇾ [PASSED] Property Test: Props.property_windowAccountingBounded()
+⇾ Test summary: 62 test(s) passed, 0 test(s) failed
+⇾ html report(s) saved to: medusa-corpus/coverage/coverage_report.html
+⇾ lcov report(s) saved to: medusa-corpus/coverage/lcov.info

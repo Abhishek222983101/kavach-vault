@@ -1,0 +1,17 @@
+{
+  "name": "kavach-vault",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {},
+  "dependencies": {
+    "@qorechain/evm": "0.14.0",
+    "@qorechain/pqc": "0.2.3",
+    "@qorechain/sdk": "0.14.0",
+    "cosmjs-types": "0.11.0",
+    "viem": "2.57.20"
+  },
+  "devDependencies": {
+    "@noble/post-quantum": "0.7.1"
+  }
+}

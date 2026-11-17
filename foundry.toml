@@ -1,0 +1,21 @@
+[profile.default]
+ffi = true
+fs_permissions = [{ access = "read", path = "./" }]
+src = "src"
+test = "test"
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.28"
+evm_version = "cancun"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+bytecode_hash = "none"
+
+[fuzz]
+runs = 1000
+
+[invariant]
+runs = 512
+depth = 300
+fail_on_revert = false

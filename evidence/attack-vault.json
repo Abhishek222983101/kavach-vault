@@ -1,0 +1,552 @@
+{
+  "at": "2026-11-17T01:30:16.957Z",
+  "before": {
+    "hot": "129000000000000000000",
+    "cold": "740000000000000000000"
+  },
+  "after": {
+    "hot": "129000000000000000000",
+    "cold": "740000000000000000000"
+  },
+  "partA": {
+    "attempts": 78,
+    "allReverted": true,
+    "controlsOk": true
+  },
+  "rows": [
+    {
+      "label": "withdraw: empty pk and sig",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: empty pk and sig",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: zero-filled right-length pk/sig",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: zero-filled right-length pk/sig",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: random right-length pk/sig",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: random right-length pk/sig",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: oversized sig",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: oversized sig",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: truncated sig",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: truncated sig",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: owner pk + random sig",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: owner pk + random sig",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: attacker's own valid ML-DSA key and signature, to attacker",
+      "from": "random",
+      "reverted": true,
+      "why": "NotAllowed"
+    },
+    {
+      "label": "withdraw: attacker's own valid ML-DSA key and signature, to attacker",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "NotAllowed"
+    },
+    {
+      "label": "withdraw: attacker's key, to allowlisted funder",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: attacker's key, to allowlisted funder",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: guardian key signing a withdrawal (guardian can only freeze/cancel)",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: guardian key signing a withdrawal (guardian can only freeze/cancel)",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "withdraw: REPLAY of our real withdrawal, identical",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: REPLAY of our real withdrawal, identical",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: replay with recipient swapped to attacker",
+      "from": "random",
+      "reverted": true,
+      "why": "NotAllowed"
+    },
+    {
+      "label": "withdraw: replay with recipient swapped to attacker",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "NotAllowed"
+    },
+    {
+      "label": "withdraw: replay with larger amount",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: replay with larger amount",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: replay with another asset (fUSD)",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: replay with another asset (fUSD)",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: replay with extended deadline",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: replay with extended deadline",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: heartbeat signature used as a withdrawal signature",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: heartbeat signature used as a withdrawal signature",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "withdraw: expired deadline",
+      "from": "random",
+      "reverted": true,
+      "why": "Expired"
+    },
+    {
+      "label": "withdraw: expired deadline",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "Expired"
+    },
+    {
+      "label": "withdraw: amount above per-tx cap, junk signature",
+      "from": "random",
+      "reverted": true,
+      "why": "OverPerTx"
+    },
+    {
+      "label": "withdraw: amount above per-tx cap, junk signature",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "OverPerTx"
+    },
+    {
+      "label": "withdraw: unlisted asset",
+      "from": "random",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "withdraw: unlisted asset",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "heartbeat: REPLAY of our real heartbeat",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "heartbeat: REPLAY of our real heartbeat",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "heartbeat: junk",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "heartbeat: junk",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "freeze role 1: junk signature",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "freeze role 1: junk signature",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "freeze role 2: junk signature",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "freeze role 2: junk signature",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "freeze: owner role with the real heartbeat signature",
+      "from": "random",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "freeze: owner role with the real heartbeat signature",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadSignature"
+    },
+    {
+      "label": "unfreeze: junk both",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "unfreeze: junk both",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "cancel: unknown id",
+      "from": "random",
+      "reverted": true,
+      "why": "UnknownAction"
+    },
+    {
+      "label": "cancel: unknown id",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "UnknownAction"
+    },
+    {
+      "label": "queueAction 2: junk",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 2: junk",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 3: junk",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 3: junk",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 4: junk",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 4: junk",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 5: junk",
+      "from": "random",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 5: junk",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "BadKey"
+    },
+    {
+      "label": "queueAction 1 (withdraw is not queueable)",
+      "from": "random",
+      "reverted": true,
+      "why": "UnknownAction"
+    },
+    {
+      "label": "queueAction 1 (withdraw is not queueable)",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "UnknownAction"
+    },
+    {
+      "label": "execute: unknown id",
+      "from": "random",
+      "reverted": true,
+      "why": "UnknownAction"
+    },
+    {
+      "label": "execute: unknown id",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "UnknownAction"
+    },
+    {
+      "label": "depositToken: unlisted token",
+      "from": "random",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "depositToken: unlisted token",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "depositToken: QOR address as token",
+      "from": "random",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "depositToken: QOR address as token",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "cold.release: junk before unlock",
+      "from": "random",
+      "reverted": true,
+      "why": "Locked"
+    },
+    {
+      "label": "cold.release: junk before unlock",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "Locked"
+    },
+    {
+      "label": "cold.release: our real hot withdrawal calldata replayed on the cold vault",
+      "from": "random",
+      "reverted": true,
+      "why": "Locked"
+    },
+    {
+      "label": "cold.release: our real hot withdrawal calldata replayed on the cold vault",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "Locked"
+    },
+    {
+      "label": "cold.release: attacker to attacker",
+      "from": "random",
+      "reverted": true,
+      "why": "Locked"
+    },
+    {
+      "label": "cold.release: attacker to attacker",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "Locked"
+    },
+    {
+      "label": "cold.depositToken: unlisted token",
+      "from": "random",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "cold.depositToken: unlisted token",
+      "from": "drill-address",
+      "reverted": true,
+      "why": "NotListed"
+    },
+    {
+      "label": "hot: unknown selector with value",
+      "from": "random",
+      "reverted": true
+    },
+    {
+      "label": "hot: unknown selector with value",
+      "from": "drill-address",
+      "reverted": true
+    },
+    {
+      "label": "cold: unknown selector with value",
+      "from": "random",
+      "reverted": true
+    },
+    {
+      "label": "cold: unknown selector with value",
+      "from": "drill-address",
+      "reverted": true
+    }
+  ],
+  "controls": [
+    {
+      "label": "CONTROL fresh owner signature relayed by an attacker address pays only the signed allowlisted recipient",
+      "ok": true
+    },
+    {
+      "label": "CONTROL same signature, recipient swapped -> reverts",
+      "ok": true
+    },
+    {
+      "label": "CONTROL same signature, amount changed -> reverts",
+      "ok": true
+    }
+  ],
+  "live": [
+    {
+      "label": "live reverted tx: hot.withdraw junk",
+      "hash": "0xa224194ca6786462b88dc06bc7f67cf97dcb6cc6ad6e19c908e4f66a549e8dc4",
+      "status": "reverted"
+    },
+    {
+      "label": "live reverted tx: hot.freeze junk",
+      "hash": "0xd59c07931fff11b71ef1aa5e44711002ca343696512d950fbe0580a8d0f0470a",
+      "status": "reverted"
+    },
+    {
+      "label": "live reverted tx: hot.withdraw replay of real signature",
+      "hash": "0x694798e0cfcfe6243aca8053024b5b2c2c3b1462b899e3d335afddfd3a60ce7d",
+      "status": "reverted"
+    },
+    {
+      "label": "live reverted tx: cold.release junk",
+      "hash": "0x199da9dd61912e4ab907e155a6bd53e8b0623dd3e0b25b311bf93ee04629f558",
+      "status": "reverted"
+    },
+    {
+      "label": "live forced 1 QOR into hot vault via selfdestruct",
+      "hash": "0x5a9414abaeeb053cb6e4841c1a871df19b7efe1963455e9f123c7fdf25faaf9b",
+      "status": "success"
+    },
+    {
+      "label": "spentInWindow unaffected by forced QOR",
+      "value": "1000000000000000000",
+      "ok": true
+    },
+    {
+      "label": "liveness: owner heartbeat after the attacks",
+      "hash": "0xd634d49e556cf038f3cd582e6a4874af8a65d2bc12502247028916e14b7df739",
+      "status": "success"
+    },
+    {
+      "label": "liveness: owner withdrawal after the attacks",
+      "hash": "0xa9a9af218a41bd5d25b29f97141012ca1f24951bcedf6bbfddfdaad6fc3b467c",
+      "status": "success"
+    },
+    {
+      "label": "funder window closed",
+      "ok": true
+    }
+  ],
+  "final": {
+    "cold vault balance never moved": true,
+    "hot vault balance = before + 1 forced - 1 withdrawn": true,
+    "spentInWindow = 2 QOR (two legit withdrawals only)": true,
+    "all live attack txs reverted": true,
+    "liveness txs succeeded": true,
+    "funder window closed, drill window absent, drill empty": true,
+    "part A: every attack reverted": true,
+    "part A: controls behave": true
+  }
+}

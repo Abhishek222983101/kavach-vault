@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-17T01:17:42.783Z",
+  "canary": {
+    "address": "0x33347e3fec27c5bd4c9b2b7ceab02781d8426fea",
+    "tx": "0xf8fa3e36661769657c26604eeaa68c5fa0f03ff5e379ca364b50c08ca1472c6c",
+    "releaseTime": "1794878505"
+  },
+  "windowClosed": true,
+  "refusedWhileLocked": true,
+  "attackerKeyRefusedAfterUnlock": true,
+  "release": {
+    "tx": "0x8a1cd9680a2c28de7dd254c5a46502d6c0932861ca78fc343aed680173a341e9",
+    "status": "success",
+    "vaultBefore": "2000000000000000000",
+    "vaultAfter": "1000000000000000000"
+  },
+  "replayRefused": true,
+  "windowsClosed": true
+}

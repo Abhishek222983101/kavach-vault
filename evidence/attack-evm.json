@@ -1,0 +1,229 @@
+{
+  "summary": {
+    "at": "2026-11-17T01:28:12.516Z",
+    "attempts": 34,
+    "accepted": 0,
+    "refusedNoWindow": 17,
+    "refusedFunds": 17,
+    "refusedOther": 0,
+    "notSent": 0,
+    "accountsUnchanged": [
+      true,
+      true
+    ]
+  },
+  "results": [
+    {
+      "name": "drill (real account, zero balance)",
+      "address": "0xbd8EC9F476988126C7bd3dF10e6cC6d7e39d23C2",
+      "before": {
+        "wei": "0",
+        "nonce": 1,
+        "code": "0x",
+        "uqor": "0",
+        "window": false
+      },
+      "after": {
+        "wei": "0",
+        "nonce": 1,
+        "code": "0x",
+        "uqor": "0",
+        "window": false
+      },
+      "unchanged": true,
+      "rows": [
+        {
+          "label": "transfer 1 wei to attacker (legacy)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000001): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "transfer 1 wei (eip1559)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000001): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "transfer 1 wei (eip2930)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000001): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "contract creation",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "fUSD.approve(attacker, max)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "fUSD.transfer(attacker, 1)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "fETH.approve(attacker, max)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "fETH.transfer(attacker, 1)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "fBTC.approve(attacker, max)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "fBTC.transfer(attacker, 1)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "Permit2.approve shaped call",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "hot.withdraw junk",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "hot.heartbeat junk",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "hot.freeze junk",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "cold.release junk",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "send QOR into hot vault (deposit path)",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000001): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        },
+        {
+          "label": "EIP-7702 delegation to attacker contract",
+          "cls": "REFUSED_FUNDS",
+          "msg": "failed to broadcast transaction: failed to check sender balance: sender balance < tx cost (0 < 40000000000000000): insufficient funds: insufficient funds [cosmossdk.io/errors@v1.0."
+        }
+      ]
+    },
+    {
+      "name": "spike-b (funded stand-in)",
+      "address": "0xE2d86a310B9a6488059c403d0C747e9a8Fa42E82",
+      "before": {
+        "wei": "20930000000000000000",
+        "nonce": 1,
+        "code": "0x",
+        "uqor": "20930000",
+        "window": false
+      },
+      "after": {
+        "wei": "20930000000000000000",
+        "nonce": 1,
+        "code": "0x",
+        "uqor": "20930000",
+        "window": false
+      },
+      "unchanged": true,
+      "rows": [
+        {
+          "label": "transfer 1 wei to attacker (legacy)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "transfer 1 wei (eip1559)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "transfer 1 wei (eip2930)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "contract creation",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "fUSD.approve(attacker, max)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "fUSD.transfer(attacker, 1)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "fETH.approve(attacker, max)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "fETH.transfer(attacker, 1)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "fBTC.approve(attacker, max)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "fBTC.transfer(attacker, 1)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "Permit2.approve shaped call",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "hot.withdraw junk",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "hot.heartbeat junk",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "hot.freeze junk",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "cold.release junk",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "send QOR into hot vault (deposit path)",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        },
+        {
+          "label": "EIP-7702 delegation to attacker contract",
+          "cls": "REFUSED_NO_WINDOW",
+          "msg": "failed to broadcast transaction: account qor1utvx5vgtnfjgspvugq7scar7n286gt5z6n4ht9 has no open EVM authorisation window; open one with MsgOpenEVMWindow, signed on the Cosmos lane "
+        }
+      ]
+    }
+  ]
+}
