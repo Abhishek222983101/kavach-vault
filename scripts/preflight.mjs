@@ -75,6 +75,7 @@ const timers = ["kavach-watchtower", "kavach-heartbeat", "kavach-heartbeat-retry
 snap.timers = {};
 for (const t of timers) { const en = sh(`systemctl --user is-enabled ${t}.timer`), nx = sh(`systemctl --user show ${t}.timer -p NextElapseUSecRealtime --value`); snap.timers[t] = { enabled: en, next: nx }; check(en === "enabled", `timer ${t} is armed`, nx); }
 check(sh("loginctl show-user $USER -p Linger --value") === "yes", "user services keep running when logged out (linger)");
+check(sh("systemctl --user is-active kavach-awake.service") === "active", "sleep is blocked until the drill is over (kavach-awake)");
 const free = Number(sh("df -Pm / | tail -1 | awk '{print $4}'")); check(free >= 2000, "at least 2 GB of disk free", `${free} MB`, free >= 800 ? "WARN" : "FAIL");
 const ac = sh("cat /sys/class/power_supply/AC*/online 2>/dev/null | head -1"); check(ac === "1" || ac === "", "laptop is on mains power", ac === "" ? "no AC sensor found" : `AC online=${ac}`, "WARN");
 snap.machine = { diskFreeMB: free, acOnline: ac, nodeVersion: process.version };

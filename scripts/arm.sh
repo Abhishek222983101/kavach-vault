@@ -10,5 +10,6 @@ rm -f evidence/watch-state.json evidence/watch.jsonl evidence/watch.alive eviden
 [ -f evidence/proof-of-life.json ] && { echo "evidence/proof-of-life.json already exists: refusing to arm over a real drill result"; exit 1; }
 systemctl --user daemon-reload
 for t in kavach-watchtower kavach-heartbeat kavach-heartbeat-retry kavach-heartbeat-extra kavach-go-public; do systemctl --user enable --now "$t.timer"; done
+systemctl --user enable --now kavach-awake.service
 loginctl enable-linger "$USER"
 systemctl --user list-timers 'kavach-*' --no-pager
