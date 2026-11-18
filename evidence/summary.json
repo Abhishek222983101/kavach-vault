@@ -1,0 +1,112 @@
+{
+  "project": "Kavach Vault",
+  "category": "Post-Quantum AI Agents",
+  "network": "qorechain-diana (testnet)",
+  "reviewGuide": "JUDGES.md",
+  "predictions": "docs/12-DRILL-PREDICTIONS.md",
+  "addresses": {
+    "hotVault": {
+      "evm": "0x10256EDD0877436FfCBA8A62b0598f4bAD01514B",
+      "native": "qor1zqjkahggwapkll963f3tqkv0fwksz52tcmz3x3",
+      "deployTx": "0x7b58b47b63b3c12aed8f785196f785c5ba194a5bf690359c163f0aa5854d16a3"
+    },
+    "coldVault": {
+      "evm": "0x3Fc71aF5bADd701FF7D718df932E0dDf8612149F",
+      "native": "qor18lr34ad6m4cpla7hrr0extsdm7rpy9yl654rtq",
+      "deployTx": "0x3d5a17e72b868d56e469f46609f4a0d971e61bcdda4e5cf6deb4c49355b6bd64",
+      "releaseTimeUtc": "2026-11-20T00:00:00Z"
+    },
+    "drillAccount": {
+      "evm": "0xbd8EC9F476988126C7bd3dF10e6cC6d7e39d23C2",
+      "native": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp"
+    }
+  },
+  "drill": {
+    "proofOfLife": {
+      "txHash": "80517F8F25FF933772FF9789BFAFA648D5AD9D92C6DE893561C9B4C4CFB129BF",
+      "code": 0,
+      "sentAtUtc": "2026-11-18T00:01:03.486Z",
+      "height": "10284073",
+      "message": "/qorechain.crossvm.v1.MsgCrossVMCall into the hot vault's heartbeat()",
+      "vaultOwnerNonce": "19 -> 20",
+      "acceptedOnProjectPage": true,
+      "evidence": "evidence/proof-of-life.json"
+    },
+    "drillAccountAtStart": {
+      "uqor": "1000000",
+      "otherAssets": [],
+      "evmWindow": false,
+      "pqKeyRegisteredWithProofOfPossession": true
+    },
+    "predicted": {
+      "successfulAttacks": 0,
+      "valueKeptPercent": 100,
+      "vaultsUnchanged": true
+    },
+    "observed": "pending: filled in after the organisers publish the attack log"
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "claim": "Classical-only native transactions from the drill account are refused (every message type in the SDK registry, plus 14 hand-built)",
+      "result": "298 attempts, 0 accepted",
+      "evidence": "evidence/attack-native.json"
+    },
+    {
+      "id": "C2",
+      "claim": "Our fee grant cannot be burned by classical-only transactions",
+      "result": "grant unchanged after the fee-granted sweep",
+      "evidence": "evidence/attack-native.json"
+    },
+    {
+      "id": "C3",
+      "claim": "No EVM transaction is accepted from an account without a window",
+      "result": "34 attempts, 0 accepted",
+      "evidence": "evidence/attack-evm.json"
+    },
+    {
+      "id": "C4",
+      "claim": "Vault calls without the owner's ML-DSA-87 signature revert, from any caller",
+      "result": "78 attempts, all reverted, balances unchanged",
+      "evidence": "evidence/attack-vault.json"
+    },
+    {
+      "id": "C5",
+      "claim": "The watchtower ignores a benign event and freezes on an unauthorised withdrawal",
+      "result": "frozen in 6 s, next withdrawal refused",
+      "evidence": "evidence/watchtower-test.json"
+    },
+    {
+      "id": "C6",
+      "claim": "The cold vault releases nothing before its time, and only for the owner's signature",
+      "evidence": "evidence/phase4b-cold-canary.json"
+    },
+    {
+      "id": "C7",
+      "claim": "Contract verification",
+      "result": "94 Foundry tests, 6 invariants, Medusa, Halmos, Slither and Semgrep with 0 high or medium, 27 of 27 mutants killed",
+      "evidence": [
+        "SECURITY-PROOFS.md",
+        "evidence/mutation-report.md",
+        "evidence/foundry-invariants.txt",
+        "evidence/medusa-run.txt",
+        "evidence/slither.json",
+        "test/halmos/Halmos.t.sol"
+      ]
+    },
+    {
+      "id": "C8",
+      "claim": "The proof-of-life path survives someone copying a heartbeat signature first",
+      "result": "tested: the keyless keeper fell back to a pre-signed ping that landed",
+      "evidence": [
+        "cloud/keeper.mjs",
+        "docs/ai-corrections.md"
+      ]
+    }
+  ],
+  "limits": [
+    "The drill account's protection rests on the chain's post-quantum gate (tested live, but chain code).",
+    "A frozen hot vault stops payments until the owner unfreezes it.",
+    "No autonomous AI agent is in this repository yet; the vault is its guardrail."
+  ]
+}

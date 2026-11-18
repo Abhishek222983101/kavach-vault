@@ -1,0 +1,52 @@
+{
+  "confirmed": true,
+  "primary": {
+    "hash": "80517F8F25FF933772FF9789BFAFA648D5AD9D92C6DE893561C9B4C4CFB129BF",
+    "code": 0,
+    "log": "",
+    "height": "10284073",
+    "sentAt": "2026-11-18T00:01:03.486Z",
+    "via": "rest",
+    "ok": true,
+    "ownerNonceBefore": "19",
+    "ownerNonceAfter": "20",
+    "heartbeatEventSeen": false
+  },
+  "runs": [
+    {
+      "mode": "drill",
+      "startedAt": "2026-11-18T00:01:00.560Z",
+      "attempts": [
+        {
+          "n": 1,
+          "kind": "vault-heartbeat",
+          "hash": "80517F8F25FF933772FF9789BFAFA648D5AD9D92C6DE893561C9B4C4CFB129BF",
+          "code": 0,
+          "log": "",
+          "height": "10284073",
+          "sentAt": "2026-11-18T00:01:03.486Z",
+          "via": "rest",
+          "ok": true,
+          "ownerNonceBefore": "19",
+          "ownerNonceAfter": "20",
+          "heartbeatEventSeen": false
+        }
+      ],
+      "primary": {
+        "hash": "80517F8F25FF933772FF9789BFAFA648D5AD9D92C6DE893561C9B4C4CFB129BF",
+        "code": 0,
+        "log": "",
+        "height": "10284073",
+        "sentAt": "2026-11-18T00:01:03.486Z",
+        "via": "rest",
+        "ok": true,
+        "ownerNonceBefore": "19",
+        "ownerNonceAfter": "20",
+        "heartbeatEventSeen": false
+      },
+      "confirmed": true,
+      "finishedAt": "2026-11-18T00:01:09.014Z",
+      "secondsAfterDrillStart": 69
+    }
+  ]
+}

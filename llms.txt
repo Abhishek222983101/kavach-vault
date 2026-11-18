@@ -1,0 +1,22 @@
+# Kavach Vault
+
+> A QoreChain vault where a stolen classical key moves nothing. Every withdrawal needs an ML-DSA-87 signature from the owner's post-quantum key, checked on chain with pqcVerify; the caller's address grants nothing. Entered in the Q-Day Drill (18 Nov 2026).
+
+Start with JUDGES.md: each claim there links to its proof. Machine-readable claims: evidence/summary.json.
+
+## Review first
+- [JUDGES.md](JUDGES.md): the drill criterion by criterion, what we did differently, how to verify live, limits
+- [evidence/summary.json](evidence/summary.json): addresses, proof of life, predictions, claims with evidence paths
+- [docs/12-DRILL-PREDICTIONS.md](docs/12-DRILL-PREDICTIONS.md): predicted outcome of every attack, written during the drill before the attack log was published
+
+## Proofs
+- [evidence/proof-of-life.json](evidence/proof-of-life.json): the drill-day transaction (code 0, sender = drill account, 00:01:03 UTC)
+- [evidence/attack-log.json](evidence/attack-log.json): 298 native, 34 EVM and 78 vault-call attacks before the drill, 0 accepted
+- [evidence/watchtower-test.json](evidence/watchtower-test.json): automatic guardian freeze tested
+- [SECURITY-PROOFS.md](SECURITY-PROOFS.md): each security claim with the test that checks it
+
+## Design
+- [docs/04-THREAT-MODEL.md](docs/04-THREAT-MODEL.md): every road a classical key has, and the defence
+- [docs/10-VAULT-SPEC.md](docs/10-VAULT-SPEC.md): the vault's exact rules
+- [src/KavachVault.sol](src/KavachVault.sol), [src/KavachColdVault.sol](src/KavachColdVault.sol): the contracts
+- [AI_USAGE.md](AI_USAGE.md), [docs/ai-corrections.md](docs/ai-corrections.md): how AI was used, and every mistake caught

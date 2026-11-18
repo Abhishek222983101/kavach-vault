@@ -119,6 +119,8 @@ readme = f'''<div align="center">
 
 <br>
 
+> **Reviewing this project, or an AI agent doing it?** Start with [`JUDGES.md`](JUDGES.md): every claim links to its proof, and [`evidence/summary.json`](evidence/summary.json) has the same in machine-readable form. Our predictions for the drill, written before the attack log was published: [`docs/12-DRILL-PREDICTIONS.md`](docs/12-DRILL-PREDICTIONS.md).
+
 > **The question the drill asks:** if a bot holds the classical key of your account for 24 hours, what can it do?
 > **Our answer:** nothing, on purpose. A classical key can act in two places: the native lane, which the chain closes to it, and an EVM window, which we never open. With both lanes closed it cannot touch the 1 test QOR the account holds. The money sits in two vaults that ignore who calls them and move only for an ML-DSA-87 signature the bot does not have.
 
