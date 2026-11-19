@@ -1,0 +1,175 @@
+1
+00:00:00,800 --> 00:00:03,569
+On Q-Day, nobody has to steal your password.
+
+2
+00:00:03,889 --> 00:00:07,624
+A quantum computer can work out your private key from your public one.
+
+3
+00:00:07,944 --> 00:00:09,302
+So QoreChain ran a drill.
+
+4
+00:00:09,622 --> 00:00:13,077
+On 18 November, a bot got the classical key of our drill account,
+
+5
+00:00:13,077 --> 00:00:15,682
+and it had a whole day to take whatever it could.
+
+6
+00:00:16,582 --> 00:00:20,448
+This is Kavach Vault. It holds an AI agent's money on QoreChain.
+
+7
+00:00:20,768 --> 00:00:22,941
+The agent can ask to pay someone,
+
+8
+00:00:22,941 --> 00:00:28,406
+but nothing leaves the vault without a signature from the owner's post-quantum key,
+
+9
+00:00:28,406 --> 00:00:30,250
+ML-DSA-87, checked on chain.
+
+10
+00:00:30,570 --> 00:00:33,015
+Who sends the transaction doesn't matter.
+
+11
+00:00:33,015 --> 00:00:35,638
+The vault never trusts the caller's address.
+
+12
+00:00:36,938 --> 00:00:37,983
+We split the money.
+
+13
+00:00:38,303 --> 00:00:43,057
+85% sits in a cold vault that can't move before 20 November.
+
+14
+00:00:43,377 --> 00:00:48,455
+The rest is in a hot vault, with a cap per payment, a daily cap, an allowlist,
+
+15
+00:00:48,455 --> 00:00:51,841
+a 6-hour timelock, and a guardian who can freeze it.
+
+16
+00:00:52,161 --> 00:00:55,234
+The drill account never opens an EVM window.
+
+17
+00:00:55,234 --> 00:00:59,005
+It holds 1 test QOR that its classical key can't move.
+
+18
+00:00:59,325 --> 00:01:03,113
+Even our own fees come from a fee grant, so its balance never drops.
+
+19
+00:01:04,013 --> 00:01:07,931
+Before the drill, we attacked ourselves with the real leaked key.
+
+20
+00:01:08,251 --> 00:01:13,658
+298 native transactions, covering every message type in the SDK.
+
+21
+00:01:13,978 --> 00:01:18,366
+34 EVM transactions. 78 drain calls on the vaults.
+
+22
+00:01:18,686 --> 00:01:20,044
+Not one got through.
+
+23
+00:01:21,544 --> 00:01:26,821
+Then the drill. One minute after midnight UTC, our proof of life landed.
+
+24
+00:01:27,141 --> 00:01:31,012
+It's not a transfer to ourselves. It's a real vault action:
+
+25
+00:01:31,012 --> 00:01:32,914
+the owner's signed heartbeat.
+
+26
+00:01:33,234 --> 00:01:36,828
+All day, a watchtower read the chain every 15 seconds,
+
+27
+00:01:36,828 --> 00:01:39,556
+ready to freeze the hot vault on its own.
+
+28
+00:01:39,876 --> 00:01:41,029
+We'd tested that.
+
+29
+00:01:41,029 --> 00:01:45,571
+An unauthorised withdrawal on a test vault was frozen in 6 seconds.
+
+30
+00:01:45,891 --> 00:01:48,448
+And so the drill didn't hang on one laptop,
+
+31
+00:01:48,448 --> 00:01:53,205
+a keyless backup on GitHub Actions and Vercel held only pre-signed transactions.
+
+32
+00:01:53,525 --> 00:01:54,522
+While building it,
+
+33
+00:01:54,522 --> 00:01:57,847
+we found that someone could block it by copying a signature.
+
+34
+00:01:57,847 --> 00:01:59,011
+So we fixed that too.
+
+35
+00:01:59,911 --> 00:02:04,099
+When the day ended, the drill account had started with 1 QOR,
+
+36
+00:02:04,099 --> 00:02:05,266
+and ended with 1.
+
+37
+00:02:05,586 --> 00:02:10,706
+100% kept. Both vaults untouched. Not one alarm.
+
+38
+00:02:11,026 --> 00:02:13,807
+We pushed our predictions to GitHub during the drill,
+
+39
+00:02:13,807 --> 00:02:17,165
+before the attack log was out, so you can check us line by line.
+
+40
+00:02:18,865 --> 00:02:24,747
+Underneath: 94 Foundry tests, 6 invariants, fuzzing, symbolic checks,
+
+41
+00:02:24,747 --> 00:02:26,963
+and all 27 mutants killed.
+
+42
+00:02:27,283 --> 00:02:29,642
+Every claim links to its proof in the repo,
+
+43
+00:02:29,642 --> 00:02:32,220
+with commands to check the live chain yourself.
+
+44
+00:02:32,540 --> 00:02:36,040
+Kavach Vault. A stolen classical key moves nothing.

@@ -1,0 +1,88 @@
+WEBVTT
+
+00:00:00.800 --> 00:00:04.631
+This is a live demo of Kavach Vault, recorded on 19 November,
+
+00:00:04.631 --> 00:00:06.390
+right after the Q-Day Drill.
+
+00:00:06.710 --> 00:00:10.498
+Everything on screen is real output from the QoreChain testnet.
+
+00:00:11.398 --> 00:00:14.193
+First, the drill result, read straight from the chain.
+
+00:00:14.513 --> 00:00:19.092
+During the drill day, the drill account sent exactly one transaction:
+
+00:00:19.092 --> 00:00:20.286
+our proof of life.
+
+00:00:20.606 --> 00:00:25.822
+Its fee was paid by our fee grant, so the account still holds exactly 1 QOR,
+
+00:00:25.822 --> 00:00:28.155
+and it never opened an EVM window.
+
+00:00:28.475 --> 00:00:30.486
+Both vaults are where they started.
+
+00:00:32.186 --> 00:00:36.157
+Now let's play the attacker, with the real leaked classical key.
+
+00:00:36.477 --> 00:00:39.501
+A native transfer of the whole balance. Refused:
+
+00:00:39.501 --> 00:00:43.974
+the account has a post-quantum key, so the chain wants both signatures.
+
+00:00:44.294 --> 00:00:48.578
+Opening an EVM window. Refused, for the same reason.
+
+00:00:48.898 --> 00:00:52.686
+An EVM transfer. Refused, because there's no window.
+
+00:00:53.006 --> 00:00:56.702
+And the drain calls. The allowlist stops the attacker's address.
+
+00:00:56.702 --> 00:01:00.803
+The vault rejects a key that isn't the owner's, and a forged signature.
+
+00:01:00.803 --> 00:01:02.593
+The cold vault is still locked.
+
+00:01:02.913 --> 00:01:04.141
+Nothing moved.
+
+00:01:06.241 --> 00:01:10.290
+Next, the watchtower, on a fresh test vault with 5 QOR in it.
+
+00:01:10.610 --> 00:01:15.051
+A normal heartbeat goes through, and nothing is frozen. That's what we want.
+
+00:01:15.371 --> 00:01:18.349
+Now a withdrawal the watchtower wasn't told about.
+
+00:01:18.669 --> 00:01:23.136
+It spots the drop, and the guardian freezes the vault, 11 seconds later.
+
+00:01:23.456 --> 00:01:25.959
+A new withdrawal after the freeze is refused.
+
+00:01:25.959 --> 00:01:28.628
+And the same alerts reach our phone on Telegram.
+
+00:01:30.728 --> 00:01:37.624
+Last, the test suite: 94 tests, and an invariant run that checks 6 invariants.
+
+00:01:37.944 --> 00:01:41.732
+The invariant run takes four and a half minutes, so it's sped up here.
+
+00:01:42.052 --> 00:01:43.358
+Everything passes.
+
+00:01:45.758 --> 00:01:48.654
+Every command you saw is in the repo. Run them yourself,
+
+00:01:48.654 --> 00:01:50.878
+and the chain will show you the same thing.
