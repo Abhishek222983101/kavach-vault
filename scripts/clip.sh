@@ -14,6 +14,8 @@ case "${1:-}" in
   desc) copy < docs-private/page/description.txt; echo "Description copied. Select all in the Description box (Ctrl+A), then paste (Ctrl+V).";;
   how) copy < docs-private/page/how.txt; echo "How it's made copied. Select all in that box (Ctrl+A), then paste (Ctrl+V).";;
   addrs) copy < docs-private/page/addresses.txt; echo "Testnet addresses copied. Paste them into Testnet addresses.";;
+  video) printf %s https://abhishek222983101.github.io/kavach-vault/video/ | copy; echo "Video link copied. Paste it into Video (up to 3 minutes, required).";;
+  demo) printf %s https://abhishek222983101.github.io/kavach-vault/demo/ | copy; echo "Demo link copied. Paste it into Demo.";;
   clear) printf '' | copy; echo "Clipboard cleared.";;
-  *) echo "usage: $0 repo|desc|how|addrs|clear"; exit 1;;
+  *) echo "usage: $0 repo|desc|how|addrs|video|demo|clear"; exit 1;;
 esac
