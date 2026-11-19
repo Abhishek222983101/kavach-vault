@@ -1,9 +1,9 @@
 {
-  "at": "2026-11-17T03:01:15.848Z",
+  "at": "2026-11-19T00:09:39.372Z",
   "steps": [
     {
       "n": "test vault",
-      "address": "0x3ed5c94f7e73ed74fd214fc9ad47d5ccd1816b8f"
+      "address": "0xf7f95da3edda1fde8cfb99eae7dcb35d406449a8"
     },
     {
       "n": "baseline",
@@ -21,12 +21,12 @@
     {
       "n": "anomaly: unexpected withdrawal",
       "code": 0,
-      "tx": "43F3DA9D75ABB738281C8BCD40F33298F69C27BF4C03C9B1E045801437602970"
+      "tx": "7BFFFBB73AAE28EB21EEC8479DB7A30E8BE50A9A4CAC5B27A5425500A1BD5552"
     },
     {
       "n": "reaction",
       "frozen": true,
-      "seconds": 6
+      "seconds": 11
     },
     {
       "n": "withdrawal after freeze refused",
@@ -35,32 +35,37 @@
   ],
   "alerts": [
     {
-      "at": "2026-11-17T03:01:33.893Z",
+      "at": "2026-11-19T00:09:55.933Z",
       "level": "info",
       "text": "Watchtower baseline recorded"
     },
     {
-      "at": "2026-11-17T03:02:08.025Z",
+      "at": "2026-11-19T00:10:34.659Z",
+      "level": "critical",
+      "text": "hot vault balance fell from 5000000000000000000 to 4000000000000000000 wei"
+    },
+    {
+      "at": "2026-11-19T00:10:35.542Z",
       "level": "critical",
       "text": "hot vault daily-spend counter rose from 0 to 1000000000000000000"
     },
     {
-      "at": "2026-11-17T03:02:08.029Z",
+      "at": "2026-11-19T00:10:36.463Z",
       "level": "critical",
-      "text": "Freezing the hot vault: hot vault daily-spend counter rose from 0 to 1000000000000000000"
+      "text": "Freezing the hot vault: hot vault balance fell from 5000000000000000000 to 4000000000000000000 wei; hot vault daily-spend counter rose from 0 to 1000000000000000000"
     },
     {
-      "at": "2026-11-17T03:02:13.058Z",
+      "at": "2026-11-19T00:10:41.504Z",
       "level": "ok",
-      "text": "Freeze confirmed (code 0, tx 52FA8A67FEFA6322E1DD2937BA3B9A83F735F91E5F2DEC2F99E40F2C34585943)"
+      "text": "Freeze confirmed (code 0, tx D4B139999701923A0D8932507DC5F7E22EAEBBA1FD5CE41347AED8F64F2FD9E0)"
     }
   ],
-  "watchLog": 9,
+  "watchLog": 10,
   "result": {
     "benignNoFreeze": true,
     "anomalyDetected": true,
     "frozen": true,
-    "reactionSeconds": 6,
+    "reactionSeconds": 11,
     "freezeConfirmedAlert": true,
     "withdrawalRefusedAfterFreeze": true
   }

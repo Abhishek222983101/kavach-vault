@@ -12,13 +12,17 @@ that its classical key alone cannot move. About 85% of the value sits in a cold 
 hot vault with caps, an allowlist, a timelock queue and a guardian freeze. A watchtower freezes the hot vault on any
 anomaly, and a keyless cloud backup made sure the proof of life did not depend on one laptop.
 
+**Videos:** [the project in 2:41](https://abhishek222983101.github.io/kavach-vault/video/) and a
+[live demo recorded after the drill](https://abhishek222983101.github.io/kavach-vault/demo/) (1:55, real testnet output:
+the drill result read from the chain, the leaked key trying every named attack, a live guardian freeze, the test suite).
+
 ## 2. The drill, criterion by criterion
 
 | Ranking criterion | Our result | Proof |
 |---|---|---|
 | 1. Proof of life (a normal transaction from the drill account during the drill) | Landed at **00:01:03 UTC**, one minute after the start: tx `80517F8F25FF933772FF9789BFAFA648D5AD9D92C6DE893561C9B4C4CFB129BF`, code 0, sender = drill account. It is a real vault action (the owner's signed heartbeat moved the vault's nonce 19 → 20), not a self-transfer. Accepted on the project page. | [`evidence/proof-of-life.json`](evidence/proof-of-life.json) |
-| 2. Fewest successful attacks | Predicted **0**, written down during the drill before the attack log was published | [`docs/12-DRILL-PREDICTIONS.md`](docs/12-DRILL-PREDICTIONS.md) |
-| 3. Most value kept (drill account, after ÷ before, worst asset) | The drill account holds **1 QOR and no other asset**, so the share is a defined number. Our own fees come from a scoped fee grant, so they never reduce it. Predicted **100%**. | [`evidence/pre-drill.json`](evidence/pre-drill.json) |
+| 2. Fewest successful attacks | Predicted **0**, written down during the drill before the attack log was published. **On chain after the drill:** the drill account sent exactly one transaction during the drill day, our proof (its sequence and EVM nonce are both 19, unchanged since the proof); both vaults are unchanged; the watchtower read the chain 5,741 times during the drill and raised 0 alarms. The organisers' attack log will show every attempt | [`docs/12-DRILL-PREDICTIONS.md`](docs/12-DRILL-PREDICTIONS.md), [`evidence/post-drill.json`](evidence/post-drill.json) |
+| 3. Most value kept (drill account, after ÷ before, worst asset) | The drill account holds **1 QOR and no other asset**, so the share is a defined number. Our own fees come from a scoped fee grant, so they never reduce it. **Observed: 1,000,000 uqor at the start and 1,000,000 uqor after the end, 100% kept** (the proof's fee was paid by the grant) | [`evidence/pre-drill.json`](evidence/pre-drill.json), [`evidence/post-drill.json`](evidence/post-drill.json) |
 | Jury tie-break: the threat model | Every road a classical key has, with the defence and a live test for each | [`docs/04-THREAT-MODEL.md`](docs/04-THREAT-MODEL.md), [`SECURITY-PROOFS.md`](SECURITY-PROOFS.md) |
 
 ## 3. What we did that is easy to miss
@@ -29,7 +33,7 @@ anomaly, and a keyless cloud backup made sure the proof of life did not depend o
 | **Predictions written down before the result** | The threat model can be checked against the organisers' attack log, line by line | [`docs/12-DRILL-PREDICTIONS.md`](docs/12-DRILL-PREDICTIONS.md) |
 | **A funded drill account, not an empty one** | An empty account makes "value kept" 0 ÷ 0. Ours holds 1 QOR, so it is measurable, and it should stay at 100% | [`evidence/pre-drill.json`](evidence/pre-drill.json) |
 | **The proof of life is a vault action** | It shows the project working, not only the account | [`evidence/proof-of-life.json`](evidence/proof-of-life.json) |
-| **Watchtower with automatic guardian freeze**, tested: a benign event is ignored; an unauthorised withdrawal on a test vault was frozen in 6 seconds and the next withdrawal refused | Damage is limited in seconds even if an unknown bug appears | [`evidence/watchtower-test.json`](evidence/watchtower-test.json), [`scripts/watchtower.mjs`](scripts/watchtower.mjs) |
+| **Watchtower with automatic guardian freeze**, tested: a benign event is ignored; an unauthorised withdrawal on a test vault was frozen in 6 seconds (17 Nov) and in 11 seconds in a live rerun on a fresh test vault (19 Nov, in the demo video); each time the next withdrawal was refused | Damage is limited in seconds even if an unknown bug appears | [`evidence/watchtower-test-2026-11-17.json`](evidence/watchtower-test-2026-11-17.json), [`evidence/watchtower-test.json`](evidence/watchtower-test.json), [`scripts/watchtower.mjs`](scripts/watchtower.mjs) |
 | **Keyless cloud backup** on GitHub Actions and Vercel, holding only pre-signed transactions (no private keys) | The proof of life and the freeze did not depend on one laptop. We found and fixed an attack on it: someone copying a heartbeat signature could spend its nonce first, so the backup falls back to pre-signed pings that carry no vault signature (tested) | [`cloud/keeper.mjs`](cloud/keeper.mjs), [`docs/ai-corrections.md`](docs/ai-corrections.md) |
 | **Hot and cold split** | 85% of the value cannot move before 20 Nov, whatever happens | [`src/KavachColdVault.sol`](src/KavachColdVault.sol), [`evidence/phase4b-cold-canary.json`](evidence/phase4b-cold-canary.json) |
 | **Verification beyond unit tests**: 94 Foundry tests, 6 invariants, Medusa fuzzing, Halmos symbolic checks, Slither and Semgrep (0 high or medium), 27 of 27 mutants killed, about 99.6% line coverage, a blind AI red team | Each claim in the security proofs names the test that checks it | [`SECURITY-PROOFS.md`](SECURITY-PROOFS.md), [`evidence/mutation-report.md`](evidence/mutation-report.md), [`evidence/foundry-invariants.txt`](evidence/foundry-invariants.txt), [`evidence/medusa-run.txt`](evidence/medusa-run.txt), [`evidence/slither.json`](evidence/slither.json) |
@@ -60,6 +64,9 @@ for V in 0x10256EDD0877436FfCBA8A62b0598f4bAD01514B 0x3Fc71aF5bADd701FF7D718df93
 The code:
 
 ```bash
+node scripts/verify-drill.mjs     # the drill result, read from the chain (read-only)
+node scripts/demo-attack.mjs      # the leaked classical key tries the named attacks; each is refused (needs the team's keys)
+node scripts/test-watchtower.mjs  # a live freeze on a fresh test vault (needs the team's keys)
 forge test                  # 94 tests and 6 invariants
 node scripts/preflight.mjs  # the full live checklist (needs the team's keys for the signing checks)
 ```

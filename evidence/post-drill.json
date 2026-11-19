@@ -1,0 +1,378 @@
+{
+  "at": "2026-11-19T00:24:35.451Z",
+  "chain": {
+    "height": 10345577,
+    "blockTime": "2026-11-19T00:24:33.000Z"
+  },
+  "drill": {
+    "address": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp",
+    "evm": "0xbd8EC9F476988126C7bd3dF10e6cC6d7e39d23C2",
+    "pq": {
+      "key_type": "hybrid",
+      "possession_proven": true
+    },
+    "balances": [
+      {
+        "denom": "uqor",
+        "amount": "1000000"
+      }
+    ],
+    "window": false
+  },
+  "feeGrant": {
+    "allowedMessages": [
+      "/cosmos.bank.v1beta1.MsgSend",
+      "/qorechain.crossvm.v1.MsgCrossVMCall"
+    ],
+    "spendLeftUqor": "5255000",
+    "expiration": "2026-11-20T23:59:00Z"
+  },
+  "funder": {
+    "address": "qor10mlhtuc44s38n90uqls7njcushswz338hzyv05",
+    "evm": "0x7Eff75F315Ac227995fc07e1e9Cb1C85E0e14627",
+    "uqor": "59576176"
+  },
+  "vaults": {
+    "hot": {
+      "address": "0x10256edd0877436ffcba8a62b0598f4bad01514b",
+      "balanceWei": "129000000000000000000",
+      "frozen": false,
+      "ownerNonce": "20",
+      "guardianNonce": "0",
+      "spent": "0",
+      "limitsQOR": [
+        "25000000000000000000",
+        "50000000000000000000"
+      ],
+      "timelockDelay": "21600"
+    },
+    "cold": {
+      "address": "0x3fc71af5badd701ff7d718df932e0ddf8612149f",
+      "balanceWei": "740000000000000000000",
+      "releaseTime": "1795132800"
+    }
+  },
+  "repo": {
+    "head": "852e5519569ed362c97df560cdffe997398543e3",
+    "originMain": "852e5519569ed362c97df560cdffe997398543e3",
+    "visibility": "PUBLIC"
+  },
+  "cloud": {
+    "baseline": {
+      "hotWei": "129000000000000000000",
+      "coldWei": "740000000000000000000",
+      "spent": "2000000000000000000",
+      "outerSeq": "18",
+      "freezerSeq": "2",
+      "ownerNonce": "19",
+      "guardianNonce": "0",
+      "drillUqor": "1000000",
+      "pqKey": "3458:true"
+    },
+    "secrets": [
+      "FREEZE_TX",
+      "HB_0",
+      "HB_1",
+      "HB_2",
+      "PING_0",
+      "PING_1",
+      "TELEGRAM_CHAT",
+      "TELEGRAM_TOKEN"
+    ],
+    "lastRun": "success",
+    "vercel": "ok"
+  },
+  "timers": {
+    "kavach-watchtower": {
+      "enabled": "enabled",
+      "next": ""
+    },
+    "kavach-heartbeat": {
+      "enabled": "enabled",
+      "next": ""
+    },
+    "kavach-heartbeat-retry": {
+      "enabled": "",
+      "next": ""
+    },
+    "kavach-heartbeat-extra": {
+      "enabled": "",
+      "next": ""
+    },
+    "kavach-go-public": {
+      "enabled": "enabled",
+      "next": ""
+    }
+  },
+  "machine": {
+    "diskFreeMB": 6558,
+    "acOnline": "1",
+    "nodeVersion": "v22.23.2"
+  },
+  "evidenceManifest": {
+    "alerts.jsonl": "ab2f2a6df7f826a1",
+    "attack-evm.json": "1effaef8eb71415c",
+    "attack-log.json": "5a1cc80226beb598",
+    "attack-native.json": "226432f800966b8f",
+    "attack-vault.json": "4814af150eb3d4ae",
+    "foundry-invariants.txt": "23f4bfcb23a217f6",
+    "grant-topup.json": "17ee8efb4ffce152",
+    "inv-fail.txt": "ee373db0017d61a4",
+    "inv-fail2.txt": "ab08db9db8887319",
+    "medusa-run.txt": "7167e2636f2d2aa8",
+    "mutation-report.md": "bb483fc28681bcf1",
+    "mutation-run.txt": "52b6fd8b7ce45e87",
+    "phase2.json": "8858eb4968ac57ed",
+    "phase4.json": "c142948ba18e872e",
+    "phase4b-cold-canary.json": "67bc6aa2a656e550",
+    "post-drill.json": "454f65e4b9d58f73",
+    "pre-drill.json": "f997ec66819a8fae",
+    "proof-of-life.json": "01ef9af4a69b8334",
+    "registration.json": "bea875dd878c1508",
+    "rehearsal-heartbeat.json": "4b3783000d82827e",
+    "semgrep.json": "7bf653be059b9740",
+    "slither.json": "5b69382b26e27d40",
+    "spike-s1s5.json": "45b16bfab571de00",
+    "spike-s2.json": "14571dcfdfdb822a",
+    "spike-s3-ping.json": "a101aa1150ada5e2",
+    "spike-s3.json": "0ff1504387568494",
+    "spike-s4.json": "88b2786be79a1950",
+    "spike-s4b.json": "72d5d74b599f0715",
+    "summary.json": "fcd81595b18c55c1",
+    "test-vault-t1.json": "727cb5cfa7216062",
+    "test-vault-t2.json": "591df0133a0b6769",
+    "test-vault.json": "2c5f45ccf4218322",
+    "watch-state.json": "952bf60038040a1b",
+    "watch.alive": "35b9b03c2e27ff5f",
+    "watch.jsonl": "c32773c3df5cb2ec",
+    "watchtower-test-2026-11-17.json": "2c13ac6e2556a2d7",
+    "watchtower-test.json": "8ee70365dc73dee9"
+  },
+  "checks": [
+    {
+      "level": "ok",
+      "name": "chain is live and the machine clock agrees with block time",
+      "detail": "latest block 3s old"
+    },
+    {
+      "level": "ok",
+      "name": "system clock is NTP-synchronised",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "drill account: ML-DSA-87 key registered with proof of possession",
+      "detail": "qor1hk8vnarknzqjd3aa8hcsumxx6l3e6g7zwd2pzp"
+    },
+    {
+      "level": "ok",
+      "name": "drill account holds only QOR (value kept is the worst asset, so no other tokens)",
+      "detail": "[{\"denom\":\"uqor\",\"amount\":\"1000000\"}]"
+    },
+    {
+      "level": "ok",
+      "name": "drill account holds some QOR, so 'value kept' is a defined share (Kai: it is after/before on the drill account)",
+      "detail": "1000000 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "drill account has no EVM window",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "funder has no EVM window open",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "fee grant limited to MsgSend and MsgCrossVMCall",
+      "detail": "/cosmos.bank.v1beta1.MsgSend, /qorechain.crossvm.v1.MsgCrossVMCall"
+    },
+    {
+      "level": "ok",
+      "name": "fee grant has at least 3 QOR left",
+      "detail": "5255000 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "funder keeps at least 10 QOR for fees",
+      "detail": "59576176 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "hot vault is not frozen",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "hot vault holds value",
+      "detail": "129000000000000000000"
+    },
+    {
+      "level": "ok",
+      "name": "cold vault holds value",
+      "detail": "740000000000000000000"
+    },
+    {
+      "level": "ok",
+      "name": "cold vault release time is 20 Nov 2026 00:00 UTC",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "hot vault owner account is the drill account",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "recipient allowlists contain the funder only, never the drill account",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "deployed bytecode equals the build of the committed source",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "proof-of-life heartbeat is accepted by the vault (simulated)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "guardian freeze is accepted by the vault (simulated)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "latest live attack log verdict",
+      "detail": "ALL BLOCKED"
+    },
+    {
+      "level": "ok",
+      "name": "proof-of-life rehearsal landed on testnet",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "watchtower test (benign ignored, anomaly frozen) passed",
+      "detail": ""
+    },
+    {
+      "level": "FAIL",
+      "name": "no uncommitted changes to tracked files",
+      "detail": "2 modified"
+    },
+    {
+      "level": "WARN",
+      "name": "untracked files present",
+      "detail": "5 (commit or ignore them)"
+    },
+    {
+      "level": "ok",
+      "name": "local HEAD is pushed to origin/main",
+      "detail": "852e551 vs 852e551"
+    },
+    {
+      "level": "ok",
+      "name": "GitHub repository reachable",
+      "detail": "PUBLIC"
+    },
+    {
+      "level": "ok",
+      "name": "cloud keeper targets the real hot vault",
+      "detail": ""
+    },
+    {
+      "level": "FAIL",
+      "name": "cloud blobs are fresh: drill account sequence unchanged since pre-signing",
+      "detail": "18"
+    },
+    {
+      "level": "ok",
+      "name": "cloud freeze blob is fresh: freezer sequence unchanged",
+      "detail": "2"
+    },
+    {
+      "level": "FAIL",
+      "name": "cloud blobs are fresh: vault owner nonce unchanged",
+      "detail": "19"
+    },
+    {
+      "level": "ok",
+      "name": "freezer account can pay for the freeze",
+      "detail": "2764000 uqor"
+    },
+    {
+      "level": "ok",
+      "name": "GitHub secrets HB_0, HB_1, HB_2, FREEZE_TX are set",
+      "detail": "FREEZE_TX,HB_0,HB_1,HB_2,PING_0,PING_1,TELEGRAM_CHAT,TELEGRAM_TOKEN"
+    },
+    {
+      "level": "ok",
+      "name": "keeper workflow is on origin/main",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "latest keeper run succeeded",
+      "detail": "success"
+    },
+    {
+      "level": "ok",
+      "name": "Vercel keeper answers a dry run with a clean state",
+      "detail": "ok"
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-watchtower is armed",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-heartbeat is armed",
+      "detail": ""
+    },
+    {
+      "level": "FAIL",
+      "name": "timer kavach-heartbeat-retry is armed",
+      "detail": ""
+    },
+    {
+      "level": "FAIL",
+      "name": "timer kavach-heartbeat-extra is armed",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "timer kavach-go-public is armed",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "user services keep running when logged out (linger)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "sleep is blocked until the drill is over (kavach-awake)",
+      "detail": ""
+    },
+    {
+      "level": "ok",
+      "name": "at least 2 GB of disk free",
+      "detail": "6558 MB"
+    },
+    {
+      "level": "ok",
+      "name": "laptop is on mains power",
+      "detail": "AC online=1"
+    }
+  ],
+  "summary": {
+    "fails": 5,
+    "warns": 1,
+    "passed": 38
+  }
+}

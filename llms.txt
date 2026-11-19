@@ -1,6 +1,6 @@
 # Kavach Vault
 
-> A QoreChain vault where a stolen classical key moves nothing. Every withdrawal needs an ML-DSA-87 signature from the owner's post-quantum key, checked on chain with pqcVerify; the caller's address grants nothing. Entered in the Q-Day Drill (18 Nov 2026).
+> A QoreChain vault where a stolen classical key moves nothing. Every withdrawal needs an ML-DSA-87 signature from the owner's post-quantum key, checked on chain with pqcVerify; the caller's address grants nothing. Entered in the Q-Day Drill (18 Nov 2026): only our proof of life left the drill account, 1 QOR before and after (100% kept).
 
 Start with JUDGES.md: each claim there links to its proof. Machine-readable claims: evidence/summary.json.
 
@@ -9,7 +9,12 @@ Start with JUDGES.md: each claim there links to its proof. Machine-readable clai
 - [evidence/summary.json](evidence/summary.json): addresses, proof of life, predictions, claims with evidence paths
 - [docs/12-DRILL-PREDICTIONS.md](docs/12-DRILL-PREDICTIONS.md): predicted outcome of every attack, written during the drill before the attack log was published
 
+## Videos
+- [Explainer, 2:41](https://abhishek222983101.github.io/kavach-vault/video/)
+- [Live demo after the drill, 1:55](https://abhishek222983101.github.io/kavach-vault/demo/): real testnet output
+
 ## Proofs
+- [evidence/post-drill.json](evidence/post-drill.json): chain state after the drill (reproduce with `node scripts/verify-drill.mjs`)
 - [evidence/proof-of-life.json](evidence/proof-of-life.json): the drill-day transaction (code 0, sender = drill account, 00:01:03 UTC)
 - [evidence/attack-log.json](evidence/attack-log.json): 298 native, 34 EVM and 78 vault-call attacks before the drill, 0 accepted
 - [evidence/watchtower-test.json](evidence/watchtower-test.json): automatic guardian freeze tested

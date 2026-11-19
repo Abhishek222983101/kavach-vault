@@ -43,7 +43,24 @@
       "valueKeptPercent": 100,
       "vaultsUnchanged": true
     },
-    "observed": "pending: filled in after the organisers publish the attack log"
+    "observed": "pending: filled in after the organisers publish the attack log",
+    "observedAfterDrill": {
+      "checkedAtUtc": "2026-11-19T00:24:35Z",
+      "drillAccountUqor": "1000000",
+      "otherAssets": [],
+      "evmWindow": false,
+      "txsSentDuringDrill": 1,
+      "onlyTx": "80517F8F25FF933772FF9789BFAFA648D5AD9D92C6DE893561C9B4C4CFB129BF",
+      "sequenceAndEvmNonce": 19,
+      "valueKept": "100%",
+      "hotVaultQor": "129",
+      "coldVaultQor": "740",
+      "watchtowerReadsDuringDrill": 5741,
+      "watchtowerAlarmsDuringDrill": 0,
+      "organisersAttackLog": "pending",
+      "evidence": "evidence/post-drill.json",
+      "reproduce": "node scripts/verify-drill.mjs"
+    }
   },
   "claims": [
     {
@@ -73,8 +90,11 @@
     {
       "id": "C5",
       "claim": "The watchtower ignores a benign event and freezes on an unauthorised withdrawal",
-      "result": "frozen in 6 s, next withdrawal refused",
-      "evidence": "evidence/watchtower-test.json"
+      "result": "frozen in 6 s on 17 Nov and in 11 s in a live rerun on 19 Nov; next withdrawal refused both times",
+      "evidence": [
+        "evidence/watchtower-test-2026-11-17.json",
+        "evidence/watchtower-test.json"
+      ]
     },
     {
       "id": "C6",
@@ -108,5 +128,9 @@
     "The drill account's protection rests on the chain's post-quantum gate (tested live, but chain code).",
     "A frozen hot vault stops payments until the owner unfreezes it.",
     "No autonomous AI agent is in this repository yet; the vault is its guardrail."
-  ]
+  ],
+  "videos": {
+    "explainer": "https://abhishek222983101.github.io/kavach-vault/video/",
+    "liveDemo": "https://abhishek222983101.github.io/kavach-vault/demo/"
+  }
 }

@@ -46,7 +46,7 @@ The drill ranks entries by this rule: **proof of life, then fewest successful at
 | **4. Threat model (tie-break)** | 26 hand-written attacks plus a sweep generated from the chain's full message registry; one written proof per invariant, each linked to tests | [`docs/04-THREAT-MODEL.md`](docs/04-THREAT-MODEL.md), [`SECURITY-PROOFS.md`](SECURITY-PROOFS.md) |
 | **Category: Post-Quantum AI Agents** | Spending and access limits enforced on chain (per-transaction and rolling daily caps, recipient allowlist, timelock queue, signature deadlines, guardian freeze); authenticated messaging (a 416-byte, domain-separated signed request). The funder uses short EVM windows, capped by block count, transaction count and value, only to deploy and fund; each is closed and proven closed (`found:false`). The drill account never opens one | [`docs/10-VAULT-SPEC.md`](docs/10-VAULT-SPEC.md), [`evidence/phase4.json`](evidence/phase4.json) |
 | **Best AI-native build** | Every decision, AI mistake and fix is logged | [`AI_USAGE.md`](AI_USAGE.md), [`docs/ai-corrections.md`](docs/ai-corrections.md) |
-| **Submission checks** | Public repository, MIT licence, this README, testnet addresses below. Video: added before the 2 Dec deadline | [`LICENSE`](LICENSE) |
+| **Submission checks** | Public repository, MIT licence, this README, testnet addresses below. Videos: [the project in 2:41](https://abhishek222983101.github.io/kavach-vault/video/) and [a live demo after the drill](https://abhishek222983101.github.io/kavach-vault/demo/) | [`LICENSE`](LICENSE) |
 
 <br>
 
@@ -130,7 +130,7 @@ Queued withdrawals wait 6 hours, can be cancelled by the guardian, and still pay
 | 05:35 | The repository becomes public | After registration has closed |
 | all day | **Keyless cloud backup**: GitHub Actions (every 5 minutes) and Vercel cron hold pre-signed transactions (no private keys). They send the proof-of-life heartbeat if none has landed, and the guardian freeze on a critical anomaly | The drill does not depend on one laptop staying awake. If the blobs ever leaked, the worst case is an early heartbeat or a precautionary freeze, never a loss of funds |
 
-Rehearsed live: the heartbeat landed from the drill account (`8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9`), and on a throwaway vault the watchtower ignored a benign heartbeat, detected an unauthorised withdrawal, froze the vault in 6 seconds, and the next withdrawal was refused ([`evidence/watchtower-test.json`](evidence/watchtower-test.json)). The rehearsal also found that the call needs more than 600,000 gas, which the script now handles. Procedure: [`docs/06-DRILL-RUNBOOK.md`](docs/06-DRILL-RUNBOOK.md).
+Rehearsed live: the heartbeat landed from the drill account (`8215DF740163619D6B1BCA294B2A56FDBE0FF35BA7331E97DF060C164AF6AEE9`), and on a throwaway vault the watchtower ignored a benign heartbeat, detected an unauthorised withdrawal, froze the vault in 11 seconds, and the next withdrawal was refused ([`evidence/watchtower-test.json`](evidence/watchtower-test.json)). The rehearsal also found that the call needs more than 600,000 gas, which the script now handles. Procedure: [`docs/06-DRILL-RUNBOOK.md`](docs/06-DRILL-RUNBOOK.md).
 
 ## Reproduce
 
@@ -163,7 +163,7 @@ The live scripts need local testnet keys in `.secrets/` (never committed). Every
 
 ## Scope
 
-Testnet only. The design relies on QoreChain enforcing the hybrid signature requirement and exposing `pqcVerify` and `pqcKeyStatus`; we tested both live and cite the node source in [`docs/02-RESEARCH.md`](docs/02-RESEARCH.md). Keys are not rotated in this deployment (decision D-15). Queued withdrawals are not counted against the daily cap by design (D-19): they need the owner's post-quantum signature and a delay. The drill result itself is added to [`evidence/`](evidence) after 19 Nov.
+Testnet only. The design relies on QoreChain enforcing the hybrid signature requirement and exposing `pqcVerify` and `pqcKeyStatus`; we tested both live and cite the node source in [`docs/02-RESEARCH.md`](docs/02-RESEARCH.md). Keys are not rotated in this deployment (decision D-15). Queued withdrawals are not counted against the daily cap by design (D-19): they need the owner's post-quantum signature and a delay. Drill result on chain: only our proof of life left the drill account during the drill, and it held 1 QOR before and after (100% kept); see [`evidence/post-drill.json`](evidence/post-drill.json) and [`JUDGES.md`](JUDGES.md). The comparison with the organisers' attack log is added when they publish it.
 
 ## Credits
 
