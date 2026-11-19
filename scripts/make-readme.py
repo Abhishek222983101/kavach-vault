@@ -88,8 +88,8 @@ open("docs/assets/terminal.svg", "w").write(f'''<svg xmlns="http://www.w3.org/20
 
 # --------------------------- README ---------------------------------------------------------------
 def b(label, val, col=GREEN): return f"![{label}](https://img.shields.io/badge/{label.replace(' ','%20').replace('-','--')}-{str(val).replace('%','%25').replace(' ','%20').replace('-','--').replace('+','%2B')}-{col[1:]}?style=flat-square&labelColor=0b1117)"
-badges = " ".join([b("live attacks accepted", f"0 of {n['attempts']+ev['attempts']+v['callAttacks']}"), b("mutants killed", "27 of 27"), b("Slither high+medium", 0),
-                   b("coverage lines", "99.6%"), b("Foundry tests", "94 + 6 invariants"), b("license", "MIT", "60a5fa")])
+badges = " ".join([b("Q-Day Drill value kept", "100%"), b("drill proof of life", "accepted"), b("live attacks accepted", f"0 of {n['attempts']+ev['attempts']+v['callAttacks']}"), b("mutants killed", "27 of 27"), b("Slither high+medium", 0),
+                   b("coverage lines", "99.6%"), b("Foundry tests", "94 + 6 invariants"), b("license", "MIT", "#60a5fa")])
 readme = f'''<div align="center">
 
 <img src="docs/assets/banner.svg" alt="Kavach Vault: a stolen classical key moves nothing" width="100%">
@@ -97,7 +97,7 @@ readme = f'''<div align="center">
 <br>
 
 **A vault on QoreChain where the money moves only with a post-quantum signature.**
-**The account the attacker holds the key to has never opened an EVM window, and its classical key alone cannot move the 1 test QOR it holds.**
+**In the Q-Day Drill a bot held the drill account's classical key for 24 hours. The account ended the day with exactly the 1 QOR it started with, and both vaults were untouched.**
 
 <br>
 
@@ -105,6 +105,24 @@ readme = f'''<div align="center">
 
 <br>
 
+<table>
+<tr>
+<td align="center" width="50%">
+<a href="https://abhishek222983101.github.io/kavach-vault/video/"><img src="docs/assets/video-thumb.jpg" alt="Watch the Kavach Vault video (2:41)" width="100%"></a>
+<br><b>▶ The project in 2:41</b>
+<br><sub>What it is, how it held up in the drill</sub>
+</td>
+<td align="center" width="50%">
+<a href="https://abhishek222983101.github.io/kavach-vault/demo/"><img src="docs/assets/demo-thumb.jpg" alt="Watch the live demo (1:55)" width="100%"></a>
+<br><b>▶ Live demo, recorded after the drill (1:55)</b>
+<br><sub>Real testnet output: the leaked key tries every attack</sub>
+</td>
+</tr>
+</table>
+
+<br>
+
+[**Reviewer guide**](JUDGES.md) &nbsp;·&nbsp;
 [**Project page**](https://build.qorechain.io/p/kavach-vault) &nbsp;·&nbsp;
 [**Threat model**](docs/04-THREAT-MODEL.md) &nbsp;·&nbsp;
 [**Security proofs**](SECURITY-PROOFS.md) &nbsp;·&nbsp;

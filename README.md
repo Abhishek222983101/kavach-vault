@@ -5,14 +5,32 @@
 <br>
 
 **A vault on QoreChain where the money moves only with a post-quantum signature.**
-**The account the attacker holds the key to has never opened an EVM window, and its classical key alone cannot move the 1 test QOR it holds.**
+**In the Q-Day Drill a bot held the drill account's classical key for 24 hours. The account ended the day with exactly the 1 QOR it started with, and both vaults were untouched.**
 
 <br>
 
-![live attacks accepted](https://img.shields.io/badge/live%20attacks%20accepted-0%20of%20410-34d399?style=flat-square&labelColor=0b1117) ![mutants killed](https://img.shields.io/badge/mutants%20killed-27%20of%2027-34d399?style=flat-square&labelColor=0b1117) ![Slither high+medium](https://img.shields.io/badge/Slither%20high+medium-0-34d399?style=flat-square&labelColor=0b1117) ![coverage lines](https://img.shields.io/badge/coverage%20lines-99.6%25-34d399?style=flat-square&labelColor=0b1117) ![Foundry tests](https://img.shields.io/badge/Foundry%20tests-94%20%2B%206%20invariants-34d399?style=flat-square&labelColor=0b1117) ![license](https://img.shields.io/badge/license-MIT-0a5fa?style=flat-square&labelColor=0b1117)
+![Q-Day Drill value kept](https://img.shields.io/badge/Q--Day%20Drill%20value%20kept-100%25-34d399?style=flat-square&labelColor=0b1117) ![drill proof of life](https://img.shields.io/badge/drill%20proof%20of%20life-accepted-34d399?style=flat-square&labelColor=0b1117) ![live attacks accepted](https://img.shields.io/badge/live%20attacks%20accepted-0%20of%20410-34d399?style=flat-square&labelColor=0b1117) ![mutants killed](https://img.shields.io/badge/mutants%20killed-27%20of%2027-34d399?style=flat-square&labelColor=0b1117) ![Slither high+medium](https://img.shields.io/badge/Slither%20high+medium-0-34d399?style=flat-square&labelColor=0b1117) ![coverage lines](https://img.shields.io/badge/coverage%20lines-99.6%25-34d399?style=flat-square&labelColor=0b1117) ![Foundry tests](https://img.shields.io/badge/Foundry%20tests-94%20%2B%206%20invariants-34d399?style=flat-square&labelColor=0b1117) ![license](https://img.shields.io/badge/license-MIT-60a5fa?style=flat-square&labelColor=0b1117)
 
 <br>
 
+<table>
+<tr>
+<td align="center" width="50%">
+<a href="https://abhishek222983101.github.io/kavach-vault/video/"><img src="docs/assets/video-thumb.jpg" alt="Watch the Kavach Vault video (2:41)" width="100%"></a>
+<br><b>▶ The project in 2:41</b>
+<br><sub>What it is, how it held up in the drill</sub>
+</td>
+<td align="center" width="50%">
+<a href="https://abhishek222983101.github.io/kavach-vault/demo/"><img src="docs/assets/demo-thumb.jpg" alt="Watch the live demo (1:55)" width="100%"></a>
+<br><b>▶ Live demo, recorded after the drill (1:55)</b>
+<br><sub>Real testnet output: the leaked key tries every attack</sub>
+</td>
+</tr>
+</table>
+
+<br>
+
+[**Reviewer guide**](JUDGES.md) &nbsp;·&nbsp;
 [**Project page**](https://build.qorechain.io/p/kavach-vault) &nbsp;·&nbsp;
 [**Threat model**](docs/04-THREAT-MODEL.md) &nbsp;·&nbsp;
 [**Security proofs**](SECURITY-PROOFS.md) &nbsp;·&nbsp;
